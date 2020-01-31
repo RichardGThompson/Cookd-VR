@@ -3,13 +3,30 @@
     <head>
         <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
         <script src="js/dsk_playermovement.js"></script>
+        
     </head>
     <body>
 
         <a-scene>
-            <a-entity id="camera" position=" 0 5 0" rotation="-90 0 180" camera></a-entity>
-            <a-entity geometry="primitive:plane; width: 7; height: 7;" rotation="-90 0 0" color="rgb(0, 255, 0)"></a-entity>
-            <a-entity id=" player" dsk_playermovement position= "0 0 0" geometry="primitive:box; width:1; height:1; depth: 1" color="rgb(255 0 0)"></a-entity>
+            <a-entity id="camera" position=" 0 5 0" rotation="-90 0 180" camera>
+                <a-entity   id="cursor"
+                            cursor="fuse:false; fuseTimeout:500; rayOrigin:mouse; "
+                            raycaster="far:10; interval:100; objects:.clickable"
+                            position=" 0 0 0"
+                            showLine="true"
+                            geometry="primitive:box; width:0.1; height:0.1; depth: 0.1"
+                            material="shader:flat; color:black;" >
+                </a-entity>
+
+
+            </a-entity>
+            <a-entity geometry="primitive:plane; width: 7; height: 7;"
+                     dsk_playermovement 
+                     class="clickable"
+                     rotation="-90 0 0" 
+                     color="rgb(0, 255, 0)">
+            </a-entity>
+            <a-entity id="player" dsk_playermovement position= "0 0 0" geometry="primitive:box; width:1; height:1; depth: 1" color="rgb(255 0 0)"></a-entity>
         </a-scene>
     </body>
 </html>
