@@ -1,19 +1,3 @@
-//running this instead of app e.g. 'node appSSL.js' instead of 'node app.js' lets you pretend to serve your page over HTTPS
-//HTTPS is required for other devices connecting your localhost (i.e. mobile) to access accelerometers and other device sensors.
-//note this is a bit hacky and if you restart your serve your browser may not let you visit as the new SSLL cert != the new one
-//if this happens clear all your browsing data and restart browser (confirmed this workd on ios safari)
-//for desktop use Chrome as it seems to alows let you bypass ("proceeding to unsafe site")
-
-//!!NOTE: If the below steps are all too much check out https://ngrok.com. 
-//There is a free tier and it works quite well. You can then just run app.js and get a https URL from running ngrok
-
-//STEPS (this will allow Aframe/WebXR API access mobile platform sensors when accessing this server):
-//1. run 'node createCerts.js'
-//2. run 'node appSSL.js'
-//3. go to 'https://localhost:1111'
-//4. ignore "safety warnings" from brwoser and go ahead to site anyhow
-//5. after creating certs you shouldn't have to run 'node createCerts.js' again until you move to another machine
-
 const https     = require('https');
 const forge     = require('node-forge');
 const fs        = require('fs');
@@ -29,6 +13,14 @@ app.use(express.static(__dirname + '/public'));
 /************* CREATE ROUTES ***************/
 app.get('/', function(req, res) {
     res.sendFile(__dirname + 'public/index.html');
+});
+
+app.get('/vr', function(req, res) {
+    res.sendFile(__dirname + 'public/vr.html');
+});
+
+app.get('/dsk', function(req, res) {
+    res.sendFile(__dirname + 'public/dsk_main.html');
 });
 
 /************* LOAD SSL CERTS (if you ran 'node createCerts.js') ***************/
