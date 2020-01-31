@@ -7,9 +7,9 @@
     <body>
 
         <a-scene>
-            <a-entity id="camera" position=" 0 5 0" rotation="-90 0 0" camera></a-entity>
+            <a-entity id="camera" position=" 0 5 0" rotation="-90 0 180" camera></a-entity>
             <a-entity geometry="primitive:plane; width: 7; height: 7;" rotation="-90 0 0" color="rgb(0, 255, 0)"></a-entity>
-            <a-entity id=" player" dsk_playermovement geometry="primitive:box; width:1; height:1; depth: 1" color="rgb(255 0 0)"></a-entity>
+            <a-entity id=" player" dsk_playermovement position= "0 0 0" geometry="primitive:box; width:1; height:1; depth: 1" color="rgb(255 0 0)"></a-entity>
         </a-scene>
     </body>
 </html>
