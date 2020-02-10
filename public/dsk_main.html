@@ -2,31 +2,72 @@
 <html>
     <head>
         <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
         <script src="js/dsk_playermovement.js"></script>
+        <script src="js/dsk_npcspawning.js"></script>
         
     </head>
     <body>
 
         <a-scene>
-            <a-entity id="camera" position=" 0 5 0" rotation="-90 0 180" camera>
-                <a-entity   id="cursor"
-                            cursor="fuse:false; fuseTimeout:500; rayOrigin:mouse; "
-                            raycaster="far:10; interval:100; objects:.clickable"
-                            position=" 0 0 0"
-                            showLine="true"
-                            geometry="primitive:box; width:0.1; height:0.1; depth: 0.1"
-                            material="shader:flat; color:black;" >
+            <a-assets>
+                <a-asset-item id="SceneOBJ" src="assets/scene.obj"></a-asset-item>
+                <a-asset-item id="NavMeshOBJ" src="assets/NavMesh.obj"></a-asset-item>
+            </a-assets>
+            <a-entity id="rig" movement-controls="constrainToNavMesh: true" rotation="-90 0 0"position=" 0 5 0">
+                <a-entity id="camera" position=" 0 0 0"  camera >
+                    <a-entity   id="cursor"
+                                cursor="fuse:false; fuseTimeout:500; rayOrigin:mouse; "
+                                navpointer
+                                raycaster="far:10; interval:100; objects: .clickable;"
+                                position=" 0 0 0"
+                                showLine="true"
+                                geometry="primitive:box; width:0.1; height:0.1; depth: 0.1"
+                                material="shader:flat; color:black;" >
+                    </a-entity>
                 </a-entity>
-
-
             </a-entity>
-            <a-entity geometry="primitive:plane; width: 7; height: 7;"
+            
+
+            
+        <a-entity id="scene"
+                obj-model="obj: #SceneOBJ"
+                position="-1 -0.5 -1"
+                Material="src:assets/scene.mtl">
+        </a-entity>
+        <a-entity id="button"
+                class="clickable"
+                dsk_npcspawning
+                geometry="primitive: cylinder; height: 1; radius: 1"
+                position="4.5 -0.5 2">
+        </a-entity>
+        <a-entity id="Nav"
+                    obj-model="obj: #NavMeshOBJ"
                      dsk_playermovement 
+                     position="-1 -0.5 -1"
+                     scale=" 0.5 0.5 0.5"
+                     nav-mesh
                      class="clickable"
-                     rotation="-90 0 0" 
-                     color="rgb(0, 255, 0)">
-            </a-entity>
-            <a-entity id="player" dsk_playermovement position= "0 0 0" geometry="primitive:box; width:1; height:1; depth: 1" color="rgb(255 0 0)"></a-entity>
+                     Material="color: rgb(255, 0, 0)">
+        </a-entity>
+                <a-entity id="player"
+                nav-agent="speed: 1.5"
+                position= "-1 1 -1" 
+                geometry="primitive:box; width:1; height:1; depth: 1" 
+                color="rgb(255 0 0)"></a-entity>
+
+
+            <a-entity id="table1"
+            position= "1 1 1" 
+            geometry="primitive:box; width:1; height:1; depth: 1" 
+            color="rgb(255 0 0)"></a-entity>
+
+            <a-entity id="table2"
+            position= "-1 1 -3" 
+            geometry="primitive:box; width:1; height:1; depth: 1" 
+            color="rgb(255 0 0)"></a-entity>
+
+            
         </a-scene>
     </body>
 </html>
