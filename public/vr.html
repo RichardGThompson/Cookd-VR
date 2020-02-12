@@ -7,6 +7,8 @@
         <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
         <script src='/js/vr-grab.js'></script>
         <script src='/js/vr-cooking.js'></script>
+        <script src='/js/vr-snap-patty.js'></script>
+        <script src='/js/vr-element-info.js'></script>
     </head>    
     <body>
         <a-scene physics='debug:true'>
@@ -35,23 +37,25 @@
                 position='0 1.6 -0.672'
                 dynamic-body>
             </a-box> -->
+            
+
+            
+            
             <a-cylinder id='bgr_01' class='grabbable'
                 height='0.02' radius='0.08'
                 position='0.12 1.3 -0.63'
                 material='color:red'
-                
+                vr-element-info
                 dynamic-body>
                 <a-entity id='burgerCasterOne' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
+                    raycaster="objects: .hotSurface; showLine: false; far: 0.02" 
                     position='0 0.0 0' 
                     rotation='90 0 0'
                     vr-cooking
                     >
                 </a-entity>
                 <a-entity id='burgerCasterTwo' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
+                    raycaster="objects: .hotSurface; showLine: false; far: 0.02"
                     position='0 0.0 0' 
                     rotation='-90 0 0'
                     vr-cooking
@@ -61,99 +65,45 @@
 
             <a-cylinder id='bgr_02' class='grabbable'
                 height='0.02' radius='0.08'
-                position='0.12 1.4 -0.63'
+                position='0.5 1.3 -0.63'
                 material='color:red'
-                
+                vr-element-info
                 dynamic-body>
                 <a-entity id='burgerCasterOne' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
+                    raycaster="objects: .hotSurface; showLine: false; far: 0.02" 
                     position='0 0.0 0' 
                     rotation='90 0 0'
                     vr-cooking
                     >
                 </a-entity>
                 <a-entity id='burgerCasterTwo' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
+                    raycaster="objects: .hotSurface; showLine: false; far: 0.02"
                     position='0 0.0 0' 
                     rotation='-90 0 0'
                     vr-cooking
                     >
                 </a-entity>
+            </a-cylinder>
+            
+            <a-cylinder id='bunBottom_01' class='grabbable'
+                    height='0.03' radius='0.08'
+                    material='color:brown'
+                    position='-0.16 1.4 -0.6'
+                    dynamic-body
+                    vr-element-info
+                >
             </a-cylinder>
 
-            <a-cylinder id='bgr_03' class='grabbable'
-                height='0.02' radius='0.08'
-                position='0.12 1.5 -0.63'
-                material='color:red'
-                
-                dynamic-body>
-                <a-entity id='burgerCasterOne' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
-                    position='0 0.0 0' 
-                    rotation='90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-                <a-entity id='burgerCasterTwo' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
-                    position='0 0.0 0' 
-                    rotation='-90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
+            <a-cylinder id='bunTop_01' class='grabbable'
+                    height='0.03' radius='0.08'
+                    material='color:brown'
+                    position='0.3 1.4 -0.6'
+                    dynamic-body
+                    vr-element-info
+                >
             </a-cylinder>
-
-            <a-cylinder id='bgr_04' class='grabbable'
-                height='0.02' radius='0.08'
-                position='0.12 1.6 -0.63'
-                material='color:red'
                 
-                dynamic-body>
-                <a-entity id='burgerCasterOne' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
-                    position='0 0.0 0' 
-                    rotation='90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-                <a-entity id='burgerCasterTwo' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
-                    position='0 0.0 0' 
-                    rotation='-90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-            </a-cylinder>
-
-            <a-cylinder id='bgr_05' class='grabbable'
-                height='0.02' radius='0.08'
-                position='0.12 1.7 -0.63'
-                material='color:red'
-                
-                dynamic-body>
-                <a-entity id='burgerCasterOne' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
-                    position='0 0.0 0' 
-                    rotation='90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-                <a-entity id='burgerCasterTwo' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: true; far: 0.02"
-                    line='color:green; opacity: 1.0' 
-                    position='0 0.0 0' 
-                    rotation='-90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-            </a-cylinder>
+            </a-entity>
 
             <a-plane id='floor' height='30' width='30'
                 material = 'color:white; opacity:0.0;'
@@ -163,7 +113,7 @@
             </a-plane>
 
             <a-entity id='kitchenCounters' position='0 0 -0.75' rotation='0 0 0'>
-                <a-box id='counterOne'
+                <a-box id='counterOne' class='counter'
                     height='1.0' width='5.0' depth='1.0'
                     position='0 0.5 0'
                     rotation='0 0 0'
