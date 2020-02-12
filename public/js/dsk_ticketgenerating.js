@@ -40,7 +40,7 @@ AFRAME.registerComponent('burger', {
 AFRAME.registerComponent('bigmac', {
     schema: {
         price: {type:'number', default:5},
-        ingredient: {type:'string', default:'bun, patty, lettus, sauce, bun'}
+        ingredient: {type:'string', default:'bun, patty, lettuce, sauce, bun'}
     },
     init : function() {
         const Context_AF = this;
