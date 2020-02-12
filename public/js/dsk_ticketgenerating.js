@@ -44,7 +44,7 @@ AFRAME.registerComponent('bigmac', {
     },
     init : function() {
         const Context_AF = this;
-        
+        Context_AF.data.price = 2;
         console.log(Context_AF.data.ingredient);
 
         
