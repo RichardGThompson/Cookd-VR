@@ -20,7 +20,7 @@ AFRAME.registerComponent('dsk_npcspawning', {
         randposition = Math.floor(Math.random() * 4);
         console.log(randposition)
         let NPC = document.createElement('a-entity');
-        console.log("Hi");
+        
         if(randposition <= 1)
         {
             NPC.setAttribute('position', {x:table1pos.x, y:0, z: table1pos.z});
@@ -29,9 +29,10 @@ AFRAME.registerComponent('dsk_npcspawning', {
         {
             NPC.setAttribute('position', {x:table2pos.x, y:0, z: table2pos.z});
         }
-        
+        NPC.setAttribute('dsk_ticketgenerating', {});
+        NPC.setAttribute('class', 'clickable');
         NPC.setAttribute('obj-model', {obj:'/assets/rocket.obj'});
-        NPC.setAttribute('scale', {x:0.06, y:0.06, z:0.06})
+        NPC.setAttribute('scale', {x:0.06, y:0.06, z:0.06});
         NPC.setAttribute('id', 'npc');
 
         let scene = document.querySelector('a-scene');

@@ -6,6 +6,7 @@
         <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
         <script src="js/dsk_playermovement.js"></script>
         <script src="js/dsk_npcspawning.js"></script>
+        <script src="js/dsk_ticketgenerating.js"></script>
         
     </head>
     <body>
@@ -20,7 +21,7 @@
                     <a-entity   id="cursor"
                                 cursor="fuse:false; fuseTimeout:500; rayOrigin:mouse; "
                                 navpointer
-                                raycaster="far:10; interval:100; objects: [nav-mesh];"
+                                raycaster="far:10; interval:100; objects: .clickable;"
                                 position=" 0 0 0"
                                 showLine="true"
                                 geometry="primitive:box; width:0.1; height:0.1; depth: 0.1"
