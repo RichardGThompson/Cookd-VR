@@ -2,34 +2,135 @@
 <html>
     <head>
         <title>Cook'd VR</title>
-        <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
-
+        <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src='/js/vr-grab.js'></script>
+        <script src='/js/vr-cooking.js'></script>
+        <script src='/js/vr-snap-patty.js'></script>
+        <script src='/js/vr-element-info.js'></script>
     </head>    
     <body>
-        <a-scene>
-            <a-entity environment="preset: forest"></a-entity>
+        <a-scene physics='debug:true'>
+            <a-entity environment="preset: default"></a-entity>
 
             <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
                 <a-camera id="camera" look-controls position="0 1.6 0">
                 </a-camera>
 
                 <!-- Primary hand. -->
-                <a-entity id="primaryHand"
-                  oculus-touch-controls="hand: right; model: true">
-                </a-entity>
-        
-                <!-- Secondary hand. -->
-                <a-entity id="secondaryHand"
-                  oculus-touch-controls="hand: left; model: true">
-                </a-entity>
+                <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
+                halfExtents: 0.15 0.18 0.04;" vr-grab></a-entity>
+                <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
+                halfExtents: 0.15 0.18 0.04;" vr-grab></a-entity>
             </a-entity>
 
-            <a-entity id='boxOne' geometry='primitive:box; height: 1; width: 1; depth: 1;'
-                material='color: blue;'
-                position='0 0 0'
-                scale='1 1 1'>
+            
+            <!-- <a-box id='boxOne' height='1' width='1' depth='1'
+                material="color:blue"
+                position='0 0.90 -1.05'
+                static-body>
+            </a-box>
+
+            <a-box id='grabBox' class='grabbable' height='0.2' width='0.2' depth='0.2'
+                material="color:pink"
+                position='0 1.6 -0.672'
+                dynamic-body>
+            </a-box> -->
+            
+
+            
+            
+            <a-cylinder id='bgr_01' class='grabbable'
+                height='0.02' radius='0.08'
+                position='0.12 1.3 -0.63'
+                material='color:red'
+                vr-element-info
+                dynamic-body>
+                <a-entity id='burgerCasterOne' class='cookableEntity'
+                    raycaster="objects: .hotSurface; showLine: false; far: 0.02" 
+                    position='0 0.0 0' 
+                    rotation='90 0 0'
+                    vr-cooking
+                    >
+                </a-entity>
+                <a-entity id='burgerCasterTwo' class='cookableEntity'
+                    raycaster="objects: .hotSurface; showLine: false; far: 0.02"
+                    position='0 0.0 0' 
+                    rotation='-90 0 0'
+                    vr-cooking
+                    >
+                </a-entity>
+            </a-cylinder>
+
+            <a-cylinder id='bgr_02' class='grabbable'
+                height='0.02' radius='0.08'
+                position='0.5 1.3 -0.63'
+                material='color:red'
+                vr-element-info
+                dynamic-body>
+                <a-entity id='burgerCasterOne' class='cookableEntity'
+                    raycaster="objects: .hotSurface; showLine: false; far: 0.02" 
+                    position='0 0.0 0' 
+                    rotation='90 0 0'
+                    vr-cooking
+                    >
+                </a-entity>
+                <a-entity id='burgerCasterTwo' class='cookableEntity'
+                    raycaster="objects: .hotSurface; showLine: false; far: 0.02"
+                    position='0 0.0 0' 
+                    rotation='-90 0 0'
+                    vr-cooking
+                    >
+                </a-entity>
+            </a-cylinder>
+            
+            <a-cylinder id='bunBottom_01' class='grabbable'
+                    height='0.03' radius='0.08'
+                    material='color:brown'
+                    position='-0.16 1.4 -0.6'
+                    dynamic-body
+                    vr-element-info
+                >
+            </a-cylinder>
+
+            <a-cylinder id='bunTop_01' class='grabbable'
+                    height='0.03' radius='0.08'
+                    material='color:brown'
+                    position='0.3 1.4 -0.6'
+                    dynamic-body
+                    vr-element-info
+                >
+            </a-cylinder>
+                
             </a-entity>
+
+            <a-plane id='floor' height='30' width='30'
+                material = 'color:white; opacity:0.0;'
+                postion = '0 0 0'
+                rotation = '-90 0 0'
+                static-body>
+            </a-plane>
+
+            <a-entity id='kitchenCounters' position='0 0 -0.75' rotation='0 0 0'>
+                <a-box id='counterOne' class='counter'
+                    height='1.0' width='5.0' depth='1.0'
+                    position='0 0.5 0'
+                    rotation='0 0 0'
+                    material='color: white'
+                    static-body>
+                </a-box>
+                <a-box id='stoveTop' class='hotSurface'
+                        height='0.02' width='0.5' depth='1.0'
+                        position='0.6 1 0'
+                        roation='0 0 0'
+                        material='color: grey;'
+                        static-body>
+                    </a-box>
+            </a-entity>
+
+
+            
         </a-scene>
     </body>
 </html>
