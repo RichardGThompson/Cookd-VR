@@ -11,35 +11,19 @@
         <script src='/js/vr-element-info.js'></script>
     </head>    
     <body>
-        <a-scene physics='debug:true'>
+        <a-scene physics='debug:false'>
             <a-entity environment="preset: default"></a-entity>
 
             <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
                 <a-camera id="camera" look-controls position="0 1.6 0">
                 </a-camera>
 
-                <!-- Primary hand. -->
                 <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
                 halfExtents: 0.15 0.18 0.04;" vr-grab></a-entity>
+                
                 <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
                 halfExtents: 0.15 0.18 0.04;" vr-grab></a-entity>
             </a-entity>
-
-            
-            <!-- <a-box id='boxOne' height='1' width='1' depth='1'
-                material="color:blue"
-                position='0 0.90 -1.05'
-                static-body>
-            </a-box>
-
-            <a-box id='grabBox' class='grabbable' height='0.2' width='0.2' depth='0.2'
-                material="color:pink"
-                position='0 1.6 -0.672'
-                dynamic-body>
-            </a-box> -->
-            
-
-            
             
             <a-cylinder id='bgr_01' class='grabbable'
                 height='0.02' radius='0.08'
