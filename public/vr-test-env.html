@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <a-asset-item id='maze' src='/assets/maze_01.obj'></a-asset-item>
+        </a-assets>
+        <a-entity environment="preset: default"></a-entity>
+        
+        <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
+            <a-camera id="camera" look-controls position="0 1.6 0">
+            </a-camera>
+    
+            <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
+            halfExtents: 0.15 0.18 0.04;"></a-entity>
+            
+            <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
+            halfExtents: 0.15 0.18 0.04;"></a-entity>
+        </a-entity>
+
+        <a-obj-model src='#maze' material='color: red'></a-obj-model>
+    </a-scene>
+</body>
