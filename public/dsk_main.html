@@ -2,12 +2,17 @@
 <html>
     <head>
         <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+        <!--Pathfinding-->
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
         <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
         <script src="js/dsk_playermovement.js"></script>
         <script src="js/dsk_npcspawning.js"></script>
         <script src="js/dsk_ticketgenerating.js"></script>
-        
+        <script src="js/dsk_getticket.js"></script>
+        <!--GUI-->
+        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+        <!--Physics-->
+        <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
     </head>
     <body>
 
@@ -30,14 +35,20 @@
                 </a-entity>
             </a-entity>
             
-
+        <a-gui-flex-container 
+            flex-direction="column" justify-content="center" align-items="normal" scale= "0.5 0.5 0.5" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+            position="1.6 1 -1" rotation="-90 0 0">
+            <a-gui-label id="ticketName" width="4" height = "0.7" value="" font-size="160px" ></a-gui-label>
+            <a-gui-label id="ticket" width="4" height = "0.7" value="" font-size="130px" ></a-gui-label>
+        </a-gui-flex-container>
             
         <a-entity id="scene"
                 geometry="primitive: plane; height: 7; width: 7"
-                position="-1 0.5 -1"
+                position="-1 1 -1"
                 rotation="-90 0 0"
                 scale="0.5 0.5 0.5"
-                Material="color: #FF5733">
+                Material="color: #FF5733"
+                static-body>
         </a-entity>
         <a-entity id="button"
                 class="clickable"
@@ -53,22 +64,25 @@
                      scale="0.5 0.5 0.5"
                      nav-mesh
                      class="clickable"
-                     Material="color: rgb(255, 0, 0)">
+                     visible="false" 
+                     Material="color: rgb(255, 0, 0); ">
         </a-entity>
                 <a-entity id="player"
                 nav-agent="speed: 1.5"
+                static-body
+                dsk_getticket
                 position= "-1 1 -1" 
                 rotation="-90 0 0"
                 geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
                 Material="color: rgb(255, 0, 0)"></a-entity>
 
             <a-entity id="table1"
-            position= "-2.179 0 -0.378" 
+            position= "-2.179 0.5 -0.378" 
             geometry="primitive:box; width:1; height:1; depth: 1" 
             color="rgb(255 0 0)"></a-entity>
 
             <a-entity id="table2"
-            position= "0.155 0 -2.224" 
+            position= "0.155 0.5 -2.224" 
             geometry="primitive:box; width:1; height:1; depth: 1" 
             color="rgb(255 0 0)"></a-entity>
 

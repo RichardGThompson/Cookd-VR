@@ -6,7 +6,7 @@ AFRAME.registerComponent('dsk_playermovement', {
 
         Context_AF.el.addEventListener("click", function(event){
             
-            console.log(event.detail.intersection.point);
+            //console.log(event.detail.intersection.point);
             
             Context_AF.moveplayerclick(event.detail.intersection.point);
         });
@@ -17,12 +17,12 @@ AFRAME.registerComponent('dsk_playermovement', {
         let player = document.querySelector('#player');
         playerpos = player.getAttribute('position');
         let destinationVector = new THREE.Vector3(pointVector.x, 0, pointVector.z);
-        console.log(pointVector);
+        //console.log(pointVector);
         //player.setAttribute('animation', "property: position; to:"+(pointVector.x) +", " + (playerpos.y) + ", " + (pointVector.z) + "; loop:false; dur: 200; easing: linear");
         player.setAttribute('nav-agent', {
             speed: 1.5,
             active: true,
-            destination: destinationVector
+            destination: pointVector
         });
         if(playerpos.y < 1)
         {
