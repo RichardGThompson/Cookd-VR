@@ -16,17 +16,17 @@
     </head>
     <body>
 
-        <a-scene inspector-plugin-recast>
+        <a-scene physics="debug: true">
             <a-assets>
-                <a-asset-item id="SceneOBJ" src="assets/scene.obj"></a-asset-item>
-                <a-asset-item id="NavMeshOBJ" src="assets/nav.obj"></a-asset-item>
+                <a-asset-item id="SceneOBJ" src="assets/scene.gltf"></a-asset-item>
+                <a-asset-item id="NavMeshOBJ" src="assets/nav.gltf"></a-asset-item>
             </a-assets>
-            <a-entity id="rig" movement-controls="constrainToNavMesh: true" rotation="-90 0 0"position=" 0 3 -1">
+            <a-entity id="rig" movement-controls="constrainToNavMesh: true" rotation="-90 0 0"position=" 0 10 -1">
                 <a-entity id="camera" position=" 0 0 0"  camera >
                     <a-entity   id="cursor"
                                 cursor="fuse:false; fuseTimeout:500; rayOrigin:mouse; "
                                 navpointer
-                                raycaster="far:10; interval:100; objects: .clickable;"
+                                raycaster="far:100; interval:100; objects: .clickable;"
                                 position=" 0 0 0"
                                 showLine="true"
                                 geometry="primitive:box; width:0.1; height:0.1; depth: 0.1"
@@ -36,53 +36,57 @@
             </a-entity>
             
         <a-gui-flex-container 
-            flex-direction="column" justify-content="center" align-items="normal" scale= "0.5 0.5 0.5" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
-            position="1.6 1 -1" rotation="-90 0 0">
+            flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+            position="9.6 3 -1" rotation="-90 0 0">
             <a-gui-label id="ticketName" width="4" height = "0.7" value="" font-size="160px" ></a-gui-label>
             <a-gui-label id="ticket" width="4" height = "0.7" value="" font-size="130px" ></a-gui-label>
         </a-gui-flex-container>
             
         <a-entity id="scene"
-                geometry="primitive: plane; height: 7; width: 7"
+                gltf-model="#SceneOBJ"
                 position="-1 1 -1"
-                rotation="-90 0 0"
-                scale="0.5 0.5 0.5"
+                rotation="0 0 0"
+                scale="1 1 1"
+                nav-mesh
+                visible="true"
                 Material="color: #FF5733"
                 static-body>
         </a-entity>
         <a-entity id="button"
                 class="clickable"
                 dsk_npcspawning
+                position= " 2 2 2"
                 geometry="primitive: cylinder; height: 1; radius: 1"
                 
                 position="4.5 -0.5 2">
         </a-entity>
         <a-entity id="Nav"
-                    obj-model="obj: #NavMeshOBJ"
+                    gltf-model="#NavMeshOBJ"
                      dsk_playermovement 
                      position="-1 0 -1"
-                     scale="0.5 0.5 0.5"
+                     scale="1 1 1"
+                     rotation="0 0 0"
                      nav-mesh
                      class="clickable"
-                     visible="false" 
+                      
                      Material="color: rgb(255, 0, 0); ">
         </a-entity>
                 <a-entity id="player"
                 nav-agent="speed: 1.5"
-                static-body
+                static-body="shape: box; width: 1; height: 2; depth: 1"
                 dsk_getticket
                 position= "-1 1 -1" 
-                rotation="-90 0 0"
-                geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
+                rotation="0 0 0"
+                geometry="primitive: box; width: 1; height: 2; depth: 1"
                 Material="color: rgb(255, 0, 0)"></a-entity>
 
             <a-entity id="table1"
-            position= "-2.179 0.5 -0.378" 
+            position= "-1.765 1.942 -1" 
             geometry="primitive:box; width:1; height:1; depth: 1" 
             color="rgb(255 0 0)"></a-entity>
 
             <a-entity id="table2"
-            position= "0.155 0.5 -2.224" 
+            position= "2.672 1.684 -4.711" 
             geometry="primitive:box; width:1; height:1; depth: 1" 
             color="rgb(255 0 0)"></a-entity>
 

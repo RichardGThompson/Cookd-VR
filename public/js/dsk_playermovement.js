@@ -18,16 +18,13 @@ AFRAME.registerComponent('dsk_playermovement', {
         playerpos = player.getAttribute('position');
         let destinationVector = new THREE.Vector3(pointVector.x, 0, pointVector.z);
         //console.log(pointVector);
-        //player.setAttribute('animation', "property: position; to:"+(pointVector.x) +", " + (playerpos.y) + ", " + (pointVector.z) + "; loop:false; dur: 200; easing: linear");
-        player.setAttribute('nav-agent', {
-            speed: 1.5,
-            active: true,
-            destination: pointVector
-        });
-        if(playerpos.y < 1)
-        {
-            playerpos.y = 1
-        }
+        player.setAttribute('animation', "property: position; to:"+(pointVector.x) +", " + (playerpos.y) + ", " + (pointVector.z) + "; loop:false; dur: 200; easing: linear");
+        //player.setAttribute('nav-agent', {
+            //speed: 1.5,
+            //active: true,
+            //destination: pointVector
+        //});
+        
     },
     
 });
