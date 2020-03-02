@@ -1,13 +1,13 @@
 AFRAME.registerComponent('vr-make-patty', {
     dependencies: ['raycaster'],
     init: function(){
-        console.log('testing');
+        //console.log('testing');
         
         const Context_AF = this;
         
         var burgers = document.querySelectorAll('*[id^="ptty"]');
         //const pttyLen = pattyElements.length();
-        console.log(burgers)
+        //console.log(burgers)
 
         Context_AF.el.addEventListener('raycaster-intersection', function(){
             Context_AF.addPatty()
@@ -16,16 +16,14 @@ AFRAME.registerComponent('vr-make-patty', {
     addPatty: function(){
         var pattyElements = document.querySelectorAll('*[id^="ptty"]');
 
-        let pattyElem = document.createElement('a-cylinder');
+        let pattyElem = document.createElement('a-entity');
         pattyElem.setAttribute('id', 'ptty_' + pattyElements.length);
         pattyElem.setAttribute('class', 'grabbable');
         pattyElem.setAttribute('mixin', 'pattyMixin');
-        pattyElem.setAttribute('height', '0.02');
-        pattyElem.setAttribute('radius', '0.08');
-        pattyElem.setAttribute('position', '0.120 1.3 -0.4');
-        pattyElem.setAttribute('vr-element-info', 'elemType: 2');
-        pattyElem.setAttribute('vr-patty-info', '');
         pattyElem.setAttribute('dynamic-body', '');
+        pattyElem.setAttribute('geometry','primitive:cylinder; height: 0.02; radius:0.075;');
+        pattyElem.setAttribute('position', '0.120 1.3 -0.4');
+
 
         let raycastOne = document.createElement('a-entity');
         raycastOne.setAttribute('id', 'burgerCasterOne');
@@ -51,7 +49,5 @@ AFRAME.registerComponent('vr-make-patty', {
         pattyElem.appendChild(soundElem);
         let scene = document.querySelector('a-scene');
         scene.appendChild(pattyElem);
-
-        
     }
 })
