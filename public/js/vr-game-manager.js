@@ -1,10 +1,13 @@
+//NOTE! 
+//As of 2020-03-03 I have no idea how I got this to work, do not alter it until future me learns what the fuck I did.
+
 AFRAME.registerComponent('vr-game-manager', {
     init : function(){
 
     },
 
     addNewBurger : function(existingElement, newElement){
-        var elementArray = [];
+        
         console.log('called');
         //console.log(existingElement.components['vr-burger-info'].data.burgerElements);
         //console.log(newElement);
@@ -13,8 +16,17 @@ AFRAME.registerComponent('vr-game-manager', {
         //existingElement.components['vr-burger-info'].data.burgerElements.push(newElement);
         const existingElementArray = existingElement.components['vr-burger-info'].data.burgerElements;
         existingElementArray.push(newElement);
-        console.log(existingElementArray.length);
+        console.log(existingElementArray);
         console.log('done');
+
+        var elementArray = [];
+
+        for(i = 1; i < existingElement.length; i++){
+            elementArray.push(existingElement[i]);
+        }
+
+        existingElement.parentNode.removeChild(existingElement);
+        newElement.parentNode.removeChild(newElement);
 
 
 
@@ -22,12 +34,14 @@ AFRAME.registerComponent('vr-game-manager', {
         let burgerParent = document.createElement('a-entity');
         for(i = 0; i < existingElementArray.length; i++){
             if(i == 0){
-                console.log('makeBun');
+                console.log(existingElementArray[i]);
                 burgerParent.setAttribute('id', existingElementArray[i].getAttribute('id'));
                 burgerParent.setAttribute('class', existingElementArray[i].getAttribute('class'));
-                burgerParent.setAttribute('mixin', existingElementArray[i].getAttribute('mixin'));
+                burgerParent.setAttribute('mixin', 'bottomBunMixin');
+                burgerParent.setAttribute('vr-burger-info', '');
                 burgerParent.setAttribute('position', existingElementArray[i].getAttribute('position'));
                 burgerParent.setAttribute('geometry', existingElementArray[i].getAttribute('geometry'));
+                burgerParent.setAttribute('dynamic-body', 'shape:auto');
                 
             }
             else{
@@ -52,19 +66,25 @@ AFRAME.registerComponent('vr-game-manager', {
                 console.log('posttestone');
             }
         }
-        console.log('pretest');
-        existingElement.parentNode.removeChild(existingElement);
-        newElement.parentNode.removeChild(newElement);
-        console.log('testinging');
+        //console.log('pretest');
+        
+        //console.log('testinging');
+        console.log(elementArray);
 
         for(i = 0; i < elementArray.length; i++){
             burgerParent.appendChild(elementArray[i]);
         }
+
         
-        burgerParent.setAttribute('dynamic-body', 'shape:auto');
+        
 
         let scene = document.querySelector('a-scene');
+        
+        //burgerParent.setAttribute('vr-burger-info', '')
+        //burgerParent.components['vr-burger-info'].data.burgerElements = ['test', 'test'];
+        console.log(burgerParent.components['vr-burger-info']);
         scene.appendChild(burgerParent);
+        console.log(burgerParent.components);
 
 
 

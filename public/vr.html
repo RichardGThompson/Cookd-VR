@@ -26,11 +26,11 @@
                 </a-mixin>
                 <a-mixin id='bottomBunMixin' 
                     material='color:yellow' 
-                    dynamic-body='shape:auto' 
                     vr-element-info='elemType: 1' 
-                    vr-burger-info 
+                    
                     vr-snap-patty>
                 </a-mixin>
+                
             </a-assets>
 
             <a-entity environment="preset: default"></a-entity>
@@ -100,11 +100,14 @@
                 </a-entity>
             </a-cylinder> -->
 
-            <a-entity id='bgr_00' class='grabbable'
+                <a-entity id='bgr_00' class='grabbable'
                 geometry='primitive:cylinder; height:0.02; radius:0.08;'  
                 mixin='bottomBunMixin'
-                position='-0.16 1.4 -0.4'>
-                    <a-entity id='ptty_0' class='grabbable' mixin='pattyMixin' geometry='primitive:cylinder; height:0.02; radius:0.075;' position='0 0.02 0' vr-patty-info></a-entity>
+                dynamic-body='shape:auto'
+                position='-0.16 1.4 -0.4'
+                vr-burger-info>
+                    <!-- <a-entity id='ptty_0' class='grabbable' mixin='pattyMixin' geometry='primitive:cylinder; height:0.02; radius:0.075;' position='0 0.02 0' vr-patty-info></a-entity>
+                    <a-entity id='ptty_1' class='grabbable' mixin='pattyMixin' geometry='primitive:cylinder; height:0.04; radius:0.075;' position='0 0.02 0' vr-patty-info></a-entity> -->
                     <!-- <a-cylinder id='ptty_01' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0 0.02 0' vr-patty-info>
                     </a-cylinder>
                     <a-cylinder id='ptty_02' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0 0.04 0' vr-patty-info>
@@ -114,6 +117,8 @@
                     <a-cylinder id='ptty_04' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0 0.08 0' vr-patty-info>
                     </a-cylinder> -->
             </a-entity>
+
+            
 
 
             

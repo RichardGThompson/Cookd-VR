@@ -3,6 +3,7 @@ AFRAME.registerComponent('vr-burger-info', {
         burgerElements: {type:'array'},
     },
     init : function(){
+        console.log('init burger!');
         this.data.burgerElements.push(this.el);
         var childNodes = this.el.children;
         
@@ -13,7 +14,7 @@ AFRAME.registerComponent('vr-burger-info', {
         }
         
         //['vr-game-manager'].addNewBurger(this.data.burgerElements);
-        //console.log(this.data.burgerElements);
+        console.log(this.data.burgerElements);
          
     },
     updateBurger : function(){
