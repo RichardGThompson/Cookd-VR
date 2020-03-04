@@ -18,6 +18,8 @@
 
         <a-scene physics="debug: true">
             <a-assets>
+                <a-asset-item id="Floortexture" src="assets/FloorPlan.mtl"></a-asset-item>
+                <a-asset-item id="FloorOBJ" src="assets/FloorPlan.obj"></a-asset-item>
                 <a-asset-item id="SceneOBJ" src="assets/scene.gltf"></a-asset-item>
                 <a-asset-item id="NavMeshOBJ" src="assets/nav.gltf"></a-asset-item>
             </a-assets>
@@ -43,13 +45,11 @@
         </a-gui-flex-container>
             
         <a-entity id="scene"
-                gltf-model="#SceneOBJ"
+                obj-model="obj: #FloorOBJ "
                 position="-1 1 -1"
                 rotation="0 0 0"
                 scale="1 1 1"
-                nav-mesh
-                visible="true"
-                Material="color: #FF5733"
+                Material="color: rgb(255, 0, 0)"
                 static-body>
         </a-entity>
         <a-entity id="button"
