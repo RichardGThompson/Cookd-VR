@@ -3,7 +3,7 @@
 
 AFRAME.registerComponent('vr-game-manager', {
     init : function(){
-
+        console.log('Game Manager Attached!');
     },
 
     addNewBurger : function(existingElement, newElement){
