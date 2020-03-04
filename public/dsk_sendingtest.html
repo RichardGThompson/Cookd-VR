@@ -48,5 +48,13 @@
             </a-entity>
        
         </a-scene>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            let socket = io();
+            socket.on('connect', function(){
+                console.log('connected!');
+            })
+            socket.emit('outgoingOrder', 'big burger,patty,patty,mayo');
+        </script>
     </body>
 </html>

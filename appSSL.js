@@ -54,6 +54,40 @@ const options = {
 };
 const secureServer = https.createServer(options, app);
 
+/************* CREATE SOCKETS AND SOCKET EVENTS ***************/
+const socketIO     = require('socket.io')(secureServer); //hello I am new
+
+//websocket stuff
+socketIO.on('connection', function(socket) {
+    console.log(socket.id + ' has connected!');
+
+    socket.on('disconnect', function(data) {
+        console.log(socket.id + ' has disconnected');
+    });
+    
+
+    socket.on('outgoingOrder', function(data){
+        socketIO.sockets.emit('incomingOrder', data);
+    });
+
+    //Info from runner.
+    //When the server gets a packet called position, then relay that data back under a different name.
+    socket.on('position', function(data){
+        //console.log(data);
+        socketIO.sockets.emit('player-position', data);
+    });
+    socket.on('rotation', function(data){
+        //console.log(data);
+        socketIO.sockets.emit('player-rotation', data);
+    });
+
+    //Info from the viewer.
+    socket.on('move', function(data){
+        //console.log(data);
+        socketIO.sockets.emit('move-instruction', data);
+    })
+});
+
 /************* RUN HTTPS SERVER ***************/
 secureServer.listen(LISTEN_PORT);     //start server
 console.log('Listening on port: ' + LISTEN_PORT );

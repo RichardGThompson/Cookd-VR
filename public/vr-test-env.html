@@ -40,4 +40,15 @@
                 </a-entity>
         </a-entity>
     </a-scene>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+        socket.on('connect', function(){
+            console.log('connected!');
+        })
+        socket.on('incomingOrder', function(data){
+            console.log(data);
+            document.querySelector('#tkt_0').components['vr-order-test'].updateOrder(data);
+        })
+    </script>
 </body>
