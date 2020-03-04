@@ -29,9 +29,4 @@ AFRAME.registerComponent('dsk_getticket', {
             }
         });
     },
-    tick: function()
-    {
-        const Context_AF = this;
-        //let gamecontroller = Context_AF.
-    }
 })

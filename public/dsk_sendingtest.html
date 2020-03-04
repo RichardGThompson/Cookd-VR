@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+        <script src="js/dsk_playermovement.js"></script>
+        <script src="js/dsk_npcspawning.js"></script>
+        <script src="js/dsk_ticketgenerating.js"></script>
+        <script src="js/dsk_getticket.js"></script>
+        <script src="js/dsk_ticketgentest.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+        <!--GUI-->
+        <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+        <!--Physics-->
+    </head>
+    <body>
+        
+        <a-scene physics="debug: true">
+            <a-assets>
+            </a-assets>
+            <a-entity id="rig" WASD-controls rotation="0 0 0"position=" 0 0 -1">
+                <a-entity id="camera" position=" 0 0 0"  camera WASD-controls look-controls >
+                    <a-entity   id="cursor"
+                    cursor="fuse:false; fuseTimeout:500; rayOrigin:mouse; "
+                    raycaster="far:100; interval:100; objects: .clickable;"
+                    position=" 0 0 0"
+                    showLine="true"
+                    geometry="primitive:box; width:0.1; height:0.1; depth: 0.1"
+                    material="shader:flat; color:black;" >
+            </a-entity>
+                    <a-gui-flex-container 
+                        flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+                        position="-5 0 -5" rotation="0 0 0">
+                        <a-gui-label id="ticketName" width="4" height = "0.7" value="" font-size="160px" ></a-gui-label>
+                        <a-gui-label id="ticket" width="4" height = "0.7" value="" font-size="130px" ></a-gui-label>
+                    </a-gui-flex-container>
+            </a-entity>
+            <a-entity environment></a-entity>
+            <a-entity id="scene"
+                geometry="primitive: cylinder; height: 1; radius: 1"
+                position="-1 0 -1"
+                rotation="0 0 0"
+                scale="1 1 1"
+                class="clickable"
+                dsk_ticketgentest
+                visible="true"
+                Material="color: #FF5733"
+                static-body>
+            </a-entity>
+       
+        </a-scene>
+    </body>
+</html>
