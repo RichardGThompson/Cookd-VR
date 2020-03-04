@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src='js/vr-game-manager.js'></script>
+    <script src='js/vr-order-test.js'></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            
+        </a-assets>
+        <a-entity environment="preset: default"></a-entity>
+        
+        <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
+            <a-camera id="camera" look-controls position="0 1.6 0">
+            </a-camera>
+    
+            <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
+            halfExtents: 0.15 0.18 0.04;"></a-entity>
+            
+            <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
+            halfExtents: 0.15 0.18 0.04;"></a-entity>
+        </a-entity>
+
+        <a-entity id='gameManager' vr-game-manager></a-entity>
+
+        <a-entity id='ticketBoard' 
+            geometry='primitive:plane; height:1; width:2;' 
+            position='0 1.310 -0.9'
+            rotation='0 0 0'
+            material='color:white;'>
+                <a-entity id='tkt_0'
+                    geometry='primitive:plane; height: 0.35; width:0.25'
+                    material='color:yellow'
+                    position='0 0.0 0.01' vr-order-test>
+                    <!-- <a-entity text="value: Hello World; align:center; width:0.65" position='0 0.135 0'></a-entity>
+                    <a-entity text="value: Hello World; align:center; width:0.6" position='0 0.100 0'></a-entity> -->
+                </a-entity>
+        </a-entity>
+    </a-scene>
+</body>

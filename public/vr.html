@@ -9,50 +9,81 @@
         <script src='/js/vr-cooking.js'></script>
         <script src='/js/vr-snap-patty.js'></script>
         <script src='/js/vr-element-info.js'></script>
+        <script src='/js/vr-print-position.js'></script>
+        <script src='/js/vr-get-burgers.js'></script>
+        <script src='js/vr-make-patty.js'></script>
+        <script src='js/vr-burger-info.js'></script>
+        <script src='js/vr-patty-info.js'></script>
+        <script src='js/vr-game-manager.js'></script>
     </head>    
     <body>
-        <a-scene physics='debug:false'>
+        <a-scene physics='debug:true'>
+            <a-assets>
+                <a-mixin id='pattyMixin' 
+                    material='color:red' 
+                    vr-element-info='elemType:2'
+                    >
+                </a-mixin>
+                <a-mixin id='bottomBunMixin' 
+                    material='color:yellow' 
+                    vr-element-info='elemType: 1' 
+                    
+                    vr-snap-patty>
+                </a-mixin>
+                
+            </a-assets>
+
             <a-entity environment="preset: default"></a-entity>
+
+            <a-entity id='gameManager' vr-game-manager></a-entity>
+
 
             <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
                 <a-camera id="camera" look-controls position="0 1.6 0">
                 </a-camera>
 
-                <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
+                <a-entity id="leftHand" class='hand' hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
                 halfExtents: 0.15 0.18 0.04;" vr-grab></a-entity>
                 
-                <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
-                halfExtents: 0.15 0.18 0.04;" vr-grab></a-entity>
+                <a-entity id="rightHand" class='hand' hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
+                halfExtents: 0.15 0.18 0.04;" vr-grab>
+                </a-entity>
             </a-entity>
-            
-            <a-cylinder id='bgr_01' class='grabbable'
-                height='0.02' radius='0.08'
-                position='0.12 1.3 -0.63'
-                material='color:red'
-                vr-element-info
-                dynamic-body>
-                <a-entity id='burgerCasterOne' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: false; far: 0.02" 
-                    position='0 0.0 0' 
-                    rotation='90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-                <a-entity id='burgerCasterTwo' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: false; far: 0.02"
-                    position='0 0.0 0' 
-                    rotation='-90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-            </a-cylinder>
 
-            <a-cylinder id='bgr_02' class='grabbable'
-                height='0.02' radius='0.08'
-                position='0.5 1.3 -0.63'
-                material='color:red'
-                vr-element-info
+            
+            <!-- <a-box id='boxOne' height='1' width='1' depth='1'
+                material="color:blue"
+                position='0 0.90 -1.05'
+                static-body>
+            </a-box>
+
+            <a-box id='grabBox' class='grabbable' height='0.2' width='0.2' depth='0.2'
+                material="color:pink"
+                position='0 1.6 -0.672'
                 dynamic-body>
+            </a-box> -->
+            
+
+            <a-box id='makePattyButton' class='button'
+                height='0.1' 
+                width='0.1' 
+                depth='0.02' 
+                material='color:purple' 
+                position='-0.541 1.310 -0.346'
+                static-body
+                >
+                <a-entity id='buttonRaycaster' class='button'
+                    raycaster='objects: .hand; showLine: true; far: 0.03;'
+                    line="color: orange; opacity: 0.8"
+                    position='0 0 0'
+                    rotation='180 0 0'
+                    vr-make-patty>
+                </a-entity>
+            </a-box>
+                
+            </a-entity>
+
+            <!-- <a-cylinder id='ptty_01' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0.120 1.3 -0.653'>
                 <a-entity id='burgerCasterOne' class='cookableEntity'
                     raycaster="objects: .hotSurface; showLine: false; far: 0.02" 
                     position='0 0.0 0' 
@@ -67,9 +98,31 @@
                     vr-cooking
                     >
                 </a-entity>
-            </a-cylinder>
+            </a-cylinder> -->
+
+                <a-entity id='bgr_00' class='grabbable'
+                geometry='primitive:cylinder; height:0.02; radius:0.08;'  
+                mixin='bottomBunMixin'
+                dynamic-body='shape:auto'
+                position='-0.16 1.4 -0.4'
+                vr-burger-info>
+                    <!-- <a-entity id='ptty_0' class='grabbable' mixin='pattyMixin' geometry='primitive:cylinder; height:0.02; radius:0.075;' position='0 0.02 0' vr-patty-info></a-entity>
+                    <a-entity id='ptty_1' class='grabbable' mixin='pattyMixin' geometry='primitive:cylinder; height:0.04; radius:0.075;' position='0 0.02 0' vr-patty-info></a-entity> -->
+                    <!-- <a-cylinder id='ptty_01' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0 0.02 0' vr-patty-info>
+                    </a-cylinder>
+                    <a-cylinder id='ptty_02' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0 0.04 0' vr-patty-info>
+                    </a-cylinder>
+                    <a-cylinder id='ptty_03' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0 0.06 0' vr-patty-info>
+                    </a-cylinder>
+                    <a-cylinder id='ptty_04' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0 0.08 0' vr-patty-info>
+                    </a-cylinder> -->
+            </a-entity>
+
             
-            <a-cylinder id='bunBottom_01' class='grabbable'
+
+
+            
+            <!-- <a-cylinder id='bunBottom_01' class='grabbable'
                     height='0.03' radius='0.08'
                     material='color:brown'
                     position='-0.16 1.4 -0.6'
@@ -81,13 +134,13 @@
             <a-cylinder id='bunTop_01' class='grabbable'
                     height='0.03' radius='0.08'
                     material='color:brown'
-                    position='0.3 1.4 -0.6'
+                    position='-0.35 1.4 -0.6'
                     dynamic-body
                     vr-element-info
                 >
-            </a-cylinder>
+            </a-cylinder> -->
                 
-            </a-entity>
+            <!-- </a-entity> -->
 
             <a-plane id='floor' height='30' width='30'
                 material = 'color:white; opacity:0.0;'
@@ -112,9 +165,6 @@
                         static-body>
                     </a-box>
             </a-entity>
-
-
-            
         </a-scene>
     </body>
 </html>

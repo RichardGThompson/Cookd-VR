@@ -16,6 +16,7 @@ AFRAME.registerComponent('vr-grab', {
                 //Attach a constraint to the hand.
                 Context_AF.el.setAttribute('constraint', 'target: #' + collidedEl.getAttribute('id'));
                 grabbed = true;
+                //Context_AF.el.setAttribute('visible', 'false');
             }
         })
 
@@ -32,6 +33,7 @@ AFRAME.registerComponent('vr-grab', {
                 //Remove the object constraint from the controller.
                 Context_AF.el.removeAttribute('constraint');
                 grabbed = false;
+                //Context_AF.el.setAttribute('visible', 'true');
             }
         })
     },
