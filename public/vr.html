@@ -24,6 +24,10 @@
                 <!-- <audio id="testSoundSrc" crossorigin="anonymous" src="assets/sound/burgerFrying.mp3" preload='true'></audio> -->
                 <!-- <a-asset-item response-type="arraybuffer" src="assets/sound/1.ogg"></a-asset-item> -->
                 <a-asset-item id="burgerCookingSound" src='assets/sound/burgerFrying.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
+                <a-asset-item id="bottomBunObj" src="/assets/models/botBun.obj"></a-asset-item>
+                <a-asset-item id="pattyObj" src="/assets/models/patty.obj"></a-asset-item>
+                <a-asset-item id="cheeseObj" src="/assets/models/cheese.obj"></a-asset-item>
+                <a-asset-item id='topBunObj' src='/assets/models/topBun.obj'></a-asset-item>
                 
                 <a-mixin id='pattyMixin' 
                     material='color:red' 
@@ -63,6 +67,11 @@
                 </a-entity>
             </a-entity>
 
+            <a-obj-model id='testBB' src="#bottomBunObj" class='grabbable' material='color:#cd6133' scale='0.02 0.02 0.02' position='0.33 1.270 -0.614' dynamic-body='shape:auto'></a-obj-model>
+            <a-obj-model id='testP' src="#pattyObj" class='grabbable' material='color:#b33939' scale='0.02 0.02 0.02' position='0 1.370 -0.614' dynamic-body='shape:auto'></a-obj-model>
+            <a-obj-model id='testC' src="#cheeseObj" class='grabbable' material='color:#ffb142' scale='0.02 0.02 0.02' position='-0.333 1.570 -0.614' dynamic-body='shape:auto'></a-obj-model>
+            <a-obj-model id='testTB' src='#topBunObj' class='grabbable' material='color:#cd6133' scale='0.02 0.02 0.02' position='0.33 1.370 -0.614' dynamic-body='shape:auto'></a-obj-model>
+
             
             <!-- <a-box id='boxOne' height='1' width='1' depth='1'
                 material="color:blue"
@@ -75,6 +84,19 @@
                 position='0 1.6 -0.672'
                 dynamic-body>
             </a-box> -->
+
+            <a-entity id='ticketWall' 
+                geometry='primitive:plane; height: 0.8; width: 1.5'
+                position='0.138 1.582 -1.113'
+                rotation='0 0 0'
+                material='color:#f7f1e3'>
+                    <a-entity id='testTicket'
+                        geometry='primitive:plane; height:0.25; width: 0.19'
+                        position='0 0 0.01'
+                        rotation='0 0 0'
+                        material='color:yellow'>
+                    </a-entity>
+            </a-entity>
             
 
             <a-box id='makePattyButton' class='button'
