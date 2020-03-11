@@ -7,6 +7,6 @@ AFRAME.registerComponent('vr-patty-info', {
         pattyCookedTemp:{type:'number', default:165},
     },
     init : function(){
-        //console.log(this.el.parentNode.components['vr-burger-info']);
+        
     }
 });

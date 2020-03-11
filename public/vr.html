@@ -12,13 +12,19 @@
         <script src='/js/vr-print-position.js'></script>
         <script src='/js/vr-get-burgers.js'></script>
         <script src='js/vr-make-patty.js'></script>
+        <script src='js/vr-make-cheese.js'></script>
         <script src='js/vr-burger-info.js'></script>
+        <script src='js/vr-get-height.js'></script>
         <script src='js/vr-patty-info.js'></script>
         <script src='js/vr-game-manager.js'></script>
     </head>    
     <body>
         <a-scene physics='debug:true'>
             <a-assets>
+                <!-- <audio id="testSoundSrc" crossorigin="anonymous" src="assets/sound/burgerFrying.mp3" preload='true'></audio> -->
+                <!-- <a-asset-item response-type="arraybuffer" src="assets/sound/1.ogg"></a-asset-item> -->
+                <a-asset-item id="burgerCookingSound" src='assets/sound/burgerFrying.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
+                
                 <a-mixin id='pattyMixin' 
                     material='color:red' 
                     vr-element-info='elemType:2'
@@ -30,12 +36,19 @@
                     
                     vr-snap-patty>
                 </a-mixin>
+
+                <a-mixin id='cheeseMixin'
+                    material='color:yellow'
+                    vr-element-info='elemType:3'>
+                </a-mixin>
                 
             </a-assets>
 
             <a-entity environment="preset: default"></a-entity>
 
             <a-entity id='gameManager' vr-game-manager></a-entity>
+
+            <!-- <a-entity sound="src:#testSound; loop:true; autoplay:true;"></a-entity> -->
 
 
             <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
@@ -69,7 +82,7 @@
                 width='0.1' 
                 depth='0.02' 
                 material='color:purple' 
-                position='-0.541 1.310 -0.346'
+                position='0.350 1.310 -0.346'
                 static-body
                 >
                 <a-entity id='buttonRaycaster' class='button'
@@ -80,25 +93,25 @@
                     vr-make-patty>
                 </a-entity>
             </a-box>
+
+            <a-box id='makCheeseButton' class='button'
+                height='0.1' 
+                width='0.1' 
+                depth='0.02' 
+                material='color:yellow' 
+                position='0.486 1.310 -0.346'
+                static-body
+                >
+                <a-entity id='buttonRaycaster' class='button'
+                    raycaster='objects: .hand; showLine: true; far: 0.03;'
+                    line="color: orange; opacity: 0.8"
+                    position='0 0 0'
+                    rotation='180 0 0'
+                    vr-make-cheese>
+                </a-entity>
+            </a-box>
                 
             </a-entity>
-
-            <!-- <a-cylinder id='ptty_01' class='grabbable' mixin='pattyMixin' height='0.02' radius='0.08' position='0.120 1.3 -0.653'>
-                <a-entity id='burgerCasterOne' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: false; far: 0.02" 
-                    position='0 0.0 0' 
-                    rotation='90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-                <a-entity id='burgerCasterTwo' class='cookableEntity'
-                    raycaster="objects: .hotSurface; showLine: false; far: 0.02"
-                    position='0 0.0 0' 
-                    rotation='-90 0 0'
-                    vr-cooking
-                    >
-                </a-entity>
-            </a-cylinder> -->
 
                 <a-entity id='bgr_00' class='grabbable'
                 geometry='primitive:cylinder; height:0.02; radius:0.08;'  

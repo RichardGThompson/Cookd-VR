@@ -14,9 +14,16 @@ AFRAME.registerComponent('vr-cooking', {
         //console.log(this.data.cooking);
         this.el.addEventListener('raycaster-intersection', function(hitObj){
             Context_AF.setCookingMode(true);
+            //console.log('make the noise');
+            this.parentNode.querySelector('#burgerCookingSoundEntity').components.sound.playSound();
+            //console.log(this.parentNode.querySelector('#burgerCookingSoundEntity').components.sound);
         });
         this.el.addEventListener('raycaster-intersection-cleared', function(hitObj){
             Context_AF.setCookingMode(false);
+            //console.log('dont make the noise');
+            this.parentNode.querySelector('#burgerCookingSoundEntity').components.sound.pauseSound();
+            //console.log(this.parentNode.querySelector('#burgerCookingSoundEntity').components.sound);
+            //hitObj.components.sound.pauseSound();
         });
     },
     tick: function(){
@@ -24,6 +31,9 @@ AFRAME.registerComponent('vr-cooking', {
         //console.log(this.parentNode);
         const parentNode = this.el.parentNode;
         if(this.data.cooking == true){
+            //console.log(this.el.parentNode.querySelector('#burgerCookingSoundEntity').components.sound);
+            
+            //this.el.isPlaying = true;
             this.data.frameCounter++;
             
             if(this.data.frameCounter == this.data.cookingIncrementTime && !parentNode.components['vr-patty-info'].data.pattyOvercooked){
@@ -31,7 +41,7 @@ AFRAME.registerComponent('vr-cooking', {
                 var currTemp = parentNode.components['vr-patty-info'].data.pattyTemp;
                 currTemp++;
                 parentNode.setAttribute('vr-patty-info', 'pattyTemp:' + currTemp);
-                console.log(currTemp);
+                //console.log(currTemp);
                 if(currTemp >= parentNode.components['vr-patty-info'].data.pattyCookedTemp && currTemp < parentNode.components['vr-patty-info'].data.pattyOvercookTemp){
                     parentNode.components['vr-patty-info'].data.pattyCooked = true;
                     parentNode.components['vr-patty-info'].data.pattyOvercooked = false;
@@ -43,6 +53,10 @@ AFRAME.registerComponent('vr-cooking', {
                     parentNode.setAttribute('material', 'color:black');
                 }
             }
+        }
+        else if (this.data.cooking == false){
+           
+            //this.el.parentNode.querySelector('#burgerCookingSoundEntity').components.sound.pauseSound();
         }
     },
     setCookingMode : function(event){

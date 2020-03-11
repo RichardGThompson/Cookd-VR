@@ -20,9 +20,12 @@ AFRAME.registerComponent('vr-make-patty', {
         pattyElem.setAttribute('id', 'ptty_' + pattyElements.length);
         pattyElem.setAttribute('class', 'grabbable');
         pattyElem.setAttribute('mixin', 'pattyMixin');
+        
         pattyElem.setAttribute('dynamic-body', '');
+        pattyElem.setAttribute('vr-patty-info', '');
         pattyElem.setAttribute('geometry','primitive:cylinder; height: 0.02; radius:0.075;');
         pattyElem.setAttribute('position', '0.120 1.3 -0.4');
+        
 
 
         let raycastOne = document.createElement('a-entity');
@@ -40,8 +43,8 @@ AFRAME.registerComponent('vr-make-patty', {
         raycastTwo.setAttribute('vr-cooking', '');
 
         let soundElem = document.createElement('a-entity');
-        soundElem.setAttribute('id', 'burgerCooking')
-        soundElem.setAttribute('sound', 'src: #burgerCookingSound; autoplay: true;');
+        soundElem.setAttribute('id', 'burgerCookingSoundEntity')
+        soundElem.setAttribute('sound', 'src: #burgerCookingSound; autoplay: false; loop: true');
 
 
         pattyElem.appendChild(raycastOne);
