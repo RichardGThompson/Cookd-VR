@@ -45,6 +45,8 @@ AFRAME.registerComponent('dsk_npcspawning', {
         randposition = Math.floor(Math.random() * 8);
         let id = randposition + 1;
         let table = document.querySelector('#table' + id);
+        let npcmat = document.querySelector('#NPCtexture');
+        console.log(npcmat);
         if(Context_AF.data.tabletaken[id])
         {
             console.log("butts")
@@ -57,10 +59,11 @@ AFRAME.registerComponent('dsk_npcspawning', {
             let NPC = document.createElement('a-entity');
             NPC.setAttribute('position', {x:tablepos.x + 1.9, y:1.5, z: tablepos.z});
             NPC.setAttribute('dsk_ticketgenerating', {});
-            NPC.setAttribute('obj-model', {obj:'/assets/rocket.obj'});
-            NPC.setAttribute('scale', {x:0.01, y:0.01, z:0.01});
+            NPC.setAttribute('geometry', 'primitive: cylinder; height:0.5; radius:1');
+            NPC.setAttribute('material', 'src: assets/willman.png');
+            NPC.setAttribute('rotation', {x:0.00, y:90.0, z:0.00});
             NPC.setAttribute('id', 'npc');
-            NPC.setAttribute('dynamic-body', 'shape: box; height: 1; width: 1; mass: 100');
+            NPC.setAttribute('dynamic-body', 'shape: auto');
             NPC.setAttribute('constraint', 'target: #scene');
             let scene = document.querySelector('a-scene');
             scene.appendChild(NPC);
