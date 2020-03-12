@@ -1,3 +1,4 @@
+
 AFRAME.registerComponent('dsk_deletenpcs', {
     schema: {
     },

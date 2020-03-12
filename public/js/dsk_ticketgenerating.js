@@ -40,7 +40,7 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
 AFRAME.registerComponent('burger', {
     schema: {
         price: {type:'number', default:10},
-        ingredient: {type:'string', default:'bun, patty, bun'}
+        ingredient: {type:'string', default:'bun,patty,bun'}
     },
     init : function() {
         const Context_AF = this;
@@ -53,7 +53,7 @@ AFRAME.registerComponent('burger', {
 AFRAME.registerComponent('bigmac', {
     schema: {
         price: {type:'number', default:5},
-        ingredient: {type:'string', default:'bun, patty, lettuce, sauce, bun'}
+        ingredient: {type:'string', default:'bun,patty,lettuce,sauce,bun'}
     },
     init : function() {
         const Context_AF = this;

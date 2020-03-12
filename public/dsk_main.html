@@ -10,6 +10,7 @@
         <script src="js/dsk_ticketgenerating.js"></script>
         <script src="js/dsk_getticket.js"></script>
         <script src="js/dsk_deletenpcs.js"></script>
+        
         <!--GUI-->
         <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
         <!--Physics-->
@@ -73,7 +74,7 @@
                 nav-agent="speed: 1.5"
                 static-body
                 dsk_getticket
-                dsk_deletenpcs
+                dsk_networkmanager
                 position= "-1 1 -1" 
                 rotation="0 90 0"
                 geometry="primitive: cylinder; height:0.5; radius:1"
@@ -137,5 +138,10 @@
             </a-entity>
 
         </a-scene>
+
+        <!-- Include the socket functions. -->
+        <script src="/socket.io/socket.io.js"></script>
+        <!--A script that handles all of the networking between the client and the server. -->
+        <script src="js/dsk_networkmanager.js"></script>
     </body>
 </html>
