@@ -57,14 +57,16 @@ AFRAME.registerComponent('dsk_npcspawning', {
             tablepos = table.getAttribute('position');
             console.log("Spawning at table 1");
             let NPC = document.createElement('a-entity');
-            NPC.setAttribute('position', {x:tablepos.x + 1.9, y:1.5, z: tablepos.z});
-            NPC.setAttribute('dsk_ticketgenerating', {});
-            NPC.setAttribute('geometry', 'primitive: cylinder; height:0.5; radius:1');
-            NPC.setAttribute('material', 'src: assets/willman.png');
+            NPC.setAttribute('position', {x:tablepos.x + 1.9, y:1, z: tablepos.z});
+            NPC.setAttribute('geometry', 'primitive: cylinder; height:0.1; radius:1');
+            NPC.setAttribute('material', 'src: assets/girlselfie.png');
             NPC.setAttribute('rotation', {x:0.00, y:90.0, z:0.00});
             NPC.setAttribute('id', 'npc');
-            NPC.setAttribute('dynamic-body', 'shape: auto');
-            NPC.setAttribute('constraint', 'target: #scene');
+            
+            table.setAttribute('dsk_ticketgenerating', {});
+            table.setAttribute('dynamic-body', 'shape: auto; mass: 100');
+            table.setAttribute('constraint', 'target: #scene');
+
             let scene = document.querySelector('a-scene');
             scene.appendChild(NPC);
         }    

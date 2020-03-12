@@ -28,7 +28,7 @@ AFRAME.registerComponent('dsk_networkmanager', {
             playerpos.z >= smolZ && playerpos.z <= bigZ &&
             Context_AF.el.components['dsk_getticket'].data.hasticket)
             {
-                console.log(Context_AF.data.orderstore);
+                //console.log(Context_AF.data.orderstore);
                 socket.emit('outgoingOrder', Context_AF.data.orderstore);
                 Context_AF.el.components['dsk_getticket'].data.hasticket = false;
                 
