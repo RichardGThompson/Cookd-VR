@@ -20,7 +20,7 @@
         <script src='js/vr-add-body.js'></script>
     </head>    
     <body>
-        <a-scene physics='debug:true'>
+        <a-scene physics='debug:false'>
             <a-assets>
                 <!-- <audio id="testSoundSrc" crossorigin="anonymous" src="assets/sound/burgerFrying.mp3" preload='true'></audio> -->
                 <!-- <a-asset-item response-type="arraybuffer" src="assets/sound/1.ogg"></a-asset-item> -->
@@ -29,6 +29,15 @@
                 <a-asset-item id="pattyObj" src="/assets/models/patty.obj"></a-asset-item>
                 <a-asset-item id="cheeseObj" src="/assets/models/cheese.obj"></a-asset-item>
                 <a-asset-item id='topBunObj' src='/assets/models/topBun.obj'></a-asset-item>
+
+                <a-asset-item id="stoveOBJ" src="assets/OBJs/stove.obj"></a-asset-item>
+                <a-asset-item id="stoveTexture" src="assets/Texture/VR/stovetexture.png"></a-asset-item>
+                <a-asset-item id="floorOBJ" src="assets/OBJs/floor.obj"></a-asset-item>
+                <a-asset-item id="floorTexture" src="assets/Texture/VR/floortexture.png"></a-asset-item>
+                <a-asset-item id="wallOBJ" src="assets/OBJs/walls.obj"></a-asset-item>
+                <a-asset-item id="wallTexture" src="assets/Texture/VR/walltexture.png"></a-asset-item>
+                <a-asset-item id="counterTexture" src="assets/Texture/VR/countertexture.png"></a-asset-item>
+                <a-asset-item id="counterOBJ" src="assets/OBJs/counter.obj"></a-asset-item>
                 
                 <a-mixin id='pattyMixin' 
                     material='color:#b33939'
@@ -57,7 +66,7 @@
                 
             </a-assets>
 
-            <a-entity environment="preset: default"></a-entity>
+            <!--<a-entity environment="preset: default"></a-entity>-->
 
             <a-entity id='gameManager' vr-game-manager></a-entity>
 
@@ -149,7 +158,19 @@
                     </a-entity>
             </a-entity>
             
+            <a-entity id='floor' class=''
+                    obj-model="obj: #floorOBJ;"
+                    position='0 -0.5 7.210'
+                    material='src: url(/assets/Texture/VR/floortexture.png)'>
+            </a-entity>
 
+
+            <a-entity id='wall' class=''
+                    obj-model="obj: #wallOBJ;"
+                    position='0 -0.3 7.210'
+                    material='src: url(/assets/Texture/VR/walltexture.png)'>
+            </a-entity>
+                
             <a-box id='makePattyButton' class='button'
                 height='0.1' 
                 width='0.1' 
@@ -199,17 +220,62 @@
 
 
             <a-entity id='kitchenCounters' position='0 0 -0.75' rotation='0 0 0'>
-                <a-box id='counterOne' class='counter'
+                <!--<a-box id='counterOne' class='counter'
                     height='1.0' width='5.0' depth='1.0'
                     position='0 0.5 0'
                     rotation='0 0 0'
                     material='color: white'
                     static-body>
-                </a-box>
-                <a-box id='stoveTop' class='hotSurface'
+                </a-box>-->
+                <a-entity id='counterOne' class='counter'
+                            obj-model="obj: #counterOBJ;"
+                            position='0 0.0 0'
+                            material='src: url(/assets/Texture/VR/countertexture.png)'
+                            static-body
+                            scale='0.07 0.07 0.07'></a-entity>
+                <a-entity id='counterTwo' class='counter'
+                            obj-model="obj: #counterOBJ;"
+                            position='2. 0.0 0'
+                            material='src: url(/assets/Texture/VR/countertexture.png)'
+                            static-body
+                            scale='0.07 0.07 0.07'></a-entity>
+                <a-entity id='counterThree' class='counter'
+                            obj-model="obj: #counterOBJ;"
+                            position='3. 0.0 0'
+                            material='src: url(/assets/Texture/VR/countertexture.png)'
+                            static-body
+                            scale='0.07 0.07 0.07'></a-entity>
+                <a-entity id='counterFour' class='counter'
+                            obj-model="obj: #counterOBJ;"
+                            position='-1. 0.0 0'
+                            material='src: url(/assets/Texture/VR/countertexture.png)'
+                            static-body
+                            scale='0.07 0.07 0.07'></a-entity>
+                <a-entity id='counterFive' class='counter'
+                            obj-model="obj: #counterOBJ;"
+                            position='-2. 0.0 0'
+                            material='src: url(/assets/Texture/VR/countertexture.png)'
+                            static-body
+                            scale='0.07 0.07 0.07'></a-entity>
+               <!-- <a-box id='stoveTop' class='hotSurface'
                         height='0.02' width='0.5' depth='1.0'
                         position='0.6 1 0'
                         roation='0 0 0'
+                        material='color: grey;'
+                        static-body>
+                    </a-box>-->
+                <a-entity id='stoveVisual'
+                    obj-model="obj: #stoveOBJ;"
+                    position='1. 0.0 0'
+                    material='src: url(/assets/Texture/VR/stovetexture.png)'
+                    scale='0.07 0.07 0.07'>
+
+                </a-entity>
+                <a-box id='stoveTop' class='hotSurface'
+                        height='0.02' width='1' depth='1.0'
+                        position='0.992 0.898 0'
+                        roation='0 0 0'
+                        visible='false'
                         material='color: grey;'
                         static-body>
                     </a-box>
