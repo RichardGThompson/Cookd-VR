@@ -1,17 +1,16 @@
-
-
-
 AFRAME.registerComponent('dsk_npcspawning', {
     schema: {
         counter: {type:'number', default:0},
         hasspawned: {type:'boolean', default: false},
-        table1taken: {type:'boolean', default:false},
-        table2taken: {type:'boolean', default:false},
+        tabletaken: {type:'array', default:[
+           
+        ]},
+        
     },
     init : function() {
         const Context_AF = this;
         
-        setTimeout(()=>{
+        /*setTimeout(()=>{
         Context_AF.data.counter += 1;
          console.log(Context_AF.data.counter + " seconds has passed");
             
@@ -19,7 +18,7 @@ AFRAME.registerComponent('dsk_npcspawning', {
 
         Context_AF.el.addEventListener("click", function(event){
             Context_AF.SpawnNPC();
-        });
+        });*/
     },
     tick : function(time, deltaTime){
         let Context_AF = this;
@@ -41,64 +40,35 @@ AFRAME.registerComponent('dsk_npcspawning', {
     SpawnNPC: function()
     {
         let Context_AF = this;
-        let NPC = document.createElement('a-entity');
-        let table1 = document.querySelector('#table1');
-        let table2 = document.querySelector('#table2');
+        
         let ground = document.querySelector('#scene');
-        table1pos = table1.getAttribute('position');
-        table2pos = table2.getAttribute('position');
-        randposition = Math.floor(Math.random() * 4);
-        console.log(randposition)
-        
-        
-        if(randposition <= 1 && Context_AF.data.table1taken == false)
+        randposition = Math.floor(Math.random() * 8);
+        let id = randposition + 1;
+        let table = document.querySelector('#table' + id);
+        let npcmat = document.querySelector('#NPCtexture');
+        console.log(npcmat);
+        if(Context_AF.data.tabletaken[id])
         {
-            Context_AF.data.table1taken = true;
-            NPC.setAttribute('position', {x:table1pos.x + 1.9, y:1.5, z: table1pos.z});
-            NPC.setAttribute('dsk_ticketgenerating', {});
-            NPC.setAttribute('obj-model', {obj:'/assets/rocket.obj'});
-            NPC.setAttribute('scale', {x:0.01, y:0.01, z:0.01});
-            NPC.setAttribute('id', 'npc');
-            NPC.setAttribute('dynamic-body', 'shape: box; height: 1; width: 1; mass: 100');
-            NPC.setAttribute('constraint', 'target: #scene');
-            let scene = document.querySelector('a-scene');
-            //childs the NPC to the scene
-            scene.appendChild(NPC);
-            //Context_AF.GenerateNPC(randposition);
-        }
-        else if(randposition => 2 && Context_AF.data.table2taken == false)
-        {
-            Context_AF.data.table2taken = true;
-            NPC.setAttribute('position', {x:table2pos.x - 1.9, y:1.5, z: table2pos.z});
-            NPC.setAttribute('dsk_ticketgenerating', {});
-            NPC.setAttribute('obj-model', {obj:'/assets/rocket.obj'});
-            NPC.setAttribute('scale', {x:0.01, y:0.01, z:0.01});
-            NPC.setAttribute('id', 'npc');
-            NPC.setAttribute('dynamic-body', 'shape: box; height: 1; width: 1; mass: 100');
-            NPC.setAttribute('constraint', 'target: #scene');
-            let scene = document.querySelector('a-scene');
-            //childs the NPC to the scene
-            scene.appendChild(NPC);
-            //Context_AF.GenerateNPC(randposition);
+            console.log("butts")
         }
         else
         {
-            console.log("tables full");
-        }
-        
-    },
-    GenerateNPC: function(position){
-        
+            Context_AF.data.tabletaken[id] = id;
+            tablepos = table.getAttribute('position');
+            console.log("Spawning at table 1");
+            let NPC = document.createElement('a-entity');
+            NPC.setAttribute('position', {x:tablepos.x + 1.9, y:1, z: tablepos.z});
+            NPC.setAttribute('geometry', 'primitive: cylinder; height:0.1; radius:1');
+            NPC.setAttribute('material', 'src: assets/girlselfie.png');
+            NPC.setAttribute('rotation', {x:0.00, y:90.0, z:0.00});
+            NPC.setAttribute('id', 'npc');
+            
+            table.setAttribute('dsk_ticketgenerating', {});
+            table.setAttribute('dynamic-body', 'shape: auto; mass: 100');
+            table.setAttribute('constraint', 'target: #scene');
 
-        if(position <= 1)
-        {
-            
-        }
-        else
-        {
-            //console.log('time elapsed: ' + elapsed);
-            
-        }
-        
-    }
+            let scene = document.querySelector('a-scene');
+            scene.appendChild(NPC);
+        }    
+    },
 });

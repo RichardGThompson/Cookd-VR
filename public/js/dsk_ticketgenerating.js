@@ -3,18 +3,14 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
         burger: {type:'boolean', default: false},
         Big_mac: {type:'boolean', default: false},
         RonsCreamySurprise: {type:'boolean', default: false},
-        positionx: {type:'number', default:0},
-        positiony: {type:'number', default:0},
     },
 
     init : function() {
         const Context_AF = this;
 
 
-        let NPC = document.querySelector('#npc');
+        //let NPC = document.querySelector('#npc');
         
-        Context_AF.data.positionx = NPC.getAttribute('position').x;
-        Context_AF.data.positiony = NPC.getAttribute('position').y;
         
         //console.log(Context_AF.el.data.positiony);
         rand = Math.floor(Math.random() * 3) + 1;
@@ -40,7 +36,8 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
 AFRAME.registerComponent('burger', {
     schema: {
         price: {type:'number', default:10},
-        ingredient: {type:'string', default:'bun, patty, bun'}
+        name: {type: 'string', default:'Burger'},
+        ingredient: {type:'string', default:'bun,patty,bun'}
     },
     init : function() {
         const Context_AF = this;
@@ -53,7 +50,8 @@ AFRAME.registerComponent('burger', {
 AFRAME.registerComponent('bigmac', {
     schema: {
         price: {type:'number', default:5},
-        ingredient: {type:'string', default:'bun, patty, lettuce, sauce, bun'}
+        name: {type: 'string', default:'Big Mac'},
+        ingredient: {type:'string', default:'bun,patty,lettuce,sauce,bun'}
     },
     init : function() {
         const Context_AF = this;
@@ -67,6 +65,7 @@ AFRAME.registerComponent('bigmac', {
 AFRAME.registerComponent('RonsCreamySurprise', {
     schema: {
         price: {type:'number', default:0},
+        name: {type: 'string', default:'Rons Creamy Surprise'},
         ingredient: {type:'string', default:'Mayo'}
     },
     init : function() {

@@ -9,6 +9,8 @@
         <script src="js/dsk_npcspawning.js"></script>
         <script src="js/dsk_ticketgenerating.js"></script>
         <script src="js/dsk_getticket.js"></script>
+        <script src="js/dsk_deletenpcs.js"></script>
+        
         <!--GUI-->
         <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
         <!--Physics-->
@@ -16,9 +18,10 @@
     </head>
     <body>
 
-        <a-scene physics="debug: true">
+        <a-scene>
             <a-assets>
-                <a-asset-item id="Floortexture" src="assets/FloorPlan.mtl"></a-asset-item>
+                <a-asset-item id="Floortexture" src="assets/Texture/sans.png"></a-asset-item>
+                <a-asset-item id="NPCtexture" src="assets/Texture/willman.png"></a-asset-item>
                 <a-asset-item id="FloorOBJ" src="assets/FloorPlan.obj"></a-asset-item>
                 <a-asset-item id="SceneOBJ" src="assets/scene.gltf"></a-asset-item>
                 <a-asset-item id="NavMeshOBJ" src="assets/nav.gltf"></a-asset-item>
@@ -37,60 +40,115 @@
                 </a-entity>
             </a-entity>
             
-        <a-gui-flex-container 
-            flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
-            position="9.6 3 -1" rotation="-90 0 0">
-            <a-gui-label id="ticketName" width="4" height = "0.7" value="" font-size="160px" ></a-gui-label>
-            <a-gui-label id="ticket" width="4" height = "0.7" value="" font-size="130px" ></a-gui-label>
-        </a-gui-flex-container>
+            <a-gui-flex-container 
+                flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+                position="9.6 3 -1" rotation="-90 0 0">
+                <a-gui-label id="ticketName" width="4" height = "0.7" value="Name of Order" font-size="160px" ></a-gui-label>
+                <a-gui-label id="ticket" width="4" height = "0.7" value="Order Ingredients" font-size="130px" ></a-gui-label>
+            </a-gui-flex-container>
+
+            <a-gui-flex-container 
+                flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+                position="9.6 3 -5" rotation="-90 0 0">
+                <a-gui-label id="sendOrder" width="4" height = "0.7" value="Order not sent" font-size="160px" ></a-gui-label>
+            </a-gui-flex-container>
             
-        <a-entity id="scene"
-                obj-model="obj: #FloorOBJ "
-                position="-1 1 -1"
-                rotation="0 0 0"
-                scale="1 1 1"
-                Material="color: rgb(255, 0, 0)"
-                static-body>
-        </a-entity>
-        <a-entity id="button"
-                class="clickable"
-                dsk_npcspawning
-                position= " 2 2 2"
-                geometry="primitive: cylinder; height: 1; radius: 1"
-                
-                position="4.5 -0.5 2">
-        </a-entity>
-        <a-entity id="Nav"
-                    gltf-model="#NavMeshOBJ"
-                     dsk_playermovement 
-                     position="-1 0 -1"
-                     scale="1 1 1"
-                     rotation="0 0 0"
-                     nav-mesh
-                     class="clickable"
-                      
-                     Material="color: rgb(255, 0, 0); ">
-        </a-entity>
-                <a-entity id="player"
+      
+
+
+            <a-entity id="scene"
+                    obj-model="obj: #FloorOBJ;"
+                    position="-1 1 -1"
+                    rotation="0 0 0"
+                    scale="1 1 1"
+                    dsk_playermovement
+                    dsk_npcspawning
+                    class="clickable"
+                    Material="src: url(/assets/Texture/EnviroTexture.png)"
+                    normal-map="src: url(/assets/Texture/EnviroNormal.tif)"
+                    static-body>
+            </a-entity>
+           <!-- <a-entity id="button"
+                    class="clickable"
+                    dsk_npcspawning
+                    position= " 2 2 2"
+                    geometry="primitive: cylinder; height: 1; radius: 1"
+                    
+                    position="4.5 -0.5 2">
+            </a-entity>//-->
+
+            <a-entity id="player"
                 nav-agent="speed: 1.5"
-                static-body="shape: box; width: 1; height: 2; depth: 1"
+                static-body
                 dsk_getticket
+                dsk_networkmanager
                 position= "-1 1 -1" 
-                rotation="0 0 0"
-                geometry="primitive: box; width: 1; height: 2; depth: 1"
-                Material="color: rgb(255, 0, 0)"></a-entity>
+                rotation="0 90 0"
+                geometry="primitive: cylinder; height:0.5; radius:1"
+                Material="src: url(/assets/Texture/sans.png)">
+            </a-entity>
 
             <a-entity id="table1"
-            position= "-1.765 1.942 -1" 
-            geometry="primitive:box; width:1; height:1; depth: 1" 
-            color="rgb(255 0 0)"></a-entity>
+                position= "-1.0 1.269 -1" 
+                geometry="primitive:cylinder; height:0.5; radius: 1" 
+                visible="false"
+                Material="color: rgb(255, 0, 0)">
+            </a-entity>
 
             <a-entity id="table2"
-            position= "2.672 1.684 -4.711" 
-            geometry="primitive:box; width:1; height:1; depth: 1" 
-            color="rgb(255 0 0)"></a-entity>
+                position= "-1.0 1.269 -5.492" 
+                geometry="primitive:cylinder; height:0.5; radius: 1" 
+                visible="false"
+                Material="color: rgb(255, 0, 0)">
+            </a-entity>
 
+            <a-entity id="table3"
+                position= "-5.728 1.269 -1.0" 
+                geometry="primitive:cylinder; height:0.5; radius: 1" 
+                visible="false"
+                Material="color: rgb(255, 0, 0)">
+            </a-entity>
+
+            <a-entity id="table4"
+                position= "-5.728 1.269 -5.492" 
+                geometry="primitive:cylinder; height:0.5; radius: 1" 
+                visible="false"
+                Material="color: rgb(255, 0, 0)">
+            </a-entity>
+
+            <a-entity id="table5"
+                position= "3.553 1.269 -1.0" 
+                geometry="primitive:cylinder; height:0.5; radius: 1"
+                visible="false" 
+                Material="color: rgb(255, 0, 0)">
+            </a-entity>
+
+            <a-entity id="table6"
+                position= "3.553 1.269 3.675" 
+                geometry="primitive:cylinder; height:0.5; radius: 1" 
+                visible="false"
+                Material="color: rgb(255, 0, 0)">
+            </a-entity>
             
+            <a-entity id="table7"
+                position= "-1 1.269 3.675" 
+                geometry="primitive:cylinder; height:0.5; radius: 1"
+                visible="false" 
+                Material="color: rgb(255, 0, 0)">
+            </a-entity>
+
+            <a-entity id="table8"
+                position= "-5.728 1.269 3.675" 
+                geometry="primitive:cylinder; height:0.5; radius: 1"
+                visible="false" 
+                Material="color: rgb(255, 0, 0)">
+            </a-entity>
+
         </a-scene>
+
+        <!-- Include the socket functions. -->
+        <script src="/socket.io/socket.io.js"></script>
+        <!--A script that handles all of the networking between the client and the server. -->
+        <script src="js/dsk_networkmanager.js"></script>
     </body>
 </html>
