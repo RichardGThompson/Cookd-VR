@@ -1,110 +1,87 @@
 //NOTE! 
 //As of 2020-03-03 I have no idea how I got this to work, do not alter it until future me learns what the fuck I did.
 
+//Make shit slow and manaually.
+
 AFRAME.registerComponent('vr-game-manager', {
     init : function(){
         console.log('Game Manager Attached!');
     },
 
-    addNewBurger : function(existingElement, newElement){
+    addNewBurgerEntity : function(arrayIn, positionIn, prevID){
+        console.log(arrayIn);
+        console.log(positionIn);
+
         
-        console.log('called');
-        //console.log(existingElement.components['vr-burger-info'].data.burgerElements);
-        //console.log(newElement);
+        
+        
+        
+        //console.log(arrayIn.toString());
 
-        //Append the new element to the existing one's array of elements.
-        //existingElement.components['vr-burger-info'].data.burgerElements.push(newElement);
-        const existingElementArray = existingElement.components['vr-burger-info'].data.burgerElements;
-        existingElementArray.push(newElement);
-        console.log(existingElementArray);
-        console.log('done');
-
-        var elementArray = [];
-
-        for(i = 1; i < existingElement.length; i++){
-            elementArray.push(existingElement[i]);
-        }
-
-        existingElement.parentNode.removeChild(existingElement);
-        newElement.parentNode.removeChild(newElement);
-
-
-
-        //Go through each of the elements in the existing element's array of elements and make new entities.
-        let burgerParent = document.createElement('a-entity');
-        for(i = 0; i < existingElementArray.length; i++){
-            if(i == 0){
-                console.log(existingElementArray[i]);
-                burgerParent.setAttribute('id', existingElementArray[i].getAttribute('id'));
-                burgerParent.setAttribute('class', existingElementArray[i].getAttribute('class'));
-                burgerParent.setAttribute('mixin', 'bottomBunMixin');
-                burgerParent.setAttribute('vr-burger-info', '');
-                burgerParent.setAttribute('position', existingElementArray[i].getAttribute('position'));
-                burgerParent.setAttribute('geometry', existingElementArray[i].getAttribute('geometry'));
-                burgerParent.setAttribute('dynamic-body', 'shape:auto');
-                
+        if(arrayIn.toString() == '0,1'){
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
             }
-            else{
-                var height = 0;
-                for(j = 0; j < i; j++){
-                    // console.log(j);
-                    // console.log(existingElementArray);
-                    height += existingElementArray[j].components['geometry'].data.height;
-                }
-                var newPosition = existingElementArray[i].getAttribute('position');
-                newPosition.y = height;
-                console.log('makeChild');
+            
+            let bottomBunElement = document.createElement('a-obj-model');
+            bottomBunElement.setAttribute('id', 'bb_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15));
+            bottomBunElement.setAttribute('class', 'grabbable');
+            bottomBunElement.setAttribute('src', '#bottomBunObj');
+            bottomBunElement.setAttribute('mixin', 'bottomBunMixin');
+            bottomBunElement.setAttribute('position', positionIn);
 
-                let childElement = document.createElement('a-entity');
-                childElement.setAttribute('id', existingElementArray[i].getAttribute('id'));
-                childElement.setAttribute('class', existingElementArray[i].getAttribute('class'));
-                childElement.setAttribute('mixin', existingElementArray[i].getAttribute('mixin'));
-                childElement.setAttribute('position', '0 ' + height + ' 0');
-                childElement.setAttribute('geometry', existingElementArray[i].getAttribute('geometry'));
-                console.log('pretestone');
-                elementArray.push(childElement);
-                console.log('posttestone');
+            let childOne = document.createElement('a-obj-model');
+            childOne.setAttribute('id', 'some_ptty');
+            childOne.setAttribute('src', '#pattyObj');
+            childOne.setAttribute('scale', '1 1 1');
+            childOne.setAttribute('position', '0 2.9 0');
+            bottomBunElement.appendChild(childOne);
+            bottomBunElement.setAttribute('vr-add-body', '');
+            let scene = document.querySelector('a-scene');
+            scene.appendChild(bottomBunElement);
+        }
+        else if(arrayIn.toString() == '0,1,1'){
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
             }
+            
+            let bottomBunElement = document.createElement('a-obj-model');
+            bottomBunElement.setAttribute('id', 'bb_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15));
+            bottomBunElement.setAttribute('class', 'grabbable');
+            bottomBunElement.setAttribute('src', '#bottomBunObj');
+            bottomBunElement.setAttribute('mixin', 'bottomBunMixin');
+            bottomBunElement.setAttribute('position', positionIn);
+
+            let childOne = document.createElement('a-obj-model');
+            childOne.setAttribute('id', 'some_ptty');
+            childOne.setAttribute('src', '#pattyObj');
+            childOne.setAttribute('scale', '1 1 1');
+            childOne.setAttribute('position', '0 2.9 0');
+            bottomBunElement.appendChild(childOne);
+
+            let childTwo = document.createElement('a-obj-model');
+            childTwo.setAttribute('id', 'some_ptty');
+            childTwo.setAttribute('src', '#pattyObj');
+            childTwo.setAttribute('scale', '1 1 1');
+            childTwo.setAttribute('position', '0 4.9 0');
+            bottomBunElement.appendChild(childTwo);
+
+            bottomBunElement.setAttribute('vr-add-body', '');
+            let scene = document.querySelector('a-scene');
+            scene.appendChild(bottomBunElement);
         }
-        //console.log('pretest');
         
-        //console.log('testinging');
-        console.log(elementArray);
-
-        for(i = 0; i < elementArray.length; i++){
-            burgerParent.appendChild(elementArray[i]);
-        }
+        console.log(document.querySelector('#' + prevID));
+        const prevItem = document.querySelector('#' + prevID);
+        //prevItem.parentNode.object3D.position.set(30, 0, 30);
+        //document.querySelector('#' + prevID).parentNode.removeChild(document.querySelector('#' + prevID));
 
         
-        
-
-        let scene = document.querySelector('a-scene');
-        
-        //burgerParent.setAttribute('vr-burger-info', '')
-        //burgerParent.components['vr-burger-info'].data.burgerElements = ['test', 'test'];
-        console.log(burgerParent.components['vr-burger-info']);
-        scene.appendChild(burgerParent);
-        console.log(burgerParent.components);
-
-
-
-        // //First get the id of the burger from the first element of the new data.
-        // console.log(newData[0].getAttribute('id'));
-        // //Delete the old one.
-        // document.querySelector('#' + newData[0].getAttribute('id')).parentNode.removeChild(document.querySelector('#' + newData[0].getAttribute('id')));
-        // //Then add the new one.
-        // console.log(newData[0].getAttribute('mixin'));
-        // console.log(newData[0].components['vr-element-info'].data.elemType);
-
-        // let burgerElem = document.createElement('a-entity');
-        // burgerElem.setAttribute('id', newData[0].getAttribute('id'));
-        // burgerElem.setAttribute('class', newData[0].getAttribute('class'));
-        // burgerElem.setAttribute('height', newData[0].getAttribute('height'));
-        // burgerElem.setAttribute('width', newData[0].getAttribute('width'));
-        // burgerElem.setAttribute('mixin', newData[0].getAttribute('mixin'));
-        // burgerElem.setAttribute('position', newData[0].getAttribute('position'));
-
-        // let scene = document.querySelector('a-scene');
-        // scene.appendChild(burgerElem);
     }
 });

@@ -11,6 +11,7 @@ AFRAME.registerComponent('vr-grab', {
             //Get the element of the object the controller collided with.
             const collidedEl = collidedObj.detail.body.el;
             
+            
             //Check to see if the object is grabbable, if the hand is currently in a grabbing state, and if there is not an object currently in hand.
             if(collidedEl.getAttribute('class') == 'grabbable' && grabbing && !grabbed){
                 //Attach a constraint to the hand.
