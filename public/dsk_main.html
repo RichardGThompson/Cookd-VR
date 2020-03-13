@@ -43,8 +43,14 @@
             <a-gui-flex-container 
                 flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
                 position="9.6 3 -1" rotation="-90 0 0">
-                <a-gui-label id="ticketName" width="4" height = "0.7" value="" font-size="160px" ></a-gui-label>
-                <a-gui-label id="ticket" width="4" height = "0.7" value="" font-size="130px" ></a-gui-label>
+                <a-gui-label id="ticketName" width="4" height = "0.7" value="Name of Order" font-size="160px" ></a-gui-label>
+                <a-gui-label id="ticket" width="4" height = "0.7" value="Order Ingredients" font-size="130px" ></a-gui-label>
+            </a-gui-flex-container>
+
+            <a-gui-flex-container 
+                flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+                position="9.6 3 -5" rotation="-90 0 0">
+                <a-gui-label id="sendOrder" width="4" height = "0.7" value="Order not sent" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
             
       
@@ -56,19 +62,20 @@
                     rotation="0 0 0"
                     scale="1 1 1"
                     dsk_playermovement
+                    dsk_npcspawning
                     class="clickable"
                     Material="src: url(/assets/Texture/EnviroTexture.png)"
                     normal-map="src: url(/assets/Texture/EnviroNormal.tif)"
                     static-body>
             </a-entity>
-            <a-entity id="button"
+           <!-- <a-entity id="button"
                     class="clickable"
                     dsk_npcspawning
                     position= " 2 2 2"
                     geometry="primitive: cylinder; height: 1; radius: 1"
                     
                     position="4.5 -0.5 2">
-            </a-entity>
+            </a-entity>//-->
 
             <a-entity id="player"
                 nav-agent="speed: 1.5"

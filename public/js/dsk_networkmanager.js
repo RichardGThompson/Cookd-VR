@@ -21,7 +21,7 @@ AFRAME.registerComponent('dsk_networkmanager', {
         let bigX = 5.802;
         let smolZ = -7.629;
         let bigZ = -4.917;
-
+        let sendingorder = document.querySelector('#sendOrder');
         playerpos = Context_AF.el.getAttribute('position');
 
         if(playerpos.x >= smolX && playerpos.x <= bigX &&
@@ -31,6 +31,7 @@ AFRAME.registerComponent('dsk_networkmanager', {
                 //console.log(Context_AF.data.orderstore);
                 socket.emit('outgoingOrder', Context_AF.data.orderstore);
                 Context_AF.el.components['dsk_getticket'].data.hasticket = false;
+                sendingorder.setAttribute('value', "order sent");
                 
             }
     }

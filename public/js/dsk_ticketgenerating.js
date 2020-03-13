@@ -50,7 +50,7 @@ AFRAME.registerComponent('burger', {
 AFRAME.registerComponent('bigmac', {
     schema: {
         price: {type:'number', default:5},
-        name: {type: 'string', default:'bigMac'},
+        name: {type: 'string', default:'Big Mac'},
         ingredient: {type:'string', default:'bun,patty,lettuce,sauce,bun'}
     },
     init : function() {
@@ -65,7 +65,7 @@ AFRAME.registerComponent('bigmac', {
 AFRAME.registerComponent('RonsCreamySurprise', {
     schema: {
         price: {type:'number', default:0},
-        name: {type: 'string', default:'RonsCreamySurprise'},
+        name: {type: 'string', default:'Rons Creamy Surprise'},
         ingredient: {type:'string', default:'Mayo'}
     },
     init : function() {

@@ -3,7 +3,7 @@ AFRAME.registerComponent('vr-order-test', {
         orderDetails: {type:'array'},
     },
     init : function(){
-        this.data.orderDetails.push(['creammmm','patty', 'patty', 'cum', 'morecum', 'ass']);
+        this.data.orderDetails.push(['Ticket']);
         //this.data.orderDetails.push(['burger','patty', 'patty', 'cheese']);
         console.log(this.data.orderDetails);
         for(i = 0; i < this.data.orderDetails.length; i++){

@@ -10,7 +10,7 @@ AFRAME.registerComponent('dsk_npcspawning', {
     init : function() {
         const Context_AF = this;
         
-        setTimeout(()=>{
+        /*setTimeout(()=>{
         Context_AF.data.counter += 1;
          console.log(Context_AF.data.counter + " seconds has passed");
             
@@ -18,7 +18,7 @@ AFRAME.registerComponent('dsk_npcspawning', {
 
         Context_AF.el.addEventListener("click", function(event){
             Context_AF.SpawnNPC();
-        });
+        });*/
     },
     tick : function(time, deltaTime){
         let Context_AF = this;
