@@ -4,8 +4,10 @@ AFRAME.registerComponent('vr-burger-info', {
     },
     init : function(){
         console.log('init burger!');
+        this.data.burgerElements = [];
         this.data.burgerElements.push(this.el);
         var childNodes = this.el.children;
+        //console.log(childNodes);
         
         for(let i = 0; i < childNodes.length; i++){
             const elem = childNodes[i];

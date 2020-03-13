@@ -16,15 +16,18 @@ AFRAME.registerComponent('vr-make-patty', {
     addPatty: function(){
         var pattyElements = document.querySelectorAll('*[id^="ptty"]');
 
-        let pattyElem = document.createElement('a-entity');
+        let pattyElem = document.createElement('a-obj-model');
+        
         pattyElem.setAttribute('id', 'ptty_' + pattyElements.length);
         pattyElem.setAttribute('class', 'grabbable');
-        pattyElem.setAttribute('mixin', 'pattyMixin');
-        
+        pattyElem.setAttribute('src', '#pattyObj');
         pattyElem.setAttribute('dynamic-body', '');
         pattyElem.setAttribute('vr-patty-info', '');
-        pattyElem.setAttribute('geometry','primitive:cylinder; height: 0.02; radius:0.075;');
         pattyElem.setAttribute('position', '0.120 1.3 -0.4');
+
+        pattyElem.setAttribute('mixin', 'pattyMixin');
+        //pattyElem.setAttribute('geometry','primitive:cylinder; height: 0.02; radius:0.075;');
+        
         
 
 
