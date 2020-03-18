@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script>
+        AFRAME.registerComponent('raycast-check', {
+            dependencies: ['raycaster'],
+            init : function(){
+                console.log('doing shit');
+                this.el.addEventListener('raycaster-intersected', function(){
+                    const obj = document.querySelector('#dynamicTest');
+                    obj.parentNode.removeChild(obj);
+                })
+            }
+        })
+    </script>
+    <body>
+        <a-scene physics="debug:true">
+            <a-entity position="0 2 0 " camera look-controls wasd-controls>
+                <!-- if you add rayOrigin:mouse to teh cursor properties selection happens where you click -->
+                <!-- <a-entity   cursor="fuse:true; fuseTimeout:500; rayOrigin:mouse;" -->
+                    <!-- geometry="primitive:ring; radiusInner:0.02; radiusOuter:0.03;" -->
+                <a-entity   cursor="fuse:false; fuseTimeout:500; rayOrigin:mouse; "
+                            raycaster="far:10; interval:100; objects:.clickable"
+                            position="0 0 -1"
+                            
+                            material="shader:flat; color:black;" >
+                </a-entity>
+            </a-entity>
+
+            <!-- <a-box id='testSurface' static-body='shape:auto' height='1.5' width='1.5' depth='1.5' material='color:blue'></a-box> -->
+            <a-box id='dynamicTest' dynamic-body='shape:auto' height='0.5' width='0.5' depth='0.5' material='color:purple' position='0 2 0'></a-box>
+
+            <a-box id="testButton" class="clickable" height="0.5" depth="0.1" width="0.5" material="color: green" position="1 1 0" raycast-check></a-box>
+        </a-scene>
+    </body>
+    
+</head>

@@ -63,7 +63,6 @@
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:4'>
                 </a-mixin>
-                
             </a-assets>
 
             <!--<a-entity environment="preset: default"></a-entity>-->
@@ -74,7 +73,7 @@
 
 
             <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
-                <a-camera id="camera" look-controls position="0 2.0 0">
+                <a-camera id="camera" look-controls position="0 1.5 0">
                 </a-camera>
 
                 <a-entity id="leftHand" class='hand' hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
@@ -91,59 +90,10 @@
                     class='grabbable' 
                     mixin='bottomBunMixin' 
                     position='0.25 1.2 -0.6' 
-                    dynamic-body='shape:auto; mass:500' 
+                    dynamic-body='shape:auto;' 
                     vr-burger-info 
                     >
-                        <a-obj-model id='ptty_0' src="#pattyObj" mixin='pattyMixin' scale='1 1 1' position='0 1.6 0'></a-obj-model>
-                        <a-obj-model id='tb_0' src='#topBunObj' mixin='topBunMixin' scale='1 1 1' position='0 2.6 0'></a-obj-model>
                 </a-obj-model>
-
-                <a-obj-model id='bb_1'
-                    src="#bottomBunObj" 
-                    class='grabbable' 
-                    mixin='bottomBunMixin' 
-                    position='-0.25 1.8 -0.6' 
-                    dynamic-body='shape:auto; mass:501' 
-                    vr-burger-info
-                    >
-                        <a-obj-model id='ptty_1' src="#pattyObj" mixin='pattyMixin' scale='1 1 1' position='0 1.6 0'></a-obj-model>
-                        <a-obj-model id='chz_0' src="#cheeseObj" mixin='cheeseMixin' scale='1 1 1' position='0 2.6 0'></a-obj-model>
-                        <a-obj-model id='tb_1' src='#topBunObj' mixin='topBunMixin' scale='1 1 1' position='0 2.7 0'></a-obj-model>
-                </a-obj-model>
-
-                <a-obj-model id='bb_2'
-                    src="#bottomBunObj" 
-                    class='grabbable' 
-                    mixin='bottomBunMixin' 
-                    position='-0 1.5 -0.8' 
-                    dynamic-body='shape:auto; mass:502' 
-                    vr-burger-info
-                    >
-                        <a-obj-model id='ptty_1' src="#pattyObj" mixin='pattyMixin' scale='1 1 1' position='0 1.6 0'></a-obj-model>
-                        <a-obj-model id='ptty_2' src="#pattyObj" mixin='pattyMixin' scale='1 1 1' position='0 2.6 0'></a-obj-model>
-                        <a-obj-model id='chz_0' src="#cheeseObj" mixin='cheeseMixin' scale='1 1 1' position='0 3.6 0'></a-obj-model>
-                        <a-obj-model id='tb_1' src='#topBunObj' mixin='topBunMixin' scale='1 1 1' position='0 3.8 0'></a-obj-model>
-                </a-obj-model>
-
-            
-            
-            
-            <!-- <a-obj-model id='ptty_0'  class='grabbable' src="#pattyObj" mixin='pattyMixin' position='0 1.370 -0.614' dynamic-body='shape:box'></a-obj-model>
-            <a-obj-model id='chz_0' src="#cheeseObj" class='grabbable' mixin='cheeseMixin' material='color:#ffb142' scale='0.02 0.02 0.02' position='-0.333 1.570 -0.614' dynamic-body='shape:box'></a-obj-model>
-            <a-obj-model id='testTB' src='#topBunObj' class='grabbable' mixin='topBunMixin' position='0.33 1.370 -0.614' dynamic-body='shape:box'></a-obj-model> -->
-
-            
-            <!-- <a-box id='boxOne' height='1' width='1' depth='1'
-                material="color:blue"
-                position='0 0.90 -1.05'
-                static-body>
-            </a-box>
-
-            <a-box id='grabBox' class='grabbable' height='0.2' width='0.2' depth='0.2'
-                material="color:pink"
-                position='0 1.6 -0.672'
-                dynamic-body>
-            </a-box> -->
 
             <a-entity id='ticketWall' 
                 geometry='primitive:plane; height: 0.8; width: 1.5'
@@ -158,29 +108,28 @@
                     </a-entity>
             </a-entity>
             
-            <a-entity id='floor' class=''
-                    obj-model="obj: #floorOBJ;"
-                    position='0 -0.5 7.210'
-                    material='src: url(/assets/Texture/VR/floortexture.png)'>
+            <a-entity id="floor" class="" obj-model="obj: assets/OBJs/floor.obj" position="0 -0.5 0.72266" material="src: /assets/Texture/VR/floortexture.png">
             </a-entity>
 
 
-            <a-entity id='wall' class=''
+            <a-entity id='wall' class='wall'
                     obj-model="obj: #wallOBJ;"
                     position='0 -0.3 7.210'
                     material='src: url(/assets/Texture/VR/walltexture.png)'>
             </a-entity>
+
+            <a-entity geometry="depth: 4.95; height: 6.18; width: 8.2" id="sendyZone" class="wall" position="0 0 -3.648"></a-entity>
                 
             <a-box id='makePattyButton' class='button'
                 height='0.1' 
                 width='0.1' 
                 depth='0.02' 
                 material='color:purple' 
-                position='0.350 1.310 -0.346'
+                position='0.350 1.310 -0.6'
                 static-body
                 >
                 <a-entity id='buttonRaycaster' class='button'
-                    raycaster='objects: .hand; showLine: true; far: 0.03;'
+                    raycaster='objects: .hand; showLine: false; far: 0.03;'
                     line="color: orange; opacity: 0.8"
                     position='0 0 0'
                     rotation='180 0 0'
@@ -193,22 +142,28 @@
                 width='0.1' 
                 depth='0.02' 
                 material='color:yellow' 
-                position='0.486 1.310 -0.346'
+                position='0.486 1.310 -0.6'
                 static-body
                 >
                 <a-entity id='buttonRaycaster' class='button'
-                    raycaster='objects: .hand; showLine: true; far: 0.03;'
+                    raycaster='objects: .hand; showLine: false; far: 0.03;'
                     line="color: orange; opacity: 0.8"
                     position='0 0 0'
                     rotation='180 0 0'
                     vr-make-cheese>
                 </a-entity>
             </a-box>
+
+
+            <a-box id="deleteButton" class="button" height="0.1" width="0.1" depth="0.02" material="color: red" position="0.20796 1.31 -0.6" static-body="sphereRadius: NaN" geometry="" velocity="">
+                <a-entity id="buttonRaycaster" class="button" raycaster="objects: .hand; far: 0.03" line="color: orange; opacity: 0.8" position="" rotation="180 0 0" vr-delete-test>
+                </a-entity>
+            </a-box>
                 
             </a-entity>
 
-            <a-entity id="sendOrderPad" geometry="primitive: cylinder; height: 0.01; radius: 0.1" material="color: blue" position="-0.77 1.001 -0.575">
-                <a-entity id='sendOrderRayCast' raycaster='objects:.grabbable; showLine:true; far:0.03' line='color:red;' rotation='90 0 0' vr-send-order></a-entity>
+            <a-entity id="sendOrderPad" class='sendOrder' geometry="primitive: cylinder; height: 0.01; radius: 0.1" material="color: blue" position="-0.77 1.001 -0.575">
+                
             </a-entity>
 
             <a-plane id='floor' height='30' width='30'
@@ -275,8 +230,8 @@
                         height='0.02' width='1' depth='1.0'
                         position='0.992 0.898 0'
                         roation='0 0 0'
-                        visible='false'
-                        material='color: grey;'
+                        visible='true'
+                        material='color: grey; opacity:0.0'
                         static-body>
                     </a-box>
             </a-entity>
