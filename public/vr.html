@@ -18,6 +18,10 @@
         <script src='js/vr-patty-info.js'></script>
         <script src='js/vr-game-manager.js'></script>
         <script src='js/vr-add-body.js'></script>
+        <script src='js/vr-delete-test.js'></script>
+        <script src='js/vr-make-topbun.js'></script>
+        <script src='js/vr-make-bottombun.js'></script>
+        <script src='js/vr-burger-assembly.js'></script>
     </head>    
     <body>
         <a-scene physics='debug:true'>
@@ -25,21 +29,53 @@
                 <!-- <audio id="testSoundSrc" crossorigin="anonymous" src="assets/sound/burgerFrying.mp3" preload='true'></audio> -->
                 <!-- <a-asset-item response-type="arraybuffer" src="assets/sound/1.ogg"></a-asset-item> -->
                 <a-asset-item id="burgerCookingSound" src='assets/sound/burgerFrying.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
-                <a-asset-item id="bottomBunObj" src="/assets/models/botBun.obj"></a-asset-item>
-                <a-asset-item id="pattyObj" src="/assets/models/patty.obj"></a-asset-item>
-                <a-asset-item id="cheeseObj" src="/assets/models/cheese.obj"></a-asset-item>
-                <a-asset-item id='topBunObj' src='/assets/models/topBun.obj'></a-asset-item>
+                <a-asset-item id="1Obj" src="/assets/models/obj/1.obj"></a-asset-item>
+                <a-asset-item id="2Obj" src="/assets/models/obj/2.obj"></a-asset-item>
+                <a-asset-item id="3Obj" src="/assets/models/obj/3.obj"></a-asset-item>
+                <a-asset-item id='4Obj' src='/assets/models/obj/4.obj'></a-asset-item>
                 
-                <a-mixin id='pattyMixin' 
-                    material='color:#b33939'
-                    vr-element-info='elemType:2'
-                    scale='0.02 0.02 0.018'
-                    >
-                </a-mixin>
+                <a-asset-item id='dispenserObj' src='/assets/models/obj/dispenser.obj'></a-asset-item>
+
+                <a-asset-item id='floorObj' src='/assets/models/obj/floor.obj'></a-asset-item>
+                <a-asset-item id='floorTexture' src='/assets/models/textures/floorTexture.png'></a-asset-item>
+
+                <a-asset-item id='stoveObj' src='/assets/models/obj/stove.obj'></a-asset-item>
+                <a-asset-item id='stoveTexture' src='/assets/models/textures/stoveTexture.png'></a-asset-item>
+
+                <a-asset-item id='wallObj' src='/assets/models/obj/walls.obj'></a-asset-item>
+                <a-asset-item id='wallTexture' src='/assets/models/textures/wallTexture.png'></a-asset-item>
+
+                <a-asset-item id='counterObj' src='/assets/models/obj/counter.obj'></a-asset-item>
+                <a-asset-item id='counterTexture' src='/assets/models/textures/counterTexture.png'></a-asset-item>
+
+                <a-asset-item id='1_2Obj' src='/assets/models/obj/1_2.obj'></a-asset-item>
+                <a-asset-item id='1_2_3Obj' src='/assets/models/obj/1_2_3.obj'></a-asset-item>
+                <a-asset-item id='1_2_2_3Obj' src='/assets/models/obj/1_2_2_3.obj'></a-asset-item>
+                <a-asset-item id='1_2_2_3_4Obj' src='/assets/models/obj/1_2_2_3_4.obj'></a-asset-item>
+                <a-asset-item id='1_2_2_3_5Obj' src='/assets/models/obj/1_2_2_3_5.obj'></a-asset-item>
+                <a-asset-item id='1_2_2_3_5_7Obj' src='/assets/models/obj/1_2_2_3_5_7.obj'></a-asset-item>
+                <a-asset-item id='1_2_2_3_5_6_7Obj' src='/assets/models/obj/1_2_2_3_5_6_7.obj'></a-asset-item>
+                <a-asset-item id='1_2_2_3_4_5_6_7Obj' src='/assets/models/obj/1_2_2_3_4_5_6_7.obj'></a-asset-item>
+                <a-asset-item id='1_2_3_4Obj' src='/assets/models/obj/1_2_3_4.obj'></a-asset-item>
+                <a-asset-item id='1_2_3_5Obj' src='/assets/models/obj/1_2_3_5.obj'></a-asset-item>
+                <a-asset-item id='1_2_3_5_6Obj' src='/assets/models/obj/1_2_3_5_6.obj'></a-asset-item>
+                <a-asset-item id='1_2_3_4_5_6Obj' src='/assets/models/obj/1_2_3_4_5_6.obj'></a-asset-item>
+                <a-asset-item id='1_2_3_5_7Obj' src='/assets/models/obj/1_2_3_5_7.obj'></a-asset-item>
+                <a-asset-item id='1_2_3_5_6_7Obj' src='/assets/models/obj/1_2_3_5_6_7.obj'></a-asset-item>
+                <a-asset-item id='1_2_3_4_5_6_7Obj' src='/assets/models/obj/1_2_3_4_5_6_7.obj'></a-asset-item>
+                <a-asset-item id='1_2_4Obj' src='/assets/models/obj/1_2_4.obj'></a-asset-item>
+                
                 <a-mixin id='bottomBunMixin' 
                     material='color:#cd6133'
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:1' 
+                    >
+                </a-mixin>
+
+                <a-mixin id='pattyMixin' 
+                    material='color:#b33939'
+                    vr-element-info='elemType:2'
+                    scale='0.02 0.02 0.018'
                     >
                 </a-mixin>
 
@@ -53,6 +89,21 @@
                     material='color:#cd6133'
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:4'>
+                </a-mixin>
+
+                <a-mixin id='lettuceMixin'
+                    scale='0.02 0.02 0.02'
+                    vr-element-info='elemType:5'>
+                </a-mixin>
+
+                <a-mixin id='onionMixin'
+                    scale='0.02 0.02 0.02'
+                    vr-element-info='elemType:6'>
+                </a-mixin>
+
+                <a-mixin id='tomatoMixin'
+                    scale='0.02 0.02 0.02'
+                    vr-element-info='elemType:7'>
                 </a-mixin>
                 
             </a-assets>
@@ -76,65 +127,134 @@
                 </a-entity>
             </a-entity>
 
+            <!-- ENV ENTITIES -->
+            <a-obj-model id='floor_0' src='#floorObj' material='color:silver' position='0 0 0' ></a-obj-model>
             
-                <a-obj-model id='bb_0'
-                    src="#bottomBunObj" 
-                    class='grabbable' 
-                    mixin='bottomBunMixin' 
-                    position='0.25 1.2 -0.6' 
-                    dynamic-body='shape:auto; mass:500' 
-                    vr-burger-info 
-                    >
-                        <a-obj-model id='ptty_0' src="#pattyObj" mixin='pattyMixin' scale='1 1 1' position='0 1.6 0'></a-obj-model>
-                        <a-obj-model id='tb_0' src='#topBunObj' mixin='topBunMixin' scale='1 1 1' position='0 2.6 0'></a-obj-model>
-                </a-obj-model>
+            <a-entity id='counterGroup_0' position='0 0 -1'>
+                <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position='-1.505 0 0'></a-obj-model>
+                <a-obj-model id='stove_0' src='#stoveObj' scale="0.1 0.1 0.1" position='0 0 0'></a-obj-model>
+                <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'></a-obj-model>
+            </a-entity>
 
-                <a-obj-model id='bb_1'
-                    src="#bottomBunObj" 
-                    class='grabbable' 
-                    mixin='bottomBunMixin' 
-                    position='-0.25 1.8 -0.6' 
-                    dynamic-body='shape:auto; mass:501' 
-                    vr-burger-info
-                    >
-                        <a-obj-model id='ptty_1' src="#pattyObj" mixin='pattyMixin' scale='1 1 1' position='0 1.6 0'></a-obj-model>
-                        <a-obj-model id='chz_0' src="#cheeseObj" mixin='cheeseMixin' scale='1 1 1' position='0 2.6 0'></a-obj-model>
-                        <a-obj-model id='tb_1' src='#topBunObj' mixin='topBunMixin' scale='1 1 1' position='0 2.7 0'></a-obj-model>
-                </a-obj-model>
+            <a-entity id='counterGroup_1' position='-3 0 2' rotation='0 90 0'>
+                <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0'></a-obj-model>
+                <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'></a-obj-model>
+            </a-entity>
 
-                <a-obj-model id='bb_2'
-                    src="#bottomBunObj" 
-                    class='grabbable' 
-                    mixin='bottomBunMixin' 
-                    position='-0 1.5 -0.8' 
-                    dynamic-body='shape:auto; mass:502' 
-                    vr-burger-info
-                    >
-                        <a-obj-model id='ptty_1' src="#pattyObj" mixin='pattyMixin' scale='1 1 1' position='0 1.6 0'></a-obj-model>
-                        <a-obj-model id='ptty_2' src="#pattyObj" mixin='pattyMixin' scale='1 1 1' position='0 2.6 0'></a-obj-model>
-                        <a-obj-model id='chz_0' src="#cheeseObj" mixin='cheeseMixin' scale='1 1 1' position='0 3.6 0'></a-obj-model>
-                        <a-obj-model id='tb_1' src='#topBunObj' mixin='topBunMixin' scale='1 1 1' position='0 3.8 0'></a-obj-model>
-                </a-obj-model>
+            <a-entity id="counterGroup_2" position="0 0 3.491" rotation="0 180 0">
+                <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position="-1.505 0 0" obj-model=""></a-obj-model>
+                <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position="0 0 0" obj-model=""></a-obj-model>
+                <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position="1.505 0 0" obj-model=""></a-obj-model>
+                
+                <a-entity id='dispensers' position='-0.071 0 0'>
+                    <a-entity id="dispenserGroup_0" position="-1.3 2 0">
+                        <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-3.37908 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="3.38984 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 -3.37635" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 3.62052" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
+                        </a-obj-model>
+                    </a-entity>
+    
+                    <a-entity id="dispenserGroup_1" position="-0.3 2 0">
+                        <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-3.37908 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="3.38984 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 -3.37635" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 3.62052" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
+                        </a-obj-model>
+                    </a-entity>
+    
+                    <a-entity id="dispenserGroup_1" position="0.7 2 0">
+                        <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-3.37908 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="3.38984 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 -3.37635" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 3.62052" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
+                        </a-obj-model>
+                    </a-entity>
+    
+                    <a-entity id="dispenserGroup_1" position="1.7 2 0">
+                        <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-3.37908 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="3.38984 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 -3.37635" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
+                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 3.62052" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
+                        </a-obj-model>
+                    </a-entity>
+                </a-entity>
+            </a-entity>
+                
 
+            <a-entity id='counterGroup_3' position='2.795 0 2' rotation='0 90 0'>
+                <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0' rotation='0 180 0'></a-obj-model>
+                <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' rotation='0 180 0'></a-obj-model>
+            </a-entity>
+
+            <!-- material="src: /assets/models/textures/counterTexture.png" -->
             
-            
-            
-            <!-- <a-obj-model id='ptty_0'  class='grabbable' src="#pattyObj" mixin='pattyMixin' position='0 1.370 -0.614' dynamic-body='shape:box'></a-obj-model>
-            <a-obj-model id='chz_0' src="#cheeseObj" class='grabbable' mixin='cheeseMixin' material='color:#ffb142' scale='0.02 0.02 0.02' position='-0.333 1.570 -0.614' dynamic-body='shape:box'></a-obj-model>
-            <a-obj-model id='testTB' src='#topBunObj' class='grabbable' mixin='topBunMixin' position='0.33 1.370 -0.614' dynamic-body='shape:box'></a-obj-model> -->
+            <!-- <a-obj-model id='bb_0'
+            src="#1_2_3_5_6_7Obj"
+            class='grabbable' 
+            mixin='bottomBunMixin'
+            position='0 1.4 -0.5'
+            vr-burger-info 
+            vr-burger-assembly 
+            vr-snap-patty
+            dynamic-body
+            ></a-obj-model> -->
+                
 
-            
-            <!-- <a-box id='boxOne' height='1' width='1' depth='1'
-                material="color:blue"
-                position='0 0.90 -1.05'
-                static-body>
-            </a-box>
+            <!-- <a-obj-model id="dispenserOne" 
+                src="#dispenserObj" 
+                position="-0.35 1.45 -0.69" 
+                material="color: pink">
+                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="-0.105 0.088 0.18" scale='0.120 0.370 0.840'></a-entity>
+                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.105 0.088 0.18" scale='0.120 0.370 0.840'></a-entity>
+                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.0 0.088 0.0" scale='0.150 0.370 0.480' rotation='0 90 0'></a-entity>
+                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.0 0.088 0.338" scale='0.450 0.370 0.480' rotation='0 90 0'></a-entity>
+                    <a-entity id="pattyraycaster" class="button" 
+                        raycaster="objects: .hand; showLine: true; far: 0.03" 
+                        line="color: orange;" 
+                        position="0.06 0.1 0.4" 
+                        rotation="180 0 0" 
+                        vr-make-patty="">
+                    </a-entity>
+                    <a-entity id="cheeseraycaster" class="button" 
+                        raycaster="objects: .hand; showLine: true; far: 0.03" 
+                        line="color: orange;" 
+                        position="-0.06 0.1 0.4" 
+                        rotation="180 0 0" 
+                        vr-make-cheese="">
+                    </a-entity>
+                </a-entity>
+            </a-obj-model>
 
-            <a-box id='grabBox' class='grabbable' height='0.2' width='0.2' depth='0.2'
-                material="color:pink"
-                position='0 1.6 -0.672'
-                dynamic-body>
-            </a-box> -->
+            <a-obj-model id="dispenserTwo" 
+                src="#dispenserObj"
+                position="-0.015 1.45 -0.69" 
+                material="color: pink">
+                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="-0.105 0.088 0.18" scale='0.120 0.370 0.840'></a-entity>
+                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.105 0.088 0.18" scale='0.120 0.370 0.840'></a-entity>
+                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.0 0.088 0.0" scale='0.150 0.370 0.480' rotation='0 90 0'></a-entity>
+                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.0 0.088 0.338" scale='0.450 0.370 0.480' rotation='0 90 0'></a-entity>
+                    <a-entity id="pattyraycaster" class="button" 
+                        raycaster="objects: .hand; showLine: true; far: 0.03" 
+                        line="color: orange;" 
+                        position="0.06 0.1 0.4" 
+                        rotation="180 0 0" 
+                        vr-make-topbun="">
+                    </a-entity>
+                    <a-entity id="cheeseraycaster" class="button" 
+                        raycaster="objects: .hand; showLine: true; far: 0.03" 
+                        line="color: orange;" 
+                        position="-0.06 0.1 0.4" 
+                        rotation="180 0 0" 
+                        vr-make-bottombun="">
+                    </a-entity>
+                </a-entity>
+            </a-obj-model>
+                
 
             <a-entity id='ticketWall' 
                 geometry='primitive:plane; height: 0.8; width: 1.5'
@@ -148,43 +268,7 @@
                         material='color:yellow'>
                     </a-entity>
             </a-entity>
-            
-
-            <a-box id='makePattyButton' class='button'
-                height='0.1' 
-                width='0.1' 
-                depth='0.02' 
-                material='color:purple' 
-                position='0.350 1.310 -0.346'
-                static-body
-                >
-                <a-entity id='buttonRaycaster' class='button'
-                    raycaster='objects: .hand; showLine: true; far: 0.03;'
-                    line="color: orange; opacity: 0.8"
-                    position='0 0 0'
-                    rotation='180 0 0'
-                    vr-make-patty>
-                </a-entity>
-            </a-box>
-
-            <a-box id='makeCheeseButton' class='button'
-                height='0.1' 
-                width='0.1' 
-                depth='0.02' 
-                material='color:yellow' 
-                position='0.486 1.310 -0.346'
-                static-body
-                >
-                <a-entity id='buttonRaycaster' class='button'
-                    raycaster='objects: .hand; showLine: true; far: 0.03;'
-                    line="color: orange; opacity: 0.8"
-                    position='0 0 0'
-                    rotation='180 0 0'
-                    vr-make-cheese>
-                </a-entity>
-            </a-box>
                 
-            </a-entity>
 
             <a-entity id="sendOrderPad" geometry="primitive: cylinder; height: 0.01; radius: 0.1" material="color: blue" position="-0.77 1.001 -0.575">
                 <a-entity id='sendOrderRayCast' raycaster='objects:.grabbable; showLine:true; far:0.03' line='color:red;' rotation='90 0 0' vr-send-order></a-entity>
@@ -213,7 +297,7 @@
                         material='color: grey;'
                         static-body>
                     </a-box>
-            </a-entity>
+            </a-entity> -->
             <script src="/socket.io/socket.io.js"></script>
             <script src="js/vr-networking.js"></script>
         </a-scene>
