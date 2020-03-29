@@ -1,6 +1,7 @@
 AFRAME.registerComponent('vr-burger-info', {
     schema:{
         burgerElements: {type:'array'},
+        underCooked: {type:'boolean', default:false},
     },
     init : function(){
         console.log('init burger!');

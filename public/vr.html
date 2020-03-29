@@ -76,7 +76,7 @@
                 <a-mixin id='bottomBunMixin' 
                     material='color:#cd6133'
                     scale='0.02 0.02 0.02'
-                    vr-element-info='elemType:1' 
+                    vr-element-info='elemType:1'
                     >
                 </a-mixin>
 
@@ -128,10 +128,10 @@
                 </a-camera>
                 
                 <a-entity oculus-touch-controls="hand: left; model:false;" body="type: static; mass: 5; shape: none;" shape__main='shape:box; halfExtents: 0.05 0.05 0.1; offset: 0 0.03 0;' vr-controls vr-grab teleport-controls="cameraRig: #cameraRig; teleportOrigin: #camera; button:trigger">
-                    <a-entity gltf-model="#leftHandModel" rotation='0 -20 90'></a-entity>
+                    <a-entity class='hand' gltf-model="#leftHandModel" rotation='0 -20 90'></a-entity>
                 </a-entity>
                 <a-entity oculus-touch-controls="hand: right; model:false;" body="type: static; mass: 5; shape: none;" shape__main='shape:box; halfExtents: 0.05 0.05 0.1; offset: 0 0.03 0;' vr-grab teleport-controls>
-                    <a-entity gltf-model="#rightHandModel" rotation='0 20 -90'></a-entity>
+                    <a-entity class='hand' gltf-model="#rightHandModel" rotation='0 20 -90'></a-entity>
                 </a-entity>
                 <!-- <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
                 halfExtents: 0.15 0.18 0.04;"></a-entity>
@@ -139,6 +139,8 @@
                 <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
                 halfExtents: 0.15 0.18 0.04;"></a-entity> -->
             </a-entity>
+
+            <a-box id='test' height='0.05' width='0.05' depth='0.05' material='color:red' position='0 0 0'></a-box>
 
             <a-entity id='env' scale='0.75 0.75 0.75'>
                 <!-- ENV ENTITIES -->
@@ -226,7 +228,7 @@
                             </a-obj-model>
                             <a-entity id="raycastOne" class="button" 
                             raycaster="objects: .hand; showLine: true; far: 0.03" 
-                            line="color: orange;" 
+                            line="color: blue;" 
                             position="0.155 0.07 0.4" 
                             rotation="180 0 0" 
                             vr-make-topbun=""></a-entity>
@@ -321,8 +323,21 @@
                                     visible="false">
                                 </a-box>
                             </a-obj-model>
-                            
+                            <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: purple;" 
+                            position="0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-patty=""></a-entity>
+
+                            <a-entity id="raycastTwo" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: green;" 
+                            position="-0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-cheese=""></a-entity>
                         </a-entity>
+
                         <!-- Make the PATTY and CHEESE -->
                         <a-entity id="dispenserGroup_4" position="1.7 2 0">
                             <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
@@ -357,19 +372,7 @@
                                     visible="false">
                                 </a-box>
                             </a-obj-model>
-                            <a-entity id="raycastOne" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
-                            line="color: orange;" 
-                            position="0.155 0.07 0.4" 
-                            rotation="180 0 0" 
-                            vr-make-patty=""></a-entity>
-
-                            <a-entity id="raycastTwo" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
-                            line="color: orange;" 
-                            position="-0.155 0.07 0.4" 
-                            rotation="180 0 0" 
-                            vr-make-cheese=""></a-entity>
+                            
                         </a-entity>
                         </a-entity>
                     </a-entity>

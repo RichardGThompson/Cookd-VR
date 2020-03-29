@@ -18,13 +18,13 @@ AFRAME.registerComponent('vr-make-cheese', {
         var cheeseElements = document.querySelectorAll('*[id^="chz"]');
 
         let cheeseElem = document.createElement('a-obj-model');
-        var dispenserPosition = document.querySelector('#dispenserOne').getAttribute('position')
+        //var dispenserPosition = document.querySelector('#dispenserOne').getAttribute('position')
         
         cheeseElem.setAttribute('id', 'chz_' + cheeseElements.length);
         cheeseElem.setAttribute('class', 'grabbable');
         cheeseElem.setAttribute('src', '#3Obj');
         cheeseElem.setAttribute('dynamic-body', '');
-        cheeseElem.setAttribute('position', '-0.351 1.615 -0.56');
+        cheeseElem.setAttribute('position', '-0.354 1.701 2.595');
         
 
         cheeseElem.setAttribute('mixin', 'cheeseMixin');
