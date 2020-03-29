@@ -22,6 +22,8 @@
         <script src='js/vr-make-topbun.js'></script>
         <script src='js/vr-make-bottombun.js'></script>
         <script src='js/vr-burger-assembly.js'></script>
+        <script src='js/vr-make-lettuce.js'></script>
+        <script src='/js/vr-make-onion.js'></script>
     </head>    
     <body>
         <a-scene physics='debug:true'>
@@ -37,16 +39,16 @@
                 <a-asset-item id='dispenserObj' src='/assets/models/obj/dispenser.obj'></a-asset-item>
 
                 <a-asset-item id='floorObj' src='/assets/models/obj/floor.obj'></a-asset-item>
-                <a-asset-item id='floorTexture' src='/assets/models/textures/floorTexture.png'></a-asset-item>
+                <a-asset-item id='floorTexture' src='/assets/models/mtl/floorTexture.png'></a-asset-item>
 
                 <a-asset-item id='stoveObj' src='/assets/models/obj/stove.obj'></a-asset-item>
-                <a-asset-item id='stoveTexture' src='/assets/models/textures/stoveTexture.png'></a-asset-item>
+                <a-asset-item id='stoveTexture' src='/assets/models/mtl/stoveTexture.png'></a-asset-item>
 
                 <a-asset-item id='wallObj' src='/assets/models/obj/walls.obj'></a-asset-item>
-                <a-asset-item id='wallTexture' src='/assets/models/textures/wallTexture.png'></a-asset-item>
+                <a-asset-item id='wallTexture' src='/assets/models/mtl/wallTexture.png'></a-asset-item>
 
                 <a-asset-item id='counterObj' src='/assets/models/obj/counter.obj'></a-asset-item>
-                <a-asset-item id='counterTexture' src='/assets/models/textures/counterTexture.png'></a-asset-item>
+                <a-asset-item id='counterTexture' src='/assets/models/mtl/counterTexture.png'></a-asset-item>
 
                 <a-asset-item id='1_2Obj' src='/assets/models/obj/1_2.obj'></a-asset-item>
                 <a-asset-item id='1_2_3Obj' src='/assets/models/obj/1_2_3.obj'></a-asset-item>
@@ -116,7 +118,7 @@
 
 
             <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
-                <a-camera id="camera" look-controls position="0 2.0 0">
+                <a-camera id="camera" look-controls position="0 1.6 0">
                 </a-camera>
 
                 <a-entity id="leftHand" class='hand' hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
@@ -127,69 +129,265 @@
                 </a-entity>
             </a-entity>
 
-            <!-- ENV ENTITIES -->
-            <a-obj-model id='floor_0' src='#floorObj' material='color:silver' position='0 0 0' ></a-obj-model>
-            
-            <a-entity id='counterGroup_0' position='0 0 -1'>
-                <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position='-1.505 0 0'></a-obj-model>
-                <a-obj-model id='stove_0' src='#stoveObj' scale="0.1 0.1 0.1" position='0 0 0'></a-obj-model>
-                <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'></a-obj-model>
-            </a-entity>
-
-            <a-entity id='counterGroup_1' position='-3 0 2' rotation='0 90 0'>
-                <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0'></a-obj-model>
-                <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'></a-obj-model>
-            </a-entity>
-
-            <a-entity id="counterGroup_2" position="0 0 3.491" rotation="0 180 0">
-                <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position="-1.505 0 0" obj-model=""></a-obj-model>
-                <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position="0 0 0" obj-model=""></a-obj-model>
-                <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position="1.505 0 0" obj-model=""></a-obj-model>
+            <a-entity id='env' scale='0.75 0.75 0.75'>
+                <!-- ENV ENTITIES -->
+                <a-obj-model id='floor_0' src='#floorObj' material='src:/assets/models/mtl/floorTexture.png' position='0 0 0' static-body></a-obj-model>
                 
-                <a-entity id='dispensers' position='-0.071 0 0'>
-                    <a-entity id="dispenserGroup_0" position="-1.3 2 0">
-                        <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-3.37908 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="3.38984 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 -3.37635" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 3.62052" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
-                        </a-obj-model>
+                <a-entity id='counterGroup_0' position='0 0 -1'>
+                    <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position='-1.505 0 0'>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
+                    <a-obj-model id='stove_0' src='#stoveObj' scale="0.1 0.1 0.1" position='0 0 0'>
+                        <a-box id='stoveTop' class='hotSurface'
+                        scale='0.75 0.75 0.75'
+                        height='0.02' width='1.56' depth='1.210'
+                        position='0 12.947 0.428'
+                        roation='0 0 0'
+                        material='color: red;'
+                        static-body>
+                    </a-box>
+                    </a-obj-model>
+                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
+                </a-entity>
+
+                <a-entity id='counterGroup_1' position='-3 0 2' rotation='0 90 0'>
+                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0'>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
+                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
+                </a-entity>
+
+                <a-entity id="counterGroup_2" position="0 0 3.491" rotation="0 180 0">
+                    <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position="-1.505 0 0" obj-model="">
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
+                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position="0 0 0" obj-model="">
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
+                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position="1.505 0 0" obj-model="">
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
+                    
+                    <a-entity id='dispensers' position='-0.071 0 0'>
+                        <a-entity id="dispenserGroup_0" position="-1.3 2 0">
+                            <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-3.37908 2.96122 0.11858" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.5" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="3.38984 2.96122 0.11858" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.5" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-0.00402 2.96122 -3.37635" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.4"  
+                                    rotation="0 90 0" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-0.00402 2.96122 3.62052" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.4" 
+                                    rotation="0 90 0" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                            </a-obj-model>
+                            <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: orange;" 
+                            position="0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-topbun=""></a-entity>
+
+                            <a-entity id="raycastTwo" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: orange;" 
+                            position="-0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-bottombun=""></a-entity>
+                        </a-entity>
+                        
+
+                        <a-entity id="dispenserGroup_2" position="-0.3 2 0">
+                            <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-3.37908 2.96122 0.11858" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.5" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="3.38984 2.96122 0.11858" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.5" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-0.00402 2.96122 -3.37635" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.4" 
+                                    rotation="0 90 0" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-0.00402 2.96122 3.62052" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.4" 
+                                    rotation="0 90 0" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                            </a-obj-model>
+                            <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: orange;" 
+                            position="0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-lettuce=""></a-entity>
+
+                            <a-entity id="raycastTwo" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: orange;" 
+                            position="-0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-onion=""></a-entity>
+                        </a-entity>
+                        <!-- Make the LETTUCE and ONION -->
+                        <a-entity id="dispenserGroup_3" position="0.7 2 0">
+                            <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-3.37908 2.96122 0.11858" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.5" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="3.38984 2.96122 0.11858" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.5" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-0.00402 2.96122 -3.37635" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.4" 
+                                    rotation="0 90 0" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-0.00402 2.96122 3.62052" 
+                                    scale=".1 .1 .1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.4" 
+                                    rotation="0 90 0" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                            </a-obj-model>
+                            
+                        </a-entity>
+                        <!-- Make the PATTY and CHEESE -->
+                        <a-entity id="dispenserGroup_4" position="1.7 2 0">
+                            <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-3.37908 2.96122 0.11858" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.5"  
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="3.38984 2.96122 0.11858" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.5" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-0.00402 2.96122 -3.37635" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.4" 
+                                    rotation="0 90 0" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                                <a-box height="0.1" width="0.1" depth="0.1" 
+                                    position="-0.00402 2.96122 3.62052" 
+                                    scale="0.1 0.1 0.1" material="color: blue" 
+                                    geometry="height: 4.5; width: 0.5; depth: 5.4" 
+                                    rotation="0 90 0" 
+                                    static-body 
+                                    visible="false">
+                                </a-box>
+                            </a-obj-model>
+                            <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: orange;" 
+                            position="0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-patty=""></a-entity>
+
+                            <a-entity id="raycastTwo" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: orange;" 
+                            position="-0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-cheese=""></a-entity>
+                        </a-entity>
+                        </a-entity>
                     </a-entity>
-    
-                    <a-entity id="dispenserGroup_1" position="-0.3 2 0">
-                        <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-3.37908 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="3.38984 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 -3.37635" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 3.62052" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
-                        </a-obj-model>
-                    </a-entity>
-    
-                    <a-entity id="dispenserGroup_1" position="0.7 2 0">
-                        <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-3.37908 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="3.38984 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 -3.37635" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 3.62052" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
-                        </a-obj-model>
-                    </a-entity>
-    
-                    <a-entity id="dispenserGroup_1" position="1.7 2 0">
-                        <a-obj-model id="dispenser" src="#dispenserObj" position="" scale="0.1 0.1 0.1" material="" obj-model="">
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-3.37908 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="3.38984 2.96122 0.11858" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.5" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 -3.37635" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
-                            <a-box height="0.1" width="0.1" depth="0.1" position="-0.00402 2.96122 3.62052" scale="0.1 0.1 0.1" material="color: blue" geometry="height: 5.9; width: 0.5; depth: 7.32" rotation="0 90 0" static-body visible="false"></a-box>
-                        </a-obj-model>
-                    </a-entity>
+                    
+
+                <a-entity id='counterGroup_3' position='3 0 2' rotation='0 90 0'>
+                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0' rotation='0 180 0'>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
+                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' rotation='0 180 0'>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                    </a-obj-model>
                 </a-entity>
             </a-entity>
-                
+            
 
-            <a-entity id='counterGroup_3' position='2.795 0 2' rotation='0 90 0'>
-                <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0' rotation='0 180 0'></a-obj-model>
-                <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' rotation='0 180 0'></a-obj-model>
-            </a-entity>
+            <a-obj-model id='bb_0'
+            src="#1_2_3_5_6_7Obj"
+            class='grabbable' 
+            mixin='bottomBunMixin'
+            position='0 1.4 -0.5'
+            vr-burger-info 
+            vr-burger-assembly 
+            vr-snap-patty
+            material='src:/assets/models/mtl/burgerMap.png'
+            dynamic-body
+            ></a-obj-model>
 
             <!-- material="src: /assets/models/textures/counterTexture.png" -->
             
