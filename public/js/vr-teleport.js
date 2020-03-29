@@ -3,10 +3,18 @@ AFRAME.registerComponent('vr-teleport', {
         console.log('teleport attached');
         
         this.el.addEventListener('raycaster-intersected', function(evt){
-            console.log('donedid');
             const thisPostiton = this.getAttribute('position');
 
             document.querySelector('#cameraRig').setAttribute('position', thisPostiton.x + ',' + (thisPostiton.y) + ',' + thisPostiton.z);
+            if(gameManager.components['vr-game-manager'].data.leftControllerState == 'triggerdown'){
+                const thisPostiton = this.getAttribute('position');
+
+                document.querySelector('#cameraRig').setAttribute('position', thisPostiton.x + ',' + (thisPostiton.y) + ',' + thisPostiton.z);
+            }
+            
+            //
+            
+
         })
     }
 })
