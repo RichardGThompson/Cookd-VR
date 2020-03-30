@@ -33,7 +33,7 @@
             <a-assets>
                 <!-- <audio id="testSoundSrc" crossorigin="anonymous" src="assets/sound/burgerFrying.mp3" preload='true'></audio> -->
                 <!-- <a-asset-item response-type="arraybuffer" src="assets/sound/1.ogg"></a-asset-item> -->
-                <a-asset-item id='thermObj' src='/assets/models/obj/therm.obj'></a-asset-item>
+                <a-asset-item id='thermObj' src='/assets/models/obj/thermo.obj'></a-asset-item>
 
                 <a-asset-item id="burgerCookingSound" src='assets/sound/burgerFrying.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
                 <a-asset-item id="1Obj" src="/assets/models/obj/1.obj"></a-asset-item>
@@ -142,7 +142,7 @@
                 halfExtents: 0.15 0.18 0.04;"></a-entity> -->
             </a-entity>
 
-            <a-obj-model id="therm" src='#thermObj' position='0 1.5 0' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
+            <a-obj-model id="therm" src='#thermObj' position='0 1.5 0' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" material='src:/assets/models/mtl/thermoTexture.png' shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
                 <a-entity id='thermText' text="value:69; align:center; color:black;" scale='15 15 15' rotation='-90 0 0' position='0 0.427 0'></a-entity>
             </a-obj-model>
 
@@ -151,11 +151,11 @@
                 <a-obj-model id='floor_0' src='#floorObj' material='src:/assets/models/mtl/floorTexture.png' position='0 0 0' static-body></a-obj-model>
                 
                 <a-entity id='counterGroup_0' position='0 0 -1'>
-                    <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position='-1.505 0 0'>
+                    <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position='-1.505 0 0'  material="src: url(\assets\models\mtl\counterTexture.png)">
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
-                    <a-obj-model id='stove_0' src='#stoveObj' scale="0.1 0.1 0.1" position='0 0 0'>
+                    <a-obj-model id='stove_0' src='#stoveObj' scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\stoveTexture.png)">
                         <a-box id='stoveTop' class='hotSurface'
                         scale='0.75 0.75 0.75'
                         height='0.02' width='1.56' depth='1.210'
@@ -170,33 +170,33 @@
                     <a-cylinder id="stoveCollider_3" scale='.75 .75 .75' position="-5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
                     <a-box id="stoveCollider_4" scale='.75 .75 .75' position="0 10.37833 -5.87763" height="1" depth="1" width="1" material="color: red" geometry="height: 1.1; depth: 0.13; width: 1.6" static-body visible="false"></a-box>
                     </a-obj-model>
-                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'>
+                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' material="src: url(\assets\models\mtl\counterTexture.png)" >
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
                 </a-entity>
 
                 <a-entity id='counterGroup_1' position='-3 0 2' rotation='0 90 0'>
-                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0'>
+                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\counterTexture.png)">
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
-                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'>
+                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' material="src: url(\assets\models\mtl\counterTexture.png)">
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
                 </a-entity>
 
                 <a-entity id="counterGroup_2" position="0 0 3.491" rotation="0 180 0">
-                    <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position="-1.505 0 0" obj-model="">
+                    <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position="-1.505 0 0" obj-model="" material="src: url(\assets\models\mtl\counterTexture.png)">
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
-                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position="0 0 0" obj-model="">
+                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position="0 0 0" obj-model="" material="src: url(\assets\models\mtl\counterTexture.png)">
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
-                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position="1.505 0 0" obj-model="">
+                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position="1.505 0 0" obj-model="" material="src: url(\assets\models\mtl\counterTexture.png)">
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
@@ -388,11 +388,11 @@
                     
 
                 <a-entity id='counterGroup_3' position='3 0 2' rotation='0 90 0'>
-                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0' rotation='0 180 0'>
+                    <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0' rotation='0 180 0' material="src: url(\assets\models\mtl\counterTexture.png)">
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
-                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' rotation='0 180 0'>
+                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' rotation='0 180 0' material="src: url(\assets\models\mtl\counterTexture.png)">
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
