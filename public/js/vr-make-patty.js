@@ -43,14 +43,14 @@ AFRAME.registerComponent('vr-make-patty', {
         let raycastOne = document.createElement('a-entity');
         raycastOne.setAttribute('id', 'burgerCasterOne');
         raycastOne.setAttribute('class', 'cookableEntity');
-        raycastOne.setAttribute('raycaster', 'objects: .hotSurface; showLine: false; far: 0.02');
+        raycastOne.setAttribute('raycaster', 'objects:.hotSurface; showLine: false; far: 0.03');
         raycastOne.setAttribute('rotation', '90 0 0');
         raycastOne.setAttribute('vr-cooking', '');
 
         let raycastTwo = document.createElement('a-entity');
         raycastTwo.setAttribute('id', 'burgerCasterTwo');
         raycastTwo.setAttribute('class', 'cookableEntity');
-        raycastTwo.setAttribute('raycaster', 'objects: .hotSurface; showLine: false; far: 0.02');
+        raycastTwo.setAttribute('raycaster', 'objects:.hotSurface; showLine: false; far: 0.03');
         raycastTwo.setAttribute('rotation', '-90 0 0');
         raycastTwo.setAttribute('vr-cooking', '');
 

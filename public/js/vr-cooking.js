@@ -2,7 +2,7 @@ AFRAME.registerComponent('vr-cooking', {
     schema:{
         cooking: {type:'boolean', default:false},
         frameCounter: {type:'number', default:0},
-        cookingIncrementTime: {type:'number', default:10},
+        cookingIncrementTime: {type:'number', default:20},
         parentID: {type:'string'},
     },
     dependencies: ['raycaster'],
@@ -13,6 +13,7 @@ AFRAME.registerComponent('vr-cooking', {
         //console.log(this.data.parentID);
         //console.log(this.data.cooking);
         this.el.addEventListener('raycaster-intersection', function(hitObj){
+            console.log('cooking');
             Context_AF.setCookingMode(true);
             //console.log('make the noise');
             this.parentNode.querySelector('#burgerCookingSoundEntity').components.sound.playSound();

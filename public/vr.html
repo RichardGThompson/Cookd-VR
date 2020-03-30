@@ -24,6 +24,7 @@
         <script src='js/vr-burger-assembly.js'></script>
         <script src='js/vr-make-lettuce.js'></script>
         <script src='/js/vr-make-onion.js'></script>
+        <script src='js/vr-check-temp.js'></script>
         <!-- <script src='js/vr-teleport.js'></script> -->
         <script src='js/vr-controls.js'></script>
         <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
@@ -142,8 +143,9 @@
                 halfExtents: 0.15 0.18 0.04;"></a-entity> -->
             </a-entity>
 
-            <a-obj-model id="therm" src='#thermObj' position='0 1.5 0' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" material='src:/assets/models/mtl/thermoTexture.png' shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
+            <a-obj-model id="therm" class='grabbable' src='#thermObj' position='0 1.5 -1.1' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" material='src:/assets/models/mtl/thermoTexture.png' shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
                 <a-entity id='thermText' text="value:69; align:center; color:black;" scale='15 15 15' rotation='-90 0 0' position='0 0.427 0'></a-entity>
+                <a-cylinder id="thermCollider" vr-check-temp height='0.0025' radius='0.0025' position='0 -5.069 0' static-body='shape:auto; mass:0.01'></a-cylinder>
             </a-obj-model>
 
             <a-entity id='env' scale='0.75 0.75 0.75'>
@@ -155,16 +157,16 @@
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
-                    <a-obj-model id='stove_0' src='#stoveObj' scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\stoveTexture.png)">
-                        <a-box id='stoveTop' class='hotSurface'
-                        scale='0.75 0.75 0.75'
+                    <a-obj-model id='stove_0' src='#stoveObj' class='hotSurface' scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\stoveTexture.png)">
+                        <!-- <a-box id='stoveTop' class='hotSurface'
+                        scale='10 10 10'
                         height='0.02' width='1.56' depth='1.210'
-                        position='0 12.947 0.428'
+                        position='0 12.871 0.428'
                         roation='0 0 0'
                         material='color: red;'
-                        static-body>
+                        > -->
                     </a-box>
-                    <a-box id="stoveCollider_0" scale='.75 .75 .75' position="0 7.39036 0" height="1" depth="1" width="1" material="color: red" geometry="height: 1.1; depth: 1.3; width: 1.6" static-body visible="false"></a-box>
+                    <a-box id="stoveCollider_0" scale='0.75 0.75 0.75' position="0 7.39036 0" height="1" depth="1" width="1" material="color: red" geometry="height: 1.130; depth: 1.3; width: 1.6" static-body visible="true"></a-box>
                     <a-cylinder id="stoveCollider_1" scale='.75 .75 .75' position="0.00658 11.03606 7.82184" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.03" rotation="0 0 90" static-body visible="false"></a-cylinder>
                     <a-cylinder id="stoveCollider_2" scale='.75 .75 .75' position="5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
                     <a-cylinder id="stoveCollider_3" scale='.75 .75 .75' position="-5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
