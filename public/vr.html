@@ -33,6 +33,8 @@
             <a-assets>
                 <!-- <audio id="testSoundSrc" crossorigin="anonymous" src="assets/sound/burgerFrying.mp3" preload='true'></audio> -->
                 <!-- <a-asset-item response-type="arraybuffer" src="assets/sound/1.ogg"></a-asset-item> -->
+                <a-asset-item id='thermObj' src='/assets/models/obj/therm.obj'></a-asset-item>
+
                 <a-asset-item id="burgerCookingSound" src='assets/sound/burgerFrying.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
                 <a-asset-item id="1Obj" src="/assets/models/obj/1.obj"></a-asset-item>
                 <a-asset-item id="2Obj" src="/assets/models/obj/2.obj"></a-asset-item>
@@ -140,7 +142,9 @@
                 halfExtents: 0.15 0.18 0.04;"></a-entity> -->
             </a-entity>
 
-            <a-box id='test' height='0.05' width='0.05' depth='0.05' material='color:red' position='0 0 0'></a-box>
+            <a-obj-model id="therm" src='#thermObj' position='0 1.5 0' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
+                <a-entity id='thermText' text="value:69; align:center; color:black;" scale='15 15 15' rotation='-90 0 0' position='0 0.427 0'></a-entity>
+            </a-obj-model>
 
             <a-entity id='env' scale='0.75 0.75 0.75'>
                 <!-- ENV ENTITIES -->
@@ -160,6 +164,10 @@
                         material='color: red;'
                         static-body>
                     </a-box>
+                    <a-box id="stoveCollider_0" scale='.75 .75 .75' position="0 7.39036 0" height="1" depth="1" width="1" material="color: red" geometry="height: 1.1; depth: 1.3; width: 1.6" static-body></a-box>
+                    <a-cylinder id="stoveCollider_1" scale='.75 .75 .75' position="0.00658 11.03606 7.82184" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.03" rotation="0 0 90" static-body></a-cylinder>
+                    <a-cylinder id="stoveCollider_2" scale='.75 .75 .75' position="5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body></a-cylinder>
+                    <a-cylinder id="stoveCollider_2" scale='.75 .75 .75' position="-5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body></a-cylinder>
                     </a-obj-model>
                     <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0'>
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
