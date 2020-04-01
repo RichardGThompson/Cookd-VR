@@ -69,9 +69,12 @@ socketIO.on('connection', function(socket) {
     socket.on('outgoingOrder', function(data){
         socketIO.sockets.emit('incomingOrder', data);
     });
+    
     socket.on('doneOrder', function(data){
         console.log(data);
-    })
+        socketIO.sockets.emit('completedOrder', data);
+    });
+
 
     //Info from runner.
     //When the server gets a packet called position, then relay that data back under a different name.
