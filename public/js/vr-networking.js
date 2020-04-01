@@ -15,43 +15,15 @@ AFRAME.registerComponent('vr-send-order', {
         console.log(this.data);
         const dataTest = this.data.alreadySent;
         var dataToAdd = null;
-        this.el.addEventListener('raycaster-intersection', function(hitObj){
-            console.log('gotem');
-            if(!(dataTest.includes(this.parentNode.getAttribute('id')))){
-                dataToAdd = this.parentNode.getAttribute('id');
-                //this.data.alreadySent.push(this.parentNode.getAttribute('id'));
-                var arrayString = '';
-                for(i = 0; i < this.parentNode.components['vr-burger-info'].data.burgerElements.length; i++){
-                    var ID = this.parentNode.components['vr-burger-info'].data.burgerElements[i].getAttribute('id');
-                    if(ID.includes('bb')){
-                        arrayString.concat('1,');
-                    }
-                    else if(ID.includes('ptty')){
-                        arrayString.concat('2,');
-                    }
-                    else if(ID.includes('chz')){
-                        arrayString.concat('3,');
-                    }
-                    else if(ID.includes('tb')){
-                        arrayString.concat('4,');
-                    }
-                }
-                console.log(arrayString);
-                console.log(this.parentNode.components['vr-burger-info'].data.burgerElements.toString());
-                socket.emit('doneOrder', this.parentNode.components['vr-burger-info'].data.burgerElements.toString());
+        this.el.addEventListener('collide', function(collidedObj){
+            const collidedEl = collidedObj.detail.body.el;
+            const elements = collidedEl.components['vr-burger-info'].data.burgerElements.toString();
+
+            if(elements.includes('4')){
+                collidedEl.parentNode.removeChild(collidedEl);
+                socket.emit('doneOrder', elements);
             }
-            // console.log('gotem');
-            // //console.log(hitObj);
-
-            // console.log(this.parentNode.components['vr-burger-info'].data.burgerElements);
-            // //
-            // console.log(this.parentNode);
             
-            //document.querySelector('#rightHand').removeAttribute('constraint');
-
-            
-            // var element = document.getElementById(this.parentNode.getAttribute('id'));
-            // element.parentNode.removeChild(element);
         })
     }
 })

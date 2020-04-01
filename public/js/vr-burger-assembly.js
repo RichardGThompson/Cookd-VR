@@ -38,6 +38,7 @@ AFRAME.registerComponent('vr-burger-assembly', {
                     bgrElem.setAttribute('class', 'grabbable');
                     //Set the object to the combination.
                     bgrElem.setAttribute('src', '#' + newArr.join('_') + 'Obj');
+                    console.log('#' + newArr.join('_') + 'Obj');
                     bgrElem.setAttribute('material', 'src:/assets/models/mtl/burgerMap.png');
                     bgrElem.setAttribute('dynamic-body', '');
                     bgrElem.setAttribute('scale', '0.02 0.02 0.02');
@@ -55,8 +56,8 @@ AFRAME.registerComponent('vr-burger-assembly', {
                                 this.getAttribute('id').components['vr-burger-info'].data.underCooked = false;
                             }
                             else{
-                                this.getAttribute('id').components['vr-burger-info'].data.underCooked = true;
-                                this.getAttribute('id').components['vr-burger-info'].data.overCooked = false;
+                                this.components['vr-burger-info'].data.underCooked = true;
+                                this.components['vr-burger-info'].data.overCooked = false;
                             }
                         }
                     }

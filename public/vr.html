@@ -30,7 +30,7 @@
         <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     </head>    
     <body>
-        <a-scene physics='debug:false'>
+        <a-scene physics='debug:true'>
             <a-assets>
                 <!-- <audio id="testSoundSrc" crossorigin="anonymous" src="assets/sound/burgerFrying.mp3" preload='true'></audio> -->
                 <!-- <a-asset-item response-type="arraybuffer" src="assets/sound/1.ogg"></a-asset-item> -->
@@ -121,7 +121,7 @@
                 
             </a-assets>
 
-            <!--<a-entity environment="preset: default"></a-entity>-->
+            <a-entity environment="preset: default"></a-entity>
 
             <a-entity id='gameManager' vr-game-manager vr-websocket></a-entity>
 
@@ -178,11 +178,11 @@
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
-                    <a-obj-model id='corner_0' src='#cornerObj' scale='0.1 0.1 0.1' position='-2.895 0 0.106' material='color:red'></a-obj-model>
-                    <a-obj-model id='corner_1' src='#cornerObj' scale='0.1 0.1 0.1' position='2.895 0 0.106' material='color:red' rotation='0 -90 0'></a-obj-model>
+                    <a-obj-model id='corner_0' src='#cornerObj' scale='0.1 0.1 0.1' position='-2.895 0 0.106' material="src: url(\assets\models\mtl\cornerCounterTexture.png)"></a-obj-model>
+                    <a-obj-model id='corner_1' src='#cornerObj' scale='0.1 0.1 0.1' position='2.895 0 0.106' material="src: url(\assets\models\mtl\cornerCounterTexture.png)" rotation='0 -90 0'></a-obj-model>
 
-                    <a-entity id="sendOrderPad" geometry="primitive: cylinder; height: 0.01; radius: 0.1" material="color: blue" position="-0.77 1.001 -0.575">
-                        <a-entity id='sendOrderRayCast' raycaster='objects:.grabbable; showLine:true; far:0.03' line='color:red;' rotation='90 0 0' vr-send-order></a-entity>
+                    <a-entity id="sendOrderPad" geometry="primitive: cylinder; height: 0.01; radius: 0.1" material="color: blue" position="-1.084 1.419 0" body="type: static; mass: 5; shape: none;" shape__main='shape:cylinder; height:0.01; radiusTop: 0.08; radiusBottom: 0.08; offset: 0 0 0;' vr-send-order>
+                        <a-entity id='sendOrderRayCast' raycaster='objects:.grabbable; showLine:true; far:0.03' line='color:red;' rotation='90 0 0' ></a-entity>
                     </a-entity>
                 </a-entity>
 
@@ -195,9 +195,7 @@
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
-
-                    
-
+                    <a-obj-model id="corner_0" src="#cornerObj" scale="0.1 0.1 0.1" position="-1.39934 0 0.106" material="src: url(\assets\models\mtl\cornerCounterTexture.png)"></a-obj-model>
                 </a-entity>
 
                 <a-entity id="counterGroup_2" position="0 0 3.491" rotation="0 180 0">
@@ -409,6 +407,7 @@
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
                     </a-obj-model>
+                    <a-obj-model id="corner_0" src="#cornerObj" scale="0.1 0.1 0.1" position="-1.39934 0 -0.09864" material="src: url(\assets\models\mtl\cornerCounterTexture.png)" rotation="0 90 0"></a-obj-model>
                 </a-entity>
             </a-entity>
 
@@ -530,59 +529,6 @@
                     material='color: white'
                     static-body>
                 </a-box>-->
-                <a-entity id='counterOne' class='counter'
-                            obj-model="obj: #counterOBJ;"
-                            position='0 0.0 0'
-                            material='src: url(/assets/Texture/VR/countertexture.png)'
-                            static-body
-                            scale='0.07 0.07 0.07'></a-entity>
-                <a-entity id='counterTwo' class='counter'
-                            obj-model="obj: #counterOBJ;"
-                            position='2. 0.0 0'
-                            material='src: url(/assets/Texture/VR/countertexture.png)'
-                            static-body
-                            scale='0.07 0.07 0.07'></a-entity>
-                <a-entity id='counterThree' class='counter'
-                            obj-model="obj: #counterOBJ;"
-                            position='3. 0.0 0'
-                            material='src: url(/assets/Texture/VR/countertexture.png)'
-                            static-body
-                            scale='0.07 0.07 0.07'></a-entity>
-                <a-entity id='counterFour' class='counter'
-                            obj-model="obj: #counterOBJ;"
-                            position='-1. 0.0 0'
-                            material='src: url(/assets/Texture/VR/countertexture.png)'
-                            static-body
-                            scale='0.07 0.07 0.07'></a-entity>
-                <a-entity id='counterFive' class='counter'
-                            obj-model="obj: #counterOBJ;"
-                            position='-2. 0.0 0'
-                            material='src: url(/assets/Texture/VR/countertexture.png)'
-                            static-body
-                            scale='0.07 0.07 0.07'></a-entity>
-               <!-- <a-box id='stoveTop' class='hotSurface'
-                        height='0.02' width='0.5' depth='1.0'
-                        position='0.6 1 0'
-                        roation='0 0 0'
-                        material='color: grey;'
-                        static-body>
-                    </a-box>-->
-                <a-entity id='stoveVisual'
-                    obj-model="obj: #stoveOBJ;"
-                    position='1. 0.0 0'
-                    material='src: url(/assets/Texture/VR/stovetexture.png)'
-                    scale='0.07 0.07 0.07'>
-
-                </a-entity>
-                <a-box id='stoveTop' class='hotSurface'
-                        height='0.02' width='1' depth='1.0'
-                        position='0.992 0.898 0'
-                        roation='0 0 0'
-                        visible='true'
-                        material='color: grey; opacity:0.0'
-                        static-body>
-                    </a-box>
-            </a-entity> -->
             <script src="/socket.io/socket.io.js"></script>
             <script src="js/vr-networking.js"></script>
         </a-scene>
