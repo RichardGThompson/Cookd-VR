@@ -1,5 +1,3 @@
-
-
 AFRAME.registerComponent('vr-grab', {
     init : function(){
         const Context_AF = this;

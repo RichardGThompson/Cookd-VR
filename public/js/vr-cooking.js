@@ -2,7 +2,7 @@ AFRAME.registerComponent('vr-cooking', {
     schema:{
         cooking: {type:'boolean', default:false},
         frameCounter: {type:'number', default:0},
-        cookingIncrementTime: {type:'number', default:10},
+        cookingIncrementTime: {type:'number', default:25},
         parentID: {type:'string'},
     },
     dependencies: ['raycaster'],
@@ -13,6 +13,7 @@ AFRAME.registerComponent('vr-cooking', {
         //console.log(this.data.parentID);
         //console.log(this.data.cooking);
         this.el.addEventListener('raycaster-intersection', function(hitObj){
+            console.log('cooking');
             Context_AF.setCookingMode(true);
             //console.log('make the noise');
             this.parentNode.querySelector('#burgerCookingSoundEntity').components.sound.playSound();
@@ -45,12 +46,12 @@ AFRAME.registerComponent('vr-cooking', {
                 if(currTemp >= parentNode.components['vr-patty-info'].data.pattyCookedTemp && currTemp < parentNode.components['vr-patty-info'].data.pattyOvercookTemp){
                     parentNode.components['vr-patty-info'].data.pattyCooked = true;
                     parentNode.components['vr-patty-info'].data.pattyOvercooked = false;
-                    parentNode.setAttribute('material', 'color:brown');
+                    parentNode.setAttribute('material','src:/assets/models/mtl/burgerMap.png');
                 }
                 else if(currTemp >= parentNode.components['vr-patty-info'].data.pattyOvercookTemp){
                     parentNode.components['vr-patty-info'].data.pattyCooked = false;
                     parentNode.components['vr-patty-info'].data.pattyOvercooked = true;
-                    parentNode.setAttribute('material', 'color:black');
+                    parentNode.setAttribute('material','src:/assets/models/mtl/burgerMapOvercooked.png');
                 }
             }
         }
