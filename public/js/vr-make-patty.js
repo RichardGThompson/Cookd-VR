@@ -33,11 +33,8 @@ AFRAME.registerComponent('vr-make-patty', {
         pattyElem.setAttribute('vr-patty-info', '');
         pattyElem.setAttribute('position', '-0.601 1.701 2.595');
         
-
         pattyElem.setAttribute('mixin', 'pattyMixin');
-        //pattyElem.setAttribute('geometry','primitive:cylinder; height: 0.02; radius:0.075;');
-        
-        
+        pattyElem.setAttribute('material', 'src:/assets/models/mtl/burgerMapUndercooked.png');
 
 
         let raycastOne = document.createElement('a-entity');
@@ -73,7 +70,6 @@ AFRAME.registerComponent('vr-make-patty', {
         }
         else{
             pattyinterval++;
-            //console.log(interval);
         }
     }
 })
