@@ -53,7 +53,7 @@ AFRAME.registerComponent('burger', {
         price: {type:'number', default:10},
         name: {type: 'string', default:'Burger'},
         label: {type: 'string', default:'burger'},
-        ingredient: {type:'string', default:'bun,patty,bun'}
+        ingredient: {type:'string', default:'BottomBun,Patty,TopBun'}
     },
     init : function() {
         const Context_AF = this;
@@ -68,7 +68,7 @@ AFRAME.registerComponent('CheeseBurger', {
         price: {type:'number', default:5},
         name: {type: 'string', default:'Cheese Burger'},
         label: {type: 'string', default:'CheeseBurger'},
-        ingredient: {type:'string', default:'bun,patty,cheese,bun'}
+        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,TopBun'}
     },
     init : function() {
         const Context_AF = this;
@@ -82,7 +82,7 @@ AFRAME.registerComponent('DoubleCheeseBurger', {
         price: {type:'number', default:0},
         name: {type: 'string', default:'Double Cheese Burger'},
         label: {type: 'string', default:'DoubleCheeseBurger'},
-        ingredient: {type:'string', default:'bun,patty,patty,cheese,bun'}
+        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Patty,Cheese,TopBun'}
     },
     init : function() {
         const Context_AF = this;
@@ -98,7 +98,7 @@ AFRAME.registerComponent('LoadedCheeseBurger', {
         price: {type:'number', default:0},
         name: {type: 'string', default:'Loaded Cheese Burger'},
         label: {type: 'string', default:'LoadedCheeseBurger'},
-        ingredient: {type:'string', default:'bun,patty,cheese,Lettuce,Onion,bun'}
+        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Lettuce,Onion,TopBun'}
     },
     init : function() {
         const Context_AF = this;
@@ -114,7 +114,7 @@ AFRAME.registerComponent('DoubleLoadedCheeseBurger', {
         price: {type:'number', default:0},
         name: {type: 'string', default:'Double Loaded Cheese Burger'},
         label: {type: 'string', default:'DoubleLoadedCheeseBurger'},
-        ingredient: {type:'string', default:'bun,patty,patty,cheese,Lettuce,Onion,bun'}
+        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Patty,Cheese,Lettuce,Onion,TopBun'}
     },
     init : function() {
         const Context_AF = this;
