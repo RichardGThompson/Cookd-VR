@@ -145,6 +145,8 @@
                 halfExtents: 0.15 0.18 0.04;"></a-entity> -->
             </a-entity>
 
+            <a-entity id='orderBoard' geometry='primitive:plane; height:1.1; width:2.5' material='color:red' position='0 1.8 -1.3' rotation='0 0 0'></a-entity>
+
             <a-obj-model id="therm" class='grabbable' src='#thermObj' position='0 1.5 -1.1' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" material='src:/assets/models/mtl/thermoTexture.png' shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
                 <a-entity id='thermText' text="value:69; align:center; color:black;" scale='15 15 15' rotation='-90 0 0' position='0 0.427 0'></a-entity>
                 <a-cylinder id="thermCollider" vr-check-temp height='0.0025' radius='0.0025' position='0 -5.069 0' static-body='shape:auto; mass:0.01'></a-cylinder>
