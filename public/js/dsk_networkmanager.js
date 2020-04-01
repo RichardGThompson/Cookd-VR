@@ -22,8 +22,9 @@ AFRAME.registerComponent('dsk_networkmanager', {
         let smolZ = -7.629;
         let bigZ = -4.917;
         let sendingorder = document.querySelector('#sendOrder');
+        let ticketName = document.querySelector('#ticketName');
+        let ticketId = document.querySelector('#ticket');
         playerpos = Context_AF.el.getAttribute('position');
-
         if(playerpos.x >= smolX && playerpos.x <= bigX &&
             playerpos.z >= smolZ && playerpos.z <= bigZ &&
             Context_AF.el.components['dsk_getticket'].data.hasticket)
@@ -32,7 +33,8 @@ AFRAME.registerComponent('dsk_networkmanager', {
                 socket.emit('outgoingOrder', Context_AF.data.orderstore);
                 Context_AF.el.components['dsk_getticket'].data.hasticket = false;
                 sendingorder.setAttribute('value', "order sent");
-                
+                ticketName.setAttribute('value', "Name of Order");
+                ticketId.setAttribute('value', "Order Ingredients");
             }
     }
 });
