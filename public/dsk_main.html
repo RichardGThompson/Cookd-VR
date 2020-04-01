@@ -21,7 +21,6 @@
         <a-scene>
             <a-assets>
                 <a-asset-item id="Floortexture" src="assets/Texture/sans.png"></a-asset-item>
-                <a-asset-item id="NPCtexture" src="assets/Texture/willman.png"></a-asset-item>
                 <a-asset-item id="FloorOBJ" src="assets/FloorPlan.obj"></a-asset-item>
                 <a-asset-item id="SceneOBJ" src="assets/scene.gltf"></a-asset-item>
                 <a-asset-item id="NavMeshOBJ" src="assets/nav.gltf"></a-asset-item>
@@ -42,106 +41,70 @@
             </a-entity>
             
             <a-gui-flex-container 
-                flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+                flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="4.5"
                 position="9.6 3 -1" rotation="-90 0 0">
-                <a-gui-label id="ticketName" width="4" height = "0.7" value="Name of Order" font-size="160px" ></a-gui-label>
-                <a-gui-label id="ticket" width="4" height = "0.7" value="Order Ingredients" font-size="130px" ></a-gui-label>
+                <a-gui-label id="ticketName" width="6" height = "0.7" value="Name of Order" font-size="130px" ></a-gui-label>
+                <a-gui-label id="ticket" width="6" height = "0.7" value="Order Ingredients" font-size="130px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-gui-flex-container 
-                flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="4.5"
+                flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="4.5"
                 position="9.6 3 -4" rotation="-90 0 0">
-                <a-gui-label id="sendOrder" width="4" height = "0.7" value="Order not sent" font-size="160px" ></a-gui-label>
+                <a-gui-label id="sendOrder" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
             
             <a-gui-flex-container 
-                id = "table1order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table1order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 -4" rotation="-90 0 0">
-                <a-image id="burgertable1" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurgertable1" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurgertable1" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurgertable1" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurgertable1" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable1" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-gui-flex-container 
-                id = "table2order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table2order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 -3" rotation="-90 0 0">
-                <a-image id="burger" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurger" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurger" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurger" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurger" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable2" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-gui-flex-container 
-                id = "table3order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table3order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 -2" rotation="-90 0 0">
-                <a-image id="burgertable3" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurgertable3" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurgertable3" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurgertable3" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurgertable3" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable3" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
             
             <a-gui-flex-container 
-                id = "table4order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table4order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 -1" rotation="-90 0 0">
-                <a-image id="burgertable4" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurgertable4" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurgertable4" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurgertable4" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurgertable4" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable4" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-gui-flex-container 
-                id = "table5order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table5order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 0" rotation="-90 0 0">
-                <a-image id="burgertable5" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurgertable5" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurgertable5" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurgertable5" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurgertable5" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable5" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-gui-flex-container 
-                id = "table6order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table6order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 1" rotation="-90 0 0">
-                <a-image id="burgertable6" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurgertable6" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurgertable6" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurgertable6" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurgertable6" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable6" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-gui-flex-container 
-                id = "table7order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table7order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 2" rotation="-90 0 0">
-                <a-image id="burgertable7" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurgertable7" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurgertable7" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurgertable7" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurgertable7" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable7" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-gui-flex-container 
-                id = "table8order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table8order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 3" rotation="-90 0 0">
-                <a-image id="burgertable8" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurgertable8" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurgertable8" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurgertable8" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurgertable8" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable8" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-gui-flex-container 
-                id = "table9order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.7" width="3.5" height="0.9"
+                id = "table9order"flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="0.9"
                 position="-9.6 3 4" rotation="-90 0 0">
-                <a-image id="burgertable9" src="assets/willman.png" position="0 0 0" visible="false"></a-image>
-                <a-image id="CheeseBurgertable9" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleCheeseBurgertable9" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="LoadedCheeseBurgertable9" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
-                <a-image id="DoubleLoadedCheeseBurgertable9" src="assets/willman.png"  position="0 0 0" visible="false"></a-image>
+                <a-gui-label id="Ordertable9" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
             <a-entity id="scene"

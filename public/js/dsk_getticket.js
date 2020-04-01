@@ -8,7 +8,8 @@ AFRAME.registerComponent('dsk_getticket', {
         
         Context_AF.el.addEventListener('collide', function(event){
             if(event.detail.body.el.getAttribute('visible') == false && 
-                event.detail.body.el.components['dsk_ticketgenerating'].data.hasticket == false)
+                event.detail.body.el.components['dsk_ticketgenerating'].data.hasticket == false &&
+                Context_AF.data.hasticket == false)
             {
                 
 
@@ -17,11 +18,12 @@ AFRAME.registerComponent('dsk_getticket', {
                 let OrdersTakenHolder = document.querySelector('#OrdersTakenHolder')
                 
                 let componentname = event.detail.body.el.components['dsk_ticketgenerating'].data.nameHolder;
-                let orderimage = document.querySelector('#' + componentname + event.detail.body.el.id)
-                orderimage.setAttribute('visible', 'true');
+                let Order = document.querySelector('#Order' + event.detail.body.el.id);
+                //let orderimage = document.querySelector('#' + componentname + event.detail.body.el.id);
+                //orderimage.setAttribute('visible', 'true');
                 ticket.setAttribute('value', ' ' + event.detail.body.el.components[componentname].data.ingredient + '');
                 ticketID.setAttribute('value', event.detail.body.el.components[componentname].data.name);
-                
+                Order.setAttribute('value', event.detail.body.el.components[componentname].data.name);
                 Context_AF.data.hasticket = true;
                 event.detail.body.el.components['dsk_ticketgenerating'].data.hasticket = true;
                 //console.log(Context_AF.el.components);
