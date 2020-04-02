@@ -33,12 +33,8 @@ AFRAME.registerComponent('vr-make-bottombun', {
 
         bbElem.setAttribute('mixin', 'bottomBunMixin');
         
-        
         let scene = document.querySelector('a-scene');
         scene.appendChild(bbElem);
-
-        document.querySelector('#' + burgerID).components['vr-burger-info'].data.burgerElements = [1];
-        console.log(document.querySelector('#' + burgerID).components['vr-burger-info'].data.burgerElements);
     },
 
     tick:function(){
