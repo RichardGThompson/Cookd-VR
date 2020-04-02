@@ -13,7 +13,8 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
     init : function() {
         const Context_AF = this;
         
-        rand = Math.floor(Math.random() * 6) + 1;
+        //rand = Math.floor(Math.random() * 4) + 1;
+        rand = 1;
         if(rand == 1)
         {
             Context_AF.el.setAttribute('burger', {});
@@ -26,20 +27,10 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
         }
         if(rand == 3)
         {
-            Context_AF.el.setAttribute('DoubleCheeseBurger', {});
-            Context_AF.data.DoubleCheeseBurger = true;
-        }
-        if(rand == 4)
-        {
             Context_AF.el.setAttribute('LoadedCheeseBurger', {});
             Context_AF.data.LoadedCheeseBurger = true;
         }
-        if(rand == 5)
-        {
-            Context_AF.el.setAttribute('DoubleLoadedCheeseBurger', {});
-            Context_AF.data.DoubleLoadedCheeseBurger = true;
-        }
-        if(rand == 6)
+        if(rand == 4)
         {
             Context_AF.el.setAttribute('Fries', {});
             Context_AF.data.Fries = true;
@@ -77,44 +68,12 @@ AFRAME.registerComponent('CheeseBurger', {
     },
 });
 
-AFRAME.registerComponent('DoubleCheeseBurger', {
-    schema: {
-        price: {type:'number', default:0},
-        name: {type: 'string', default:'Double Cheese Burger'},
-        label: {type: 'string', default:'DoubleCheeseBurger'},
-        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Patty,TopBun'}
-    },
-    init : function() {
-        const Context_AF = this;
-        
-        console.log(Context_AF.data.ingredient);
-        Context_AF.el.components['dsk_ticketgenerating'].data.nameHolder = Context_AF.data.label;
-        
-    },
-});
-
 AFRAME.registerComponent('LoadedCheeseBurger', {
     schema: {
         price: {type:'number', default:0},
         name: {type: 'string', default:'Loaded Cheese Burger'},
         label: {type: 'string', default:'LoadedCheeseBurger'},
         ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Lettuce,Onion,TopBun'}
-    },
-    init : function() {
-        const Context_AF = this;
-        
-        console.log(Context_AF.data.ingredient);
-        Context_AF.el.components['dsk_ticketgenerating'].data.nameHolder = Context_AF.data.label;
-        
-    },
-});
-
-AFRAME.registerComponent('DoubleLoadedCheeseBurger', {
-    schema: {
-        price: {type:'number', default:0},
-        name: {type: 'string', default:'Double Loaded Cheese Burger'},
-        label: {type: 'string', default:'DoubleLoadedCheeseBurger'},
-        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Patty,Lettuce,Onion,TopBun'}
     },
     init : function() {
         const Context_AF = this;

@@ -10,6 +10,7 @@
         <script src="js/dsk_ticketgenerating.js"></script>
         <script src="js/dsk_getticket.js"></script>
         <script src="js/dsk_deletenpcs.js"></script>
+        <script src="js/dsk_foodholder.js"></script>
         
         <!--GUI-->
         <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
@@ -113,7 +114,7 @@
                     rotation="0 0 0"
                     scale="1 1 1"
                     dsk_playermovement
-                    dsk_npcspawning
+                    dsk_npcspawning                    
                     class="clickable"
                     Material="src: url(/assets/Texture/EnviroTexture.png)"
                     normal-map="src: url(/assets/Texture/EnviroNormal.tif)"
@@ -133,6 +134,7 @@
                 static-body
                 dsk_getticket
                 dsk_networkmanager
+                dsk_foodholder
                 position= "-1 1 -1" 
                 rotation="0 90 0"
                 geometry="primitive: cylinder; height:0.5; radius:1"

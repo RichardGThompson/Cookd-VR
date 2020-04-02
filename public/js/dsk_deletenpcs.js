@@ -1,6 +1,7 @@
 
 AFRAME.registerComponent('dsk_deletenpcs', {
     schema: {
+        
     },
     init : function() {
         const Context_AF = this;

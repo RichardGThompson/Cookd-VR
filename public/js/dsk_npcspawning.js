@@ -55,19 +55,19 @@ AFRAME.registerComponent('dsk_npcspawning', {
         {
             Context_AF.data.tabletaken[id] = id;
             tablepos = table.getAttribute('position');
-            console.log("Spawning at table 1");
             let NPC = document.createElement('a-entity');
             NPC.setAttribute('position', {x:tablepos.x + 1.9, y:1, z: tablepos.z});
             NPC.setAttribute('geometry', 'primitive: cylinder; height:0.1; radius:1');
             NPC.setAttribute('material', 'src: assets/girlselfie.png');
             NPC.setAttribute('rotation', {x:0.00, y:90.0, z:0.00});
-            NPC.setAttribute('id', 'npc');
+            NPC.setAttribute('id', 'npc' + id);
             
             table.setAttribute('dsk_ticketgenerating', {});
             table.setAttribute('dynamic-body', 'shape: auto; mass: 100');
             table.setAttribute('constraint', 'target: #scene');
 
             let scene = document.querySelector('a-scene');
+            //Context_AF.Context_AF.el.components['dsk_deletenpcs']
             scene.appendChild(NPC);
         }    
     },
