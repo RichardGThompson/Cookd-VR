@@ -1,3 +1,4 @@
+const debug = true;
 let socket = io();
 AFRAME.registerComponent('vr-websocket',{
     schema: {
@@ -18,7 +19,6 @@ AFRAME.registerComponent('vr-websocket',{
 
             Context_AF.el.components['vr-websocket'].data.ongoingOrderCount++;
             const startingHeight = 0.145;
-        
             
             var ticketID = '';
             switch(Context_AF.el.components['vr-websocket'].data.ongoingOrderCount){
@@ -122,15 +122,23 @@ AFRAME.registerComponent('vr-send-order', {
 
             const ongoingOrders = document.querySelector('#gameManager').components['vr-game-manager'].data.currentOrders;
 
-            for(i = 0; i < ongoingOrders.length; i++){
-                const orderDetail = ongoingOrders[i].toString();
-                if(elements == orderDetail){
-                    collidedEl.parentNode.removeChild(collidedEl);
-                    socket.emit('doneOrder', elements);
-                    document.querySelector('#gameManager').components['vr-game-manager'].data.currentOrders[i].splice(i);
-                    break;
+            if(!debug){
+                for(i = 0; i < ongoingOrders.length; i++){
+                    const orderDetail = ongoingOrders[i].toString();
+                    if(elements == orderDetail){
+                        collidedEl.parentNode.removeChild(collidedEl);
+                        
+                        document.querySelector('#gameManager').components['vr-game-manager'].data.currentOrders[i].splice(i);
+                        break;
+                    }
                 }
             }
+            else{
+                collidedEl.parentNode.removeChild(collidedEl);
+                console.log(elements);
+                socket.emit('doneOrder', elements);
+            }
+            
         })
     }
 })
