@@ -54,6 +54,7 @@ AFRAME.registerComponent('dsk_networkmanager', {
                 }
             }
             
+            
             console.log(newArray);
         });
         

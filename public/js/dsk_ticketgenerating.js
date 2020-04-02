@@ -39,7 +39,7 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
     
     },
 })
-AFRAME.registerComponent('burger', {
+AFRAME.registerComponent('BottomBun,Patty,TopBun', {
     schema: {
         price: {type:'number', default:10},
         name: {type: 'string', default:'Burger'},
@@ -54,7 +54,7 @@ AFRAME.registerComponent('burger', {
         
     },
 });
-AFRAME.registerComponent('CheeseBurger', {
+AFRAME.registerComponent('BottomBun,Patty,Cheese,TopBun', {
     schema: {
         price: {type:'number', default:5},
         name: {type: 'string', default:'Cheese Burger'},
@@ -68,7 +68,7 @@ AFRAME.registerComponent('CheeseBurger', {
     },
 });
 
-AFRAME.registerComponent('LoadedCheeseBurger', {
+AFRAME.registerComponent('BottomBun,Patty,Cheese,Lettuce,Onion,TopBun', {
     schema: {
         price: {type:'number', default:0},
         name: {type: 'string', default:'Loaded Cheese Burger'},

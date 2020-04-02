@@ -7,11 +7,10 @@ AFRAME.registerComponent('dsk_foodholder', {
         
         Context_AF.el.addEventListener('collide', function(event){
             if(event.detail.body.el.getAttribute('visible') == false && 
-                event.detail.body.el.components['dsk_ticketgenerating'].data.hasticket == true )
+                event.detail.body.el.components['' + FoodStorage + ''].data.ingredient == FoodStorage)
             {
                console.log("fuck")
             }
-
         });
 
         
