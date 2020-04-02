@@ -1,4 +1,4 @@
-const debug = true;
+const debug = false;
 let socket = io();
 AFRAME.registerComponent('vr-websocket',{
     schema: {
@@ -127,7 +127,7 @@ AFRAME.registerComponent('vr-send-order', {
                     const orderDetail = ongoingOrders[i].toString();
                     if(elements == orderDetail){
                         collidedEl.parentNode.removeChild(collidedEl);
-                        
+                        socket.emit('doneOrder', elements);
                         document.querySelector('#gameManager').components['vr-game-manager'].data.currentOrders[i].splice(i);
                         break;
                     }
