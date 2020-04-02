@@ -31,7 +31,7 @@ AFRAME.registerComponent('vr-make-patty', {
         pattyElem.setAttribute('src', '#2Obj');
         pattyElem.setAttribute('dynamic-body', '');
         pattyElem.setAttribute('vr-patty-info', '');
-        pattyElem.setAttribute('position', '-0.601 1.701 2.595');
+        pattyElem.setAttribute('position', '0.152 1.701 2.595');
         
         pattyElem.setAttribute('mixin', 'pattyMixin');
         pattyElem.setAttribute('material', 'src:/assets/models/mtl/burgerMapUndercooked.png');

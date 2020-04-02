@@ -24,11 +24,10 @@ AFRAME.registerComponent('vr-make-lettuce', {
         cheeseElem.setAttribute('class', 'grabbable');
         cheeseElem.setAttribute('src', '#5Obj');
         cheeseElem.setAttribute('dynamic-body', '');
-        cheeseElem.setAttribute('position', '-0.351 1.615 -0.56');
+        cheeseElem.setAttribute('position', '-0.598 1.7 2.595');
         
 
         cheeseElem.setAttribute('mixin', 'lettuceMixin');
-        //pattyElem.setAttribute('geometry','primitive:cylinder; height: 0.02; radius:0.075;');
         
         
         let scene = document.querySelector('a-scene');
@@ -36,7 +35,7 @@ AFRAME.registerComponent('vr-make-lettuce', {
     },
 
     tick:function(){
-        if(interval == delayTime){
+        if(lettuceinterval == lettucedelayTime){
             lettuceinterval = 0;
             lettucemakeAllowed = true;
         }

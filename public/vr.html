@@ -24,10 +24,12 @@
         <script src='js/vr-burger-assembly.js'></script>
         <script src='js/vr-make-lettuce.js'></script>
         <script src='/js/vr-make-onion.js'></script>
+        <script src='/js/vr-make-tomato.js'></script>
         <script src='js/vr-check-temp.js'></script>
         <!-- <script src='js/vr-teleport.js'></script> -->
         <script src='js/vr-controls.js'></script>
         <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+        <script src='js/vr-ticket-detail.js'></script>
     </head>    
     <body>
         <a-scene physics='debug:true'>
@@ -41,6 +43,9 @@
                 <a-asset-item id="2Obj" src="/assets/models/obj/2.obj"></a-asset-item>
                 <a-asset-item id="3Obj" src="/assets/models/obj/3.obj"></a-asset-item>
                 <a-asset-item id='4Obj' src='/assets/models/obj/4.obj'></a-asset-item>
+                <a-asset-item id='5Obj' src='/assets/models/obj/5.obj'></a-asset-item>
+                <a-asset-item id='6Obj' src='/assets/models/obj/6.obj'></a-asset-item>
+                <a-asset-item id='7Obj' src='/assets/models/obj/7.obj'></a-asset-item>
                 
                 <a-asset-item id='dispenserObj' src='/assets/models/obj/dispenser.obj'></a-asset-item>
 
@@ -79,7 +84,7 @@
                 <a-asset-item id="rightHandModel" src="/assets/models/obj/hands/rightHand.glb"></a-asset-item>
                 
                 <a-mixin id='bottomBunMixin' 
-                    material='color:#cd6133'
+                    material='src:/assets/models/mtl/burgerMap.png'
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:1'
                     >
@@ -99,22 +104,25 @@
                 </a-mixin>
 
                 <a-mixin id='topBunMixin'
-                    material='color:#cd6133'
+                    material='src:/assets/models/mtl/burgerMap.png'
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:4'>
                 </a-mixin>
 
                 <a-mixin id='lettuceMixin'
+                    material='src:/assets/models/mtl/burgerMap.png'
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:5'>
                 </a-mixin>
 
                 <a-mixin id='onionMixin'
+                    material='src:/assets/models/mtl/burgerMap.png'    
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:6'>
                 </a-mixin>
 
                 <a-mixin id='tomatoMixin'
+                    material='src:/assets/models/mtl/burgerMap.png'    
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:7'>
                 </a-mixin>
@@ -138,14 +146,21 @@
                 <a-entity oculus-touch-controls="hand: right; model:false;" body="type: static; mass: 5; shape: none;" shape__main='shape:box; halfExtents: 0.05 0.05 0.1; offset: 0 0.03 0;' vr-grab teleport-controls>
                     <a-entity class='hand' gltf-model="#rightHandModel" rotation='0 20 -90'></a-entity>
                 </a-entity>
-                <!-- <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
-                halfExtents: 0.15 0.18 0.04;"></a-entity>
-                
-                <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" static-body="shape: box;
-                halfExtents: 0.15 0.18 0.04;"></a-entity> -->
             </a-entity>
 
-            <a-entity id='orderBoard' geometry='primitive:plane; height:1.1; width:2.5' material='color:red' position='0 1.8 -1.3' rotation='0 0 0'></a-entity>
+            <a-entity id='orderBoard' geometry='primitive:plane; height:1.1; width:2.5' material='color:red' position='0 1.8 -1.3' rotation='0 0 0'>
+                <a-entity id='tkt_0' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='-1 0.22 -0.02'>
+                    <a-entity id='text_0' text='value:; wrapCount:15; align:center; color:black; width:0.3' position='0 0.145 0.01'></a-entity>
+                </a-entity>
+                <a-entity id='tkt_1' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='-0.6 0.22 -0.02'></a-entity>
+                <a-entity id='tkt_2' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='-0.2 0.22 -0.02'></a-entity>
+                <a-entity id='tkt_3' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='0.2 0.22 -0.02'></a-entity>
+                <a-entity id='tkt_4' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='0.6 0.22 -0.02'></a-entity>
+                <a-entity id='tkt_5' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='1.0 0.22 -0.02'></a-entity>
+                <a-entity id='tkt_6' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='-0.4 -0.22 -0.02'></a-entity>
+                <a-entity id='tkt_7' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='0 -0.22 -0.02'></a-entity>
+                <a-entity id='tkt_8' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='0.4 -0.220 -0.02'></a-entity>
+            </a-entity>
 
             <a-obj-model id="therm" class='grabbable' src='#thermObj' position='0 1.5 -1.1' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" material='src:/assets/models/mtl/thermoTexture.png' shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
                 <a-entity id='thermText' text="value:69; align:center; color:black;" scale='15 15 15' rotation='-90 0 0' position='0 0.427 0'></a-entity>
@@ -265,7 +280,7 @@
                         
 
                         <a-entity id="dispenserGroup_2" position="-0.3 2 0">
-                            <a-obj-model id="dispenser" src="#dispenserObj" material="src: url(\assets\models\mtl\dispenserTomatoLettuce.png)" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                            <a-obj-model id="dispenser" src="#dispenserObj" material="src: url(\assets\models\mtl\dispenserCheesePatty.png)" position="" scale="0.1 0.1 0.1" material="" obj-model="">
                                 <a-box height="0.1" width="0.1" depth="0.1" 
                                     position="-3.37908 2.96122 0.11858" 
                                     scale="0.1 0.1 0.1" material="color: blue" 
@@ -302,14 +317,14 @@
                             line="color: orange;" 
                             position="0.155 0.07 0.4" 
                             rotation="180 0 0" 
-                            vr-make-lettuce=""></a-entity>
+                            vr-make-patty=""></a-entity>
 
                             <a-entity id="raycastTwo" class="button" 
                             raycaster="objects: .hand; showLine: true; far: 0.03" 
                             line="color: orange;" 
                             position="-0.155 0.07 0.4" 
                             rotation="180 0 0" 
-                            vr-make-onion=""></a-entity>
+                            vr-make-cheese=""></a-entity>
                         </a-entity>
                         <!-- Make the LETTUCE and ONION -->
                         <a-entity id="dispenserGroup_3" position="0.7 2 0">
@@ -350,19 +365,19 @@
                             line="color: purple;" 
                             position="0.155 0.07 0.4" 
                             rotation="180 0 0" 
-                            vr-make-patty=""></a-entity>
+                            vr-make-lettuce=""></a-entity>
 
                             <a-entity id="raycastTwo" class="button" 
                             raycaster="objects: .hand; showLine: true; far: 0.03" 
                             line="color: green;" 
                             position="-0.155 0.07 0.4" 
                             rotation="180 0 0" 
-                            vr-make-cheese=""></a-entity>
+                            vr-make-tomato=""></a-entity>
                         </a-entity>
 
                         <!-- Make the PATTY and CHEESE -->
                         <a-entity id="dispenserGroup_4" position="1.7 2 0">
-                            <a-obj-model id="dispenser" src="#dispenserObj" material="src: url(\assets\models\mtl\dispenserTomatoLettuce.png)" position="" scale="0.1 0.1 0.1" material="" obj-model="">
+                            <a-obj-model id="dispenser" src="#dispenserObj" material="src: url(\assets\models\mtl\dispenserFriesOnion.png)" position="" scale="0.1 0.1 0.1" material="" obj-model="">
                                 <a-box height="0.1" width="0.1" depth="0.1" 
                                     position="-3.37908 2.96122 0.11858" 
                                     scale="0.1 0.1 0.1" material="color: blue" 
@@ -394,7 +409,19 @@
                                     visible="false">
                                 </a-box>
                             </a-obj-model>
-                            
+                            <a-entity id="raycastOne" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: purple;" 
+                            position="0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-onion=""></a-entity>
+
+                            <a-entity id="raycastTwo" class="button" 
+                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            line="color: green;" 
+                            position="-0.155 0.07 0.4" 
+                            rotation="180 0 0" 
+                            vr-make-fries=""></a-entity>
                         </a-entity>
                         </a-entity>
                     </a-entity>
@@ -413,13 +440,6 @@
                 </a-entity>
             </a-entity>
 
-            <!-- <a-entity id='teleportPads'>
-                <a-entity id='pad_00' class='tp' geometry='primitive:cylinder; height:0.02; radius:0.4' position='1.335 0.148 1.043' vr-teleport></a-entity>
-                <a-entity id="pad_01" class="tp" geometry="primitive: cylinder; height: 0.02; radius: 0.4" position="-1.35179 0.148 1.043" vr-teleport=""></a-entity>
-                <a-entity id="pad_02" class="tp" geometry="primitive: cylinder; height: 0.02; radius: 0.4" position="0.01655 0.148 1.7431" vr-teleport=""></a-entity>
-            </a-entity> -->
-            
-
             <a-obj-model id='bb_0'
             src="#1_2_3_5_6_7Obj"
             class='grabbable' 
@@ -432,105 +452,6 @@
             dynamic-body
             ></a-obj-model>
 
-            <!-- material="src: /assets/models/textures/counterTexture.png" -->
-            
-            <!-- <a-obj-model id='bb_0'
-            src="#1_2_3_5_6_7Obj"
-            class='grabbable' 
-            mixin='bottomBunMixin'
-            position='0 1.4 -0.5'
-            vr-burger-info 
-            vr-burger-assembly 
-            vr-snap-patty
-            dynamic-body
-            ></a-obj-model> -->
-                
-
-            <!-- <a-obj-model id="dispenserOne" 
-                src="#dispenserObj" 
-                position="-0.35 1.45 -0.69" 
-                material="color: pink">
-                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="-0.105 0.088 0.18" scale='0.120 0.370 0.840'></a-entity>
-                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.105 0.088 0.18" scale='0.120 0.370 0.840'></a-entity>
-                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.0 0.088 0.0" scale='0.150 0.370 0.480' rotation='0 90 0'></a-entity>
-                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.0 0.088 0.338" scale='0.450 0.370 0.480' rotation='0 90 0'></a-entity>
-                    <a-entity id="pattyraycaster" class="button" 
-                        raycaster="objects: .hand; showLine: true; far: 0.03" 
-                        line="color: orange;" 
-                        position="0.06 0.1 0.4" 
-                        rotation="180 0 0" 
-                        vr-make-patty="">
-                    </a-entity>
-                    <a-entity id="cheeseraycaster" class="button" 
-                        raycaster="objects: .hand; showLine: true; far: 0.03" 
-                        line="color: orange;" 
-                        position="-0.06 0.1 0.4" 
-                        rotation="180 0 0" 
-                        vr-make-cheese="">
-                    </a-entity>
-                </a-entity>
-            </a-obj-model>
-
-            <a-obj-model id="dispenserTwo" 
-                src="#dispenserObj"
-                position="-0.015 1.45 -0.69" 
-                material="color: pink">
-                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="-0.105 0.088 0.18" scale='0.120 0.370 0.840'></a-entity>
-                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.105 0.088 0.18" scale='0.120 0.370 0.840'></a-entity>
-                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.0 0.088 0.0" scale='0.150 0.370 0.480' rotation='0 90 0'></a-entity>
-                    <a-entity id="collider" geometry="height: 0.5; width: 0.25; depth: 0.5" visible="false" static-body position="0.0 0.088 0.338" scale='0.450 0.370 0.480' rotation='0 90 0'></a-entity>
-                    <a-entity id="pattyraycaster" class="button" 
-                        raycaster="objects: .hand; showLine: true; far: 0.03" 
-                        line="color: orange;" 
-                        position="0.06 0.1 0.4" 
-                        rotation="180 0 0" 
-                        vr-make-topbun="">
-                    </a-entity>
-                    <a-entity id="cheeseraycaster" class="button" 
-                        raycaster="objects: .hand; showLine: true; far: 0.03" 
-                        line="color: orange;" 
-                        position="-0.06 0.1 0.4" 
-                        rotation="180 0 0" 
-                        vr-make-bottombun="">
-                    </a-entity>
-                </a-entity>
-            </a-obj-model>
-                
-
-            <a-entity id='ticketWall' 
-                geometry='primitive:plane; height: 0.8; width: 1.5'
-                position='0.138 1.582 -1.113'
-                rotation='0 0 0'
-                material='color:#f7f1e3'>
-                    <a-entity id='testTicket'
-                        geometry='primitive:plane; height:0.25; width: 0.19'
-                        position='0 0 0.01'
-                        rotation='0 0 0'
-                        material='color:yellow'>
-                    </a-entity>
-            </a-entity>
-                
-
-            <a-entity id="sendOrderPad" class='sendOrder' geometry="primitive: cylinder; height: 0.01; radius: 0.1" material="color: blue" position="-0.77 1.001 -0.575">
-                
-            </a-entity>
-
-            <a-plane id='floor' height='30' width='30'
-                material = 'color:white; opacity:0.0;'
-                postion = '0 0 0'
-                rotation = '-90 0 0'
-                static-body>
-            </a-plane>
-
-
-            <a-entity id='kitchenCounters' position='0 0 -0.75' rotation='0 0 0'>
-                <a-box id='counterOne' class='counter'
-                    height='1.0' width='5.0' depth='1.0'
-                    position='0 0.5 0'
-                    rotation='0 0 0'
-                    material='color: white'
-                    static-body>
-                </a-box>-->
             <script src="/socket.io/socket.io.js"></script>
             <script src="js/vr-networking.js"></script>
         </a-scene>

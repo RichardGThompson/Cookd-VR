@@ -82,7 +82,7 @@ AFRAME.registerComponent('DoubleCheeseBurger', {
         price: {type:'number', default:0},
         name: {type: 'string', default:'Double Cheese Burger'},
         label: {type: 'string', default:'DoubleCheeseBurger'},
-        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Patty,Cheese,TopBun'}
+        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Patty,TopBun'}
     },
     init : function() {
         const Context_AF = this;
@@ -114,7 +114,7 @@ AFRAME.registerComponent('DoubleLoadedCheeseBurger', {
         price: {type:'number', default:0},
         name: {type: 'string', default:'Double Loaded Cheese Burger'},
         label: {type: 'string', default:'DoubleLoadedCheeseBurger'},
-        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Patty,Cheese,Lettuce,Onion,TopBun'}
+        ingredient: {type:'string', default:'BottomBun,Patty,Cheese,Patty,Lettuce,Onion,TopBun'}
     },
     init : function() {
         const Context_AF = this;

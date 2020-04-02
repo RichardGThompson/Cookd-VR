@@ -24,7 +24,7 @@ AFRAME.registerComponent('vr-make-cheese', {
         cheeseElem.setAttribute('class', 'grabbable');
         cheeseElem.setAttribute('src', '#3Obj');
         cheeseElem.setAttribute('dynamic-body', '');
-        cheeseElem.setAttribute('position', '-0.354 1.701 2.595');
+        cheeseElem.setAttribute('position', '0.390 1.701 2.595');
         
 
         cheeseElem.setAttribute('mixin', 'cheeseMixin');
