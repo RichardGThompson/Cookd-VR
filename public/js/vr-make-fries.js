@@ -22,7 +22,7 @@ AFRAME.registerComponent('vr-make-fries', {
         
         fryElem.setAttribute('id', 'fry_' + cheeseElements.length);
         fryElem.setAttribute('class', 'grabbable');
-        fryElem.setAttribute('src', '#fryBasketwFriesObj');
+        fryElem.setAttribute('src', '#8Obj');
         fryElem.setAttribute('material', 'src:/assets/models/mtl/basketAndFriesTexture.png');
         fryElem.setAttribute('scale', '0.02 0.02 0.02');
         fryElem.setAttribute('position', '-1.102 1.7 2.595');
@@ -30,6 +30,7 @@ AFRAME.registerComponent('vr-make-fries', {
         fryElem.setAttribute('shape__main', 'shape:box; halfExtents: 3 2 6.5; offset: 0 2 0');
         fryElem.setAttribute('shape__handle', 'shape:box; halfExtents: 0.5 0.5 2.8; offset: 0 6.5 -11.5;');
         fryElem.setAttribute('vr-fry-details', '');
+        fryElem.setAttribute('vr-burger-info', '');
 
         let fryRaycast = document.createElement('a-entity');
         fryRaycast.setAttribute('id', 'burgerCasterOne');
