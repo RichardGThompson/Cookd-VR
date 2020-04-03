@@ -23,7 +23,7 @@ AFRAME.registerComponent('vr-make-fries', {
         fryElem.setAttribute('id', 'fry_' + cheeseElements.length);
         fryElem.setAttribute('class', 'grabbable');
         fryElem.setAttribute('src', '#8Obj');
-        fryElem.setAttribute('material', 'src:/assets/models/mtl/basketAndFriesTexture.png');
+        fryElem.setAttribute('material', 'src:/assets/models/mtl/basketAndFriesTextureuCooked.png');
         fryElem.setAttribute('scale', '0.02 0.02 0.02');
         fryElem.setAttribute('position', '-1.102 1.7 2.595');
         fryElem.setAttribute('body', 'type: dynamic; mass: 5; shape: none');

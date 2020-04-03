@@ -190,8 +190,8 @@
                 
                 <a-entity id='counterGroup_0' position='0 0 -1'>
                     <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position='-1.505 0 0'  material="src: url(\assets\models\mtl\counterTexture.png)">
-                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
-                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body visible="false"></a-box>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body visible="false"></a-box>
                     </a-obj-model>
                     <a-obj-model id='stove_0' src='#stoveObj' class='hotSurface' scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\stoveTexture.png)">
                         <!-- <a-box id='stoveTop' class='hotSurface'
@@ -202,7 +202,7 @@
                         material='color: red;'
                         > -->
                     </a-box>
-                    <a-box id="stoveCollider_0" scale='0.75 0.75 0.75' position="0 7.39036 0" height="1" depth="1" width="1" material="color: red" geometry="height: 1.130; depth: 1.3; width: 1.6" static-body visible="true"></a-box>
+                    <a-box id="stoveCollider_0" scale='0.75 0.75 0.75' position="0 7.39036 0" height="1" depth="1" width="1" material="color: red" geometry="height: 1.130; depth: 1.3; width: 1.6" static-body visible="false"></a-box>
                     <a-cylinder id="stoveCollider_1" scale='.75 .75 .75' position="0.00658 11.03606 7.82184" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.03" rotation="0 0 90" static-body visible="false"></a-cylinder>
                     <a-cylinder id="stoveCollider_2" scale='.75 .75 .75' position="5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
                     <a-cylinder id="stoveCollider_3" scale='.75 .75 .75' position="-5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
@@ -258,16 +258,16 @@
 
                 <a-entity id="counterGroup_2" position="0 0 3.491" rotation="0 180 0">
                     <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position="-1.505 0 0" obj-model="" material="src: url(\assets\models\mtl\counterTexture.png)">
-                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
-                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body visible="false"></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body visible="false"></a-box>
                     </a-obj-model>
                     <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position="0 0 0" obj-model="" material="src: url(\assets\models\mtl\counterTexture.png)">
-                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
-                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body visible="false"></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body visible="false"></a-box>
                     </a-obj-model>
                     <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position="1.505 0 0" obj-model="" material="src: url(\assets\models\mtl\counterTexture.png)">
-                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
-                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body visible="false"></a-box>
+                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body visible="false"></a-box>
                     </a-obj-model>
                     
                     <a-entity id='dispensers' position='-0.071 0 0'>
@@ -305,14 +305,14 @@
                                 </a-box>
                             </a-obj-model>
                             <a-entity id="raycastOne" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            raycaster="objects: .hand; showLine: false; far: 0.03" 
                             line="color: blue;" 
                             position="0.155 0.07 0.4" 
                             rotation="180 0 0" 
                             vr-make-topbun=""></a-entity>
 
                             <a-entity id="raycastTwo" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            raycaster="objects: .hand; showLine: false; far: 0.03" 
                             line="color: orange;" 
                             position="-0.155 0.07 0.4" 
                             rotation="180 0 0" 
@@ -354,14 +354,14 @@
                                 </a-box>
                             </a-obj-model>
                             <a-entity id="raycastOne" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            raycaster="objects: .hand; showLine: false; far: 0.03" 
                             line="color: orange;" 
                             position="0.155 0.07 0.4" 
                             rotation="180 0 0" 
                             vr-make-patty=""></a-entity>
 
                             <a-entity id="raycastTwo" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            raycaster="objects: .hand; showLine: false; far: 0.03" 
                             line="color: orange;" 
                             position="-0.155 0.07 0.4" 
                             rotation="180 0 0" 
@@ -451,14 +451,14 @@
                                 </a-box>
                             </a-obj-model>
                             <a-entity id="raycastOne" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            raycaster="objects: .hand; showLine: false; far: 0.03" 
                             line="color: purple;" 
                             position="0.155 0.07 0.4" 
                             rotation="180 0 0" 
                             vr-make-onion=""></a-entity>
 
                             <a-entity id="raycastTwo" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            raycaster="objects: .hand; showLine: false; far: 0.03" 
                             line="color: green;" 
                             position="-0.155 0.07 0.4" 
                             rotation="180 0 0" 

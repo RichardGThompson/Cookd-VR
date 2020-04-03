@@ -36,10 +36,12 @@ AFRAME.registerComponent('vr-frying', {
                     console.log('friesCooked!');
                     parentNode.components['vr-fry-details'].fryCooked = true;
                     parentNode.components['vr-fry-details'].fryOvercooked = false;
+                    parentNode.setAttribute('material','src:/assets/models/mtl/basketAndFriesTexture.png');
                 }
                 else if(currentTemp >= parentNode.components['vr-fry-details'].data.fryOvercookedTemp){
                     parentNode.components['vr-fry-details'].fryOvercooked = true;
                     parentNode.components['vr-fry-details'].fryCooked = false;
+                    parentNode.setAttribute('material','src:/assets/models/mtl/basketAndFriesTextureoCooked.png');
                 }
             }
         }
