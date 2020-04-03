@@ -20,16 +20,17 @@ AFRAME.registerComponent('dsk_networkmanager', {
 
             Context_AF.data.Orderin = true;
             Context_AF.data.FoodsentStorage = data;
-            if(data = "1_2_4"){
+            console.log(data);
+            if(data == "1,2,4"){
                 foodname = "burger";
             }
-            if(data = "1_2_3_4"){
+            else if(data == "1,2,3,4"){
                 foodname = "CheeseBurger";
             }
-            if(data = "1_2_3_5_6_4"){
+            else if(data == "1,2,3,5,6,4"){
                 foodname = "LoadedCheeseBurger";
             }
-            if(data = "8"){
+            if(data == "8"){
                 foodname = "Fries";
             }
         });
@@ -61,8 +62,10 @@ AFRAME.registerComponent('dsk_networkmanager', {
                 playerpos.z >= smolZ && playerpos.z <= bigZ &&
                 Context_AF.data.Orderin == true)
                 {
-                    //console.log("I'm receiving");
+                    console.log("I'm receiving");
                     Context_AF.el.setAttribute('material', 'src: assets/' + Context_AF.data.FoodsentStorage + '.png');
+                    Context_AF.data.Orderin = false;
+                    console.log(foodname);
                     player.components['dsk_foodholder'].data.FoodStorage = foodname;
                 }
     }
