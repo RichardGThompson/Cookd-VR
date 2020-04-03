@@ -3,7 +3,6 @@ AFRAME.registerComponent('vr-cooking', {
         cooking: {type:'boolean', default:false},
         frameCounter: {type:'number', default:0},
         cookingIncrementTime: {type:'number', default:25},
-        parentID: {type:'string'},
     },
     dependencies: ['raycaster'],
     

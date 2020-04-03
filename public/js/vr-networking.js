@@ -126,10 +126,17 @@ AFRAME.registerComponent('vr-send-order', {
                 for(i = 0; i < ongoingOrders.length; i++){
                     const orderDetail = ongoingOrders[i].toString();
                     if(elements == orderDetail){
-                        collidedEl.parentNode.removeChild(collidedEl);
-                        socket.emit('doneOrder', elements);
-                        document.querySelector('#gameManager').components['vr-game-manager'].data.currentOrders[i].splice(i);
-                        break;
+                        var tickets = document.querySelectorAll('*[id^="tkt"]');
+                        for(i = 0; tickets.length; i++){
+                            const detail = tickets[i].components['vr-ticket-detail'].data.orderContents.toString();
+                            if(elements == detail){
+                                tickets[i].object3D.position.z = -0.02;
+                                collidedEl.parentNode.removeChild(collidedEl);
+                                socket.emit('doneOrder', elements);
+                                document.querySelector('#gameManager').components['vr-game-manager'].data.currentOrders[i].splice(i);
+                                break;
+                            }
+                        }
                     }
                 }
             }
