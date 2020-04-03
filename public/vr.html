@@ -3,13 +3,18 @@
     <head>
         <title>Cook'd VR</title>
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <!-- A script for adding an environment to the scene. (source: https://github.com/supermedium/aframe-environment-component)-->
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+        <!-- A script for adding physics to A-Frame (source: https://github.com/donmccurdy/aframe-physics-system)-->
         <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <!-- A script for VR teleportation controls. (source: https://github.com/fernandojsg/aframe-teleport-controls)-->
+        <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+        
+        <!-- Scripts for the function of the VR version of the game. -->
         <script src='/js/vr-grab.js'></script>
         <script src='/js/vr-cooking.js'></script>
         <script src='/js/vr-snap-patty.js'></script>
         <script src='/js/vr-element-info.js'></script>
-        <script src='/js/vr-print-position.js'></script>
         <script src='/js/vr-get-burgers.js'></script>
         <script src='js/vr-make-patty.js'></script>
         <script src='js/vr-make-cheese.js'></script>
@@ -17,8 +22,6 @@
         <script src='js/vr-get-height.js'></script>
         <script src='js/vr-patty-info.js'></script>
         <script src='js/vr-game-manager.js'></script>
-        <script src='js/vr-add-body.js'></script>
-        <script src='js/vr-delete-test.js'></script>
         <script src='js/vr-make-topbun.js'></script>
         <script src='js/vr-make-bottombun.js'></script>
         <script src='js/vr-burger-assembly.js'></script>
@@ -30,48 +33,50 @@
         <script src='js/vr-check-temp.js'></script>
         <script src='js/vr-controls.js'></script>
         <script src='js/vr-frying.js'></script>
-        <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
         <script src='js/vr-ticket-detail.js'></script>
     </head>    
     <body>
-        <a-scene physics='debug:true'>
+        <a-scene physics='debug:false'>
             <a-assets>
-                <!-- <audio id="testSoundSrc" crossorigin="anonymous" src="assets/sound/burgerFrying.mp3" preload='true'></audio> -->
-                <!-- <a-asset-item response-type="arraybuffer" src="assets/sound/1.ogg"></a-asset-item> -->
                 <a-asset-item id='thermObj' src='/assets/models/obj/thermo.obj'></a-asset-item>
 
                 <a-asset-item id="burgerCookingSound" src='assets/sound/burgerFrying.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
                 <a-asset-item id='cookedSoundFile' src='assets/sound/beep.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
 
+                <!-- Bottom Bun Model -->
                 <a-asset-item id="1Obj" src="/assets/models/obj/1.obj"></a-asset-item>
+                <!-- Patty Model -->
                 <a-asset-item id="2Obj" src="/assets/models/obj/2.obj"></a-asset-item>
+                <!-- Cheese Model -->
                 <a-asset-item id="3Obj" src="/assets/models/obj/3.obj"></a-asset-item>
+                <!-- Top Bun Model -->
                 <a-asset-item id='4Obj' src='/assets/models/obj/4.obj'></a-asset-item>
+                <!-- Lettuce Model -->
                 <a-asset-item id='5Obj' src='/assets/models/obj/5.obj'></a-asset-item>
+                <!-- Onion Model -->
                 <a-asset-item id='6Obj' src='/assets/models/obj/6.obj'></a-asset-item>
+                <!--Tomato Model -->
                 <a-asset-item id='7Obj' src='/assets/models/obj/7.obj'></a-asset-item>
-
-                <a-asset-item id='fryBasketObj' src='/assets/models/obj/fryBasket.obj'></a-asset-item>
+                <!-- Fry Model -->
                 <a-asset-item id='8Obj' src='/assets/models/obj/basketW_fries.obj'></a-asset-item>
 
+                <!--Enviroment Models and Textures -->
                 <a-asset-item id='fryerObj' src='/assets/models/obj/fryer.obj'></a-asset-item>
-                
                 <a-asset-item id='dispenserObj' src='/assets/models/obj/dispenser.obj'></a-asset-item>
-
                 <a-asset-item id='floorObj' src='/assets/models/obj/floor.obj'></a-asset-item>
                 <a-asset-item id='floorTexture' src='/assets/models/mtl/floorTexture.png'></a-asset-item>
-
                 <a-asset-item id='stoveObj' src='/assets/models/obj/stove.obj'></a-asset-item>
                 <a-asset-item id='stoveTexture' src='/assets/models/mtl/stoveTexture.png'></a-asset-item>
-
                 <a-asset-item id='wallObj' src='/assets/models/obj/walls.obj'></a-asset-item>
                 <a-asset-item id='wallTexture' src='/assets/models/mtl/wallTexture.png'></a-asset-item>
-
+                <a-asset-item id='orderBoardObj' src='/assets/models/obj/orderBoard.obj'></a-asset-item>
+                <a-asset-item id='plateObj' src='/assets/models/obj/plate.obj'></a-asset-item>
+                <a-asset-item id='ceilingObj' src='/assets/models/obj/ceiling.obj'></a-asset-item>
                 <a-asset-item id='counterObj' src='/assets/models/obj/counter.obj'></a-asset-item>
                 <a-asset-item id='counterTexture' src='/assets/models/mtl/counterTexture.png'></a-asset-item>
-
                 <a-asset-item id='cornerObj' src='/assets/models/obj/counterCorner.obj'></a-asset-item>
 
+                <!-- Models for the combinations of burgers -->
                 <a-asset-item id='1_2Obj' src='/assets/models/obj/1_2.obj'></a-asset-item>
                 <a-asset-item id='1_2_3Obj' src='/assets/models/obj/1_2_3.obj'></a-asset-item>
                 <a-asset-item id='1_2_2_3Obj' src='/assets/models/obj/1_2_2_3.obj'></a-asset-item>
@@ -89,41 +94,38 @@
                 <a-asset-item id='1_2_3_4_5_6_7Obj' src='/assets/models/obj/1_2_3_4_5_6_7.obj'></a-asset-item>
                 <a-asset-item id='1_2_4Obj' src='/assets/models/obj/1_2_4.obj'></a-asset-item>
 
+                <!-- Models for the hands (source:https://github.com/aframevr/aframe/blob/master/docs/components/hand-controls.md)-->
                 <a-asset-item id="leftHandModel" src="/assets/models/obj/hands/leftHand.glb"></a-asset-item>
                 <a-asset-item id="rightHandModel" src="/assets/models/obj/hands/rightHand.glb"></a-asset-item>
                 
+                <!-- The variaous mixins for the elements. -->
                 <a-mixin id='bottomBunMixin' 
                     material='src:/assets/models/mtl/burgerMap.png'
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:1'
                     >
                 </a-mixin>
-
                 <a-mixin id='pattyMixin' 
                     material='color:#b33939'
                     vr-element-info='elemType:2'
                     scale='0.02 0.02 0.018'
                     >
                 </a-mixin>
-
                 <a-mixin id='cheeseMixin'
                     material='color:#ffb142'
                     vr-element-info='elemType:3'
                     scale='0.02 0.02 0.02'>
                 </a-mixin>
-
                 <a-mixin id='topBunMixin'
                     material='src:/assets/models/mtl/burgerMap.png'
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:4'>
                 </a-mixin>
-
                 <a-mixin id='lettuceMixin'
                     material='src:/assets/models/mtl/burgerMap.png'
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:5'>
                 </a-mixin>
-
                 <a-mixin id='onionMixin'
                     material='src:/assets/models/mtl/burgerMap.png'    
                     scale='0.02 0.02 0.02'
@@ -135,60 +137,116 @@
                     scale='0.02 0.02 0.02'
                     vr-element-info='elemType:7'>
                 </a-mixin>
-                
             </a-assets>
 
+            <!-- Setting the looks of the environment. -->
             <a-entity environment="preset: default"></a-entity>
-
+            <!-- A centralized gameManager that conrols different aspects of the game. -->
             <a-entity id='gameManager' vr-game-manager vr-websocket></a-entity>
-            <a-obj-model !id='testFries' 
-                !class='grabbable' 
-                !src='#fryBasketwFriesObj' 
-                !material='src: url(\assets\models\mtl\basketAndFriesTexture.png)' 
-                !scale='0.02 0.02 0.02' 
-                !position='-0.413 1.661 -0.603'  
-                !body="type: dynamic; mass: 5; shape: none;" 
-                shape__main='shape:box; halfExtents: 3 2 6.5; offset: 0 2 0;'
-                shape__handle='shape:box; halfExtents: 0.5 0.5 2.8; offset: 0 6.5 -11.5;'>
-            </a-obj-model>
 
-            <!-- <a-entity sound="src:#testSound; loop:true; autoplay:true;"></a-entity> -->
-
-
+            <!--A entity that holds all of the camera objects as well as the hand controls. -->
             <a-entity id="cameraRig" networked="template: #rigTemplate; showLocalTemplate: false">
-                <a-camera id="camera" look-controls position="0 1.6 0">
+                <a-camera id="camera" 
+                    look-controls position="0 1.6 0">
                 </a-camera>
                 
-                <a-entity oculus-touch-controls="hand: left; model:false;" body="type: static; mass: 5; shape: none;" shape__main='shape:box; halfExtents: 0.05 0.05 0.1; offset: 0 0.03 0;' vr-controls vr-grab teleport-controls="cameraRig: #cameraRig; teleportOrigin: #camera; button:trigger">
-                    <a-entity class='hand' gltf-model="#leftHandModel" rotation='0 -20 90'></a-entity>
+                <!--The left hand of the player. -->
+                <a-entity oculus-touch-controls="hand: left; model:false;" 
+                    body="type: static; mass: 5; shape: none;" 
+                    shape__main='shape:box; halfExtents: 0.05 0.05 0.1; offset: 0 0.03 0;' 
+                    vr-controls 
+                    vr-grab 
+                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #camera; button:trigger">
+                        <a-entity class='hand' gltf-model="#leftHandModel" rotation='0 -20 90'></a-entity>
                 </a-entity>
-                <a-entity oculus-touch-controls="hand: right; model:false;" body="type: static; mass: 5; shape: none;" shape__main='shape:box; halfExtents: 0.05 0.05 0.1; offset: 0 0.03 0;' vr-grab teleport-controls>
-                    <a-entity class='hand' gltf-model="#rightHandModel" rotation='0 20 -90'></a-entity>
+                
+                <!--The right hand of the player. -->
+                <a-entity oculus-touch-controls="hand: right; model:false;" 
+                    body="type: static; mass: 5; shape: none;" 
+                    shape__main='shape:box; halfExtents: 0.05 0.05 0.1; offset: 0 0.03 0;' 
+                    vr-grab 
+                    teleport-controls="cameraRig: #cameraRig; teleportOrigin: #camera; button:trigger">
+                        <a-entity class='hand' gltf-model="#rightHandModel" rotation='0 20 -90'></a-entity>
                 </a-entity>
             </a-entity>
 
-            <a-entity id='orderBoard' geometry='primitive:plane; height:1.1; width:2.5' material='color:red' position='0 1.8 -1.3' rotation='0 0 0' vr-ticket-detail>
-                <a-entity id='tkt_0' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='-1 0.22 -0.02'>
-                    <a-entity id='text_0' text='value:; wrapCount:15; align:center; color:black; width:0.3' position='0 0.145 0.01'></a-entity>
-                </a-entity>
-                <a-entity id='tkt_1' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='-0.6 0.22 -0.02' vr-ticket-detail></a-entity>
-                <a-entity id='tkt_2' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='-0.2 0.22 -0.02' vr-ticket-detail></a-entity>
-                <a-entity id='tkt_3' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='0.2 0.22 -0.02' vr-ticket-detail></a-entity>
-                <a-entity id='tkt_4' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='0.6 0.22 -0.02' vr-ticket-detail></a-entity>
-                <a-entity id='tkt_5' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='1.0 0.22 -0.02' vr-ticket-detail></a-entity>
-                <a-entity id='tkt_6' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='-0.4 -0.22 -0.02' vr-ticket-detail></a-entity>
-                <a-entity id='tkt_7' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='0 -0.22 -0.02' vr-ticket-detail></a-entity>
-                <a-entity id='tkt_8' geometry='primitive:plane; height:0.4; width:0.3' material='color:blue' position='0.4 -0.220 -0.02' vr-ticket-detail></a-entity>
-            </a-entity>
+            <!-- A board that holds all of the orders for the player to complete. -->
+            <a-obj-model id="orderBoard" 
+                src="#orderBoardObj" 
+                material="src: url(\assets\models\mtl\corkBoardTexture.png)" 
+                position="0 1.89211 -1.12159">
+                    <a-entity id='tkt_0' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white' 
+                        position='-1 0.22 -0.02'>
+                    </a-entity>
+                    <a-entity id='tkt_1' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white' 
+                        position='-0.6 0.22 -0.02' 
+                        vr-ticket-detail>
+                    </a-entity>
+                    <a-entity id='tkt_2' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white' 
+                        position='-0.2 0.22 -0.02' 
+                        vr-ticket-detail>
+                    </a-entity>
+                    <a-entity id='tkt_3' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white' 
+                        position='0.2 0.22 -0.02' 
+                        vr-ticket-detail>
+                    </a-entity>
+                    <a-entity id='tkt_4' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white' 
+                        position='0.6 0.22 -0.02' 
+                        vr-ticket-detail>
+                    </a-entity>
+                    <a-entity id='tkt_5' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white' 
+                        position='1.0 0.22 -0.02' 
+                        vr-ticket-detail>
+                    </a-entity>
+                    <a-entity id='tkt_6' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white'
+                        position='-0.4 -0.22 -0.02' 
+                        vr-ticket-detail>
+                    </a-entity>
+                    <a-entity id='tkt_7' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white' 
+                        position='0 -0.22 -0.02' 
+                        vr-ticket-detail>
+                    </a-entity>
+                    <a-entity id='tkt_8' 
+                        geometry='primitive:plane; height:0.4; width:0.3' 
+                        material='color:white' 
+                        position='0.4 -0.220 -0.02' 
+                        vr-ticket-detail>
+                    </a-entity>
+            </a-obj-model>
+            
 
-            <a-obj-model id="therm" class='grabbable' src='#thermObj' position='0 1.5 -1.1' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" material='src:/assets/models/mtl/thermoTexture.png' shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
-                <a-entity id='thermText' text="value:69; align:center; color:black;" scale='15 15 15' rotation='-90 0 0' position='0 0.427 0'></a-entity>
+            <a-obj-model id="therm" class='grabbable' src='#thermObj' position='1.0 1.2 -0.6' rotation='90 0 0' scale='0.04 0.04 0.04' body="type: dynamic; mass: 5; shape: none;" material='src:/assets/models/mtl/thermoTexture.png' shape__main='shape:box; halfExtents: 0.15 2.5 0.15; offset: 0 -2.5 0;' shape__handle='shape:cylinder; height:1.0; radiusTop: 1.1; radiusBottom: 1.1; offset: 0 0 0;'>
+                <a-entity id='thermText' text="value:0; align:center; color:black;" scale='15 15 15' rotation='-90 0 0' position='0 0.427 0'></a-entity>
                 <a-cylinder id="thermCollider" vr-check-temp height='0.0025' radius='0.0025' position='0 -5.069 0' static-body='shape:auto; mass:0.01'></a-cylinder>
             </a-obj-model>
 
             <a-entity id='env' scale='0.75 0.75 0.75'>
                 <!-- ENV ENTITIES -->
                 <a-obj-model id='floor_0' src='#floorObj' material='src: url(\assets\models\mtl\floorTexture.png)' position='0 -0.196 0' static-body></a-obj-model>
+
+                <a-obj-model id="walls" src="#wallObj" material="src: \assets\models\mtl\wallTexture.png" position="0 0 -0.9994" scale="0.1 0.1 0.098">
+                    <a-box id="col_0" scale="0.75 0.75 0.75" position='0 19.684 -5.898' static-body material="color: red" geometry="height: 4.07; width: 7.75; depth: 0.08" visible="false"></a-box>
+                    <a-box id="col_1" scale="0.75 0.75 0.75" position="-35.77994 19.684 24.32552" static-body material="color: red" geometry="height: 4.07; width: 7.75; depth: 0.08" rotation="0 90 0" visible="false" visible="false"></a-box>
+                    <a-box id="col_2" scale="0.75 0.75 0.75" position="35.98756 19.684 24.32552" static-body material="color: red" geometry="height: 4.07; width: 7.75; depth: 0.08" rotation="0 90 0" visible="false"></a-box>
+                    <a-box id="col_3" scale="0.75 0.75 0.75" position="0 19.684 51.89714" static-body material="color: red" geometry="height: 4.07; width: 7.75; depth: 0.08" rotation="" visible="false"></a-box>
+                </a-obj-model>
+                <a-obj-model id='ceiling' src='#ceilingObj' material="src: \assets\models\mtl\ceilingTexture.png" position="0 0 -1.109" scale="0.1 0.1 0.1" static-body></a-obj-model>
                 
                 <a-entity id='counterGroup_0' position='0 0 -1'>
                     <a-obj-model id="counter_0" src="#counterObj" scale="0.1 0.1 0.1" position='-1.505 0 0'  material="src: url(\assets\models\mtl\counterTexture.png)">
@@ -196,66 +254,65 @@
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body visible="false"></a-box>
                     </a-obj-model>
                     <a-obj-model id='stove_0' src='#stoveObj' class='hotSurface' scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\stoveTexture.png)">
-                        <!-- <a-box id='stoveTop' class='hotSurface'
-                        scale='10 10 10'
-                        height='0.02' width='1.56' depth='1.210'
-                        position='0 12.871 0.428'
-                        roation='0 0 0'
-                        material='color: red;'
-                        > -->
-                    </a-box>
-                    <a-box id="stoveCollider_0" scale='0.75 0.75 0.75' position="0 7.39036 0" height="1" depth="1" width="1" material="color: red" geometry="height: 1.130; depth: 1.3; width: 1.6" static-body visible="false"></a-box>
-                    <a-cylinder id="stoveCollider_1" scale='.75 .75 .75' position="0.00658 11.03606 7.82184" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.03" rotation="0 0 90" static-body visible="false"></a-cylinder>
-                    <a-cylinder id="stoveCollider_2" scale='.75 .75 .75' position="5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
-                    <a-cylinder id="stoveCollider_3" scale='.75 .75 .75' position="-5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
-                    <a-box id="stoveCollider_4" scale='.75 .75 .75' position="0 10.37833 -5.87763" height="1" depth="1" width="1" material="color: red" geometry="height: 1.1; depth: 0.13; width: 1.6" static-body visible="false"></a-box>
+                        <a-box id="stoveCollider_0" scale='0.75 0.75 0.75' position="0 7.39036 0" height="1" depth="1" width="1" material="color: red" geometry="height: 1.130; depth: 1.3; width: 1.6" static-body visible="false"></a-box>
+                        <a-cylinder id="stoveCollider_1" scale='.75 .75 .75' position="0.00658 11.03606 7.82184" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.03" rotation="0 0 90" static-body visible="false"></a-cylinder>
+                        <a-cylinder id="stoveCollider_2" scale='.75 .75 .75' position="5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
+                        <a-cylinder id="stoveCollider_3" scale='.75 .75 .75' position="-5.96524 11.03606 0.873" height="10" radius="2" material="color: red" geometry="height: 1.05; radius: 0.02" rotation="0 90 90" static-body visible="false"></a-cylinder>
+                        <a-box id="stoveCollider_4" scale='.75 .75 .75' position="0 10.37833 -5.87763" height="1" depth="1" width="1" material="color: red" geometry="height: 1.1; depth: 0.13; width: 1.6" static-body visible="false"></a-box>
                     </a-obj-model>
+
                     <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' material="src: url(\assets\models\mtl\counterTexture.png)" >
                         <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body visible="false"></a-box>
                         <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body visible="false"></a-box>
                     </a-obj-model>
+
                     <a-obj-model id='corner_0' src='#cornerObj' scale='0.1 0.1 0.1' position='-2.895 0 0.106' material="src: url(\assets\models\mtl\cornerCounterTexture.png)">
                         <a-box id="col1" scale="0.75 0.75 0.75" geometry="height: 1.385; width: 1.29; depth: 1.05" material="color: red" position="0 7.16 -1.02196" static-body visible="false"></a-box>
                         <a-box id="col2" scale="0.75 0.75 0.75" geometry="height: 1.385; width: 1.07; depth: 1.27" material="color: red" position="-1.11873 7.16 0.02797" static-body visible="false"></a-box>
                         <a-box id="col3" scale="0.75 0.75 0.75" geometry="height: 0.115; width: 1.3; depth: 1.3" material="color: red" position="-0.02035 13.50475 0.02797" static-body visible="false"></a-box>
                     </a-obj-model>
+
                     <a-obj-model id='corner_1' src='#cornerObj' scale='0.1 0.1 0.1' position='2.895 0 0.106' material="src: url(\assets\models\mtl\cornerCounterTexture.png)" rotation='0 -90 0'>
                         <a-box id="col1" scale="0.75 0.75 0.75" geometry="height: 1.385; width: 1.29; depth: 1.05" material="color: red" position="0 7.16 -1.02196" static-body visible="false"></a-box>
                         <a-box id="col2" scale="0.75 0.75 0.75" geometry="height: 1.385; width: 1.07; depth: 1.27" material="color: red" position="-1.11873 7.16 0.02797" static-body visible="false"></a-box>
                         <a-box id="col3" scale="0.75 0.75 0.75" geometry="height: 0.115; width: 1.3; depth: 1.3" material="color: red" position="-0.02035 13.50475 0.02797" static-body visible="false"></a-box>
                     </a-obj-model>
 
-                    <a-entity id="sendOrderPad" geometry="primitive: cylinder; height: 0.01; radius: 0.1" material="color: blue" position="-1.084 1.419 0" body="type: static; mass: 5; shape: none;" shape__main='shape:cylinder; height:0.01; radiusTop: 0.08; radiusBottom: 0.08; offset: 0 0 0;' vr-send-order>
-                        <a-entity id='sendOrderRayCast' raycaster='objects:.grabbable; showLine:true; far:0.03' line='color:red;' rotation='90 0 0' ></a-entity>
-                    </a-entity>
+                    <a-obj-model id='plate' 
+                        src='#plateObj' 
+                        material="src: url(\assets\models\mtl\plateTexture.png)" 
+                        position="-1.084 1.419 0" 
+                        scale='0.02 0.02 0.02' 
+                        body="type: static; mass: 5; shape: none;" 
+                        shape__main='shape:cylinder; height:2; radiusTop: 5; radiusBottom: 5; offset: 0 0 0;' 
+                        vr-send-order>
+                    </a-obj-model>
                 </a-entity>
 
-                <a-entity id='counterGroup_1' position='-3 0 2' rotation='0 90 0'>
-                    <a-obj-model id="fryer" src="#fryerObj" scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\fryerTexture.png)">
-                        <a-box id="fryOil" class="" scale="10 10 10" geometry="height: 0.425; width: 1.13; depth: 0.93" material="color: #a68f11; transparent: true; ambientOcclusionMapIntensity: 0.78; opacity: 0.55" position="0.05732 10.2695 0.17961" visible=""></a-box>   
-                        <a-box id="fryOilCast" class="fryerOil" scale="10 10 10" geometry="height: 0.015; width: 1.13; depth: 0.93" material="color: #eddd12; transparent: true; ambientOcclusionMapIntensity: 0.78; opacity: 0.0001" position="0.05732 10.651 0.17961" visible=""></a-box>                           
-                        <a-box id="col1" scale="0.75 0.75 0.75" geometry="height: 1.075; width: 1.5; depth: 1.11" material="color: red" position="0 5.530 0.324" static-body visible="false"></a-box>
-                        <a-box id="col2" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 1.5; depth: 0.3" material="color: red" position="0 11.93071 5.9304" static-body visible="false"></a-box>
-                        <a-box id="col3" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 0.19; depth: 1.27" material="color: red" position="6.5775 11.93071 1.0951" static-body visible="false"></a-box>
-                        <a-box id="col4" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 0.19; depth: 1.27" material="color: red" position="-6.51033 11.931 1.0951" static-body visible="false"></a-box>
-                        <a-box id="col5" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 0.1; depth: 1.27" material="color: red" position="0.05732 11.93071 1.0951" static-body visible="false"></a-box>
-                        <a-box id="col6" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 1.49; depth: 0.08" material="color: red" position="0.05732 11.93071 -4.81288" static-body visible="false"></a-box>
-                    </a-obj-model>
-                    
-                    <!-- <a-obj-model id="counter_1" src="#counterObj" scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\counterTexture.png)">
-                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
-                        
-                    </a-obj-model> -->
-                    <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' material="src: url(\assets\models\mtl\counterTexture.png)">
-                        <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
-                        <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
-                        
-                    </a-obj-model>
-                    <a-obj-model id="corner_0" src="#cornerObj" scale="0.1 0.1 0.1" position="-1.39934 0 0.106" material="src: url(\assets\models\mtl\cornerCounterTexture.png)">
-                        <a-box id="col1" scale="0.75 0.75 0.75" geometry="height: 1.385; width: 1.29; depth: 1.05" material="color: red" position="0 7.16 -1.02196" static-body visible="false"></a-box>
-                        <a-box id="col2" scale="0.75 0.75 0.75" geometry="height: 1.385; width: 1.07; depth: 1.27" material="color: red" position="-1.11873 7.16 0.02797" static-body visible="false"></a-box>
-                        <a-box id="col3" scale="0.75 0.75 0.75" geometry="height: 0.115; width: 1.3; depth: 1.3" material="color: red" position="-0.02035 13.50475 0.02797" static-body visible="false"></a-box>
-                    </a-obj-model>
+                <a-entity id='counterGroup_1' 
+                    position='-3 0 2' 
+                    rotation='0 90 0'>
+                        <a-obj-model id="fryer" src="#fryerObj" scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\fryerTexture.png)">
+                            <a-box id="fryOil" class="" scale="10 10 10" geometry="height: 0.425; width: 1.13; depth: 0.93" material="color: #a68f11; transparent: true; ambientOcclusionMapIntensity: 0.78; opacity: 0.55" position="0.05732 10.2695 0.17961" visible=""></a-box>   
+                            <a-box id="fryOilCast" class="fryerOil" scale="10 10 10" geometry="height: 0.015; width: 1.13; depth: 0.93" material="color: #eddd12; transparent: true; ambientOcclusionMapIntensity: 0.78; opacity: 0.0001" position="0.05732 10.651 0.17961" visible=""></a-box>                           
+                            <a-box id="col1" scale="0.75 0.75 0.75" geometry="height: 1.075; width: 1.5; depth: 1.11" material="color: red" position="0 5.530 0.324" static-body visible="false"></a-box>
+                            <a-box id="col2" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 1.5; depth: 0.3" material="color: red" position="0 11.93071 5.9304" static-body visible="false"></a-box>
+                            <a-box id="col3" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 0.19; depth: 1.27" material="color: red" position="6.5775 11.93071 1.0951" static-body visible="false"></a-box>
+                            <a-box id="col4" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 0.19; depth: 1.27" material="color: red" position="-6.51033 11.931 1.0951" static-body visible="false"></a-box>
+                            <a-box id="col5" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 0.1; depth: 1.27" material="color: red" position="0.05732 11.93071 1.0951" static-body visible="false"></a-box>
+                            <a-box id="col6" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 1.49; depth: 0.08" material="color: red" position="0.05732 11.93071 -4.81288" static-body visible="false"></a-box>
+                        </a-obj-model>
+
+                        <a-obj-model id="counter_2" src="#counterObj" scale="0.1 0.1 0.1" position='1.505 0 0' material="src: url(\assets\models\mtl\counterTexture.png)">
+                            <a-box id='col1' scale='.75 .75 .75' geometry="height: 1.385; width: 1.5; depth: 1.110" material="color:red" position='0 7.16 0.324' static-body></a-box>
+                            <a-box id='col2' scale='.75 .75 .75' geometry="height: 0.105; width: 1.5; depth: 1.290" material="color:red" position='0 13.54 0.99' static-body></a-box>
+                            
+                        </a-obj-model>
+                        <a-obj-model id="corner_0" src="#cornerObj" scale="0.1 0.1 0.1" position="-1.39934 0 0.106" material="src: url(\assets\models\mtl\cornerCounterTexture.png)">
+                            <a-box id="col1" scale="0.75 0.75 0.75" geometry="height: 1.385; width: 1.29; depth: 1.05" material="color: red" position="0 7.16 -1.02196" static-body visible="false"></a-box>
+                            <a-box id="col2" scale="0.75 0.75 0.75" geometry="height: 1.385; width: 1.07; depth: 1.27" material="color: red" position="-1.11873 7.16 0.02797" static-body visible="false"></a-box>
+                            <a-box id="col3" scale="0.75 0.75 0.75" geometry="height: 0.115; width: 1.3; depth: 1.3" material="color: red" position="-0.02035 13.50475 0.02797" static-body visible="false"></a-box>
+                        </a-obj-model>
                 </a-entity>
 
                 <a-entity id="counterGroup_2" position="0 0 3.491" rotation="0 180 0">
@@ -369,7 +426,7 @@
                             rotation="180 0 0" 
                             vr-make-cheese=""></a-entity>
                         </a-entity>
-                        <!-- Make the LETTUCE and ONION -->
+
                         <a-entity id="dispenserGroup_3" position="0.7 2 0">
                             <a-obj-model id="dispenser" src="#dispenserObj" material="src: url(\assets\models\mtl\dispenserTomatoLettuce.png)" position="" scale="0.1 0.1 0.1" material="" obj-model="">
                                 <a-box height="0.1" width="0.1" depth="0.1" 
@@ -404,21 +461,20 @@
                                 </a-box>
                             </a-obj-model>
                             <a-entity id="raycastOne" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            raycaster="objects: .hand; showLine: false; far: 0.03" 
                             line="color: purple;" 
                             position="0.155 0.07 0.4" 
                             rotation="180 0 0" 
                             vr-make-lettuce=""></a-entity>
 
                             <a-entity id="raycastTwo" class="button" 
-                            raycaster="objects: .hand; showLine: true; far: 0.03" 
+                            raycaster="objects: .hand; showLine: false; far: 0.03" 
                             line="color: green;" 
                             position="-0.155 0.07 0.4" 
                             rotation="180 0 0" 
                             vr-make-tomato=""></a-entity>
                         </a-entity>
 
-                        <!-- Make the PATTY and CHEESE -->
                         <a-entity id="dispenserGroup_4" position="1.7 2 0">
                             <a-obj-model id="dispenser" src="#dispenserObj" material="src: url(\assets\models\mtl\dispenserFriesOnion.png)" position="" scale="0.1 0.1 0.1" material="" obj-model="">
                                 <a-box height="0.1" width="0.1" depth="0.1" 
@@ -485,18 +541,6 @@
                     </a-obj-model>
                 </a-entity>
             </a-entity>
-
-            <a-obj-model id='bb_0'
-            src="#1_2_4Obj"
-            class='grabbable' 
-            mixin='bottomBunMixin'
-            position='-0.810 1.4 -0.751'
-            vr-burger-info 
-            vr-burger-assembly 
-            vr-snap-patty
-            material='src:/assets/models/mtl/burgerMap.png'
-            dynamic-body
-            ></a-obj-model>
 
             <script src="/socket.io/socket.io.js"></script>
             <script src="js/vr-networking.js"></script>

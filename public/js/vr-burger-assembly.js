@@ -1,7 +1,9 @@
 AFRAME.registerComponent('vr-burger-assembly', {
     init: function(){
         const Context_AF = this;
+        //Get the elements of the burger.
         const burgerElements = this.el.components['vr-burger-info'].data.burgerElements;
+        
         //An event listener for a collision event.
         Context_AF.el.addEventListener('collide', function(evt){
             //Check to see if the collided entity has a class of grabbable and is a burger element.
