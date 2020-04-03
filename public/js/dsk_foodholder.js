@@ -11,10 +11,12 @@ AFRAME.registerComponent('dsk_foodholder', {
             {
                console.log(event.detail.body.el.id);
                let NPC = document.querySelector('#npc' + event.detail.body.el.id);
+               let table = document.querySelector('#' + event.detail.body.el.id);
                console.log('npc' + event.detail.body.el.id);
+               table.removeAttribute('sound');
                NPC.parentNode.removeChild(NPC);
                Context_AF.data.FoodStorage = " ";
-               player.setAttribute('material', 'src: assets/Texture/sans.png');
+               player.setAttribute('material', 'src: assets/sans.png');
             }
         });
 
