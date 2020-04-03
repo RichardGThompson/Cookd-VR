@@ -9,7 +9,6 @@
         <script src="js/dsk_npcspawning.js"></script>
         <script src="js/dsk_ticketgenerating.js"></script>
         <script src="js/dsk_getticket.js"></script>
-        <script src="js/dsk_deletenpcs.js"></script>
         <script src="js/dsk_foodholder.js"></script>
         
         <!--GUI-->
@@ -18,7 +17,7 @@
         <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
     </head>
     <body>
-
+        <!--Loading in textures for objects-->
         <a-scene>
             <a-assets>
                 <a-asset-item id="Floortexture" src="assets/Texture/sans.png"></a-asset-item>
@@ -27,6 +26,7 @@
                 <a-asset-item id="NavMeshOBJ" src="assets/nav.gltf"></a-asset-item>
                 <a-asset-item crossorigin="anonymous" id="NPC_SOUND" src="/assets/sound/NPC.ogg" response-type="arraybuffer" preload="auto"></a-asset-item>
             </a-assets>
+            <!--Camera-->
             <a-entity id="rig" movement-controls="constrainToNavMesh: true" rotation="-90 0 0"position=" 0 10 -1">
                 <a-entity id="camera" position=" 0 0 0"  camera >
                     <a-entity   id="cursor"
@@ -41,6 +41,8 @@
                 </a-entity>
             </a-entity>
             
+            <!--UI-->
+            <!--Order-->
             <a-gui-flex-container 
                 flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="4.5"
                 position="9.6 3 -1" rotation="-90 0 0">
@@ -48,6 +50,7 @@
                 <a-gui-label id="ticket" width="6" height = "0.7" value="Order Ingredients" font-size="130px" ></a-gui-label>
             </a-gui-flex-container>
 
+            <!--Table order-->
             <a-gui-flex-container 
                 flex-direction="column" justify-content="center" align-items="normal" scale= "1 1 1" component-padding="0.1" opacity="0.0" width="3.5" height="4.5"
                 position="9.6 3 -4" rotation="-90 0 0">
@@ -108,6 +111,7 @@
                 <a-gui-label id="Ordertable9" width="4" height = "0.7" value="No order taken" font-size="160px" ></a-gui-label>
             </a-gui-flex-container>
 
+            <!--Floor/Scene Obj-->
             <a-entity id="scene"
                     obj-model="obj: #FloorOBJ;"
                     position="-1 1 -1"
@@ -120,15 +124,8 @@
                     normal-map="src: url(/assets/Texture/EnviroNormal.tif)"
                     static-body>
             </a-entity>
-           <!-- <a-entity id="button"
-                    class="clickable"
-                    dsk_npcspawning
-                    position= " 2 2 2"
-                    geometry="primitive: cylinder; height: 1; radius: 1"
-                    
-                    position="4.5 -0.5 2">
-            </a-entity>//-->
-
+           
+            <!--Player objects-->
             <a-entity id="player"
                 nav-agent="speed: 1.5"
                 static-body
@@ -141,6 +138,7 @@
                 Material="src: url(/assets/Texture/sans.png)">
             </a-entity>
 
+            <!--Table hitboxes objects-->
             <a-entity id="table1"
                 position= "-1.0 1.269 -1" 
                 geometry="primitive:cylinder; height:0.5; radius: 1" 

@@ -12,10 +12,10 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
 
     init : function() {
         const Context_AF = this;
-        
+        //chooses which food the npc will get
         rand = Math.floor(Math.random() * 4) + 1;
-        //rand = 4;
-        //rand = 1;
+        
+        //determines which order the npc will get
         if(rand == 1)
         {
             Context_AF.el.setAttribute('burger', {});
@@ -40,6 +40,7 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
     
     },
 })
+//the components that stores the order names and ingredients to be displayed and sent
 AFRAME.registerComponent('burger', {
     schema: {
         price: {type:'number', default:10},
