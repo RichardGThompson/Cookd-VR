@@ -28,7 +28,7 @@ AFRAME.registerComponent('dsk_networkmanager', {
             else if(data == "1,2,3,4"){
                 foodname = "CheeseBurger";
             }
-            else if(data == "1,2,3,5,6,4"){
+            else if(data == "1,2,3,4,5,6"){
                 foodname = "LoadedCheeseBurger";
             }
             if(data == "8"){
