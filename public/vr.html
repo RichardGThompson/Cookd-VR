@@ -41,6 +41,8 @@
                 <a-asset-item id='thermObj' src='/assets/models/obj/thermo.obj'></a-asset-item>
 
                 <a-asset-item id="burgerCookingSound" src='assets/sound/burgerFrying.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
+                <a-asset-item id='cookedSoundFile' src='assets/sound/beep.mp3' response-type="arraybuffer" crossorigin="anonymous" preload='true'></a-asset-item>
+
                 <a-asset-item id="1Obj" src="/assets/models/obj/1.obj"></a-asset-item>
                 <a-asset-item id="2Obj" src="/assets/models/obj/2.obj"></a-asset-item>
                 <a-asset-item id="3Obj" src="/assets/models/obj/3.obj"></a-asset-item>
@@ -230,7 +232,7 @@
 
                 <a-entity id='counterGroup_1' position='-3 0 2' rotation='0 90 0'>
                     <a-obj-model id="fryer" src="#fryerObj" scale="0.1 0.1 0.1" position='0 0 0' material="src: url(\assets\models\mtl\fryerTexture.png)">
-                        <a-box id="fryOil" class="" scale="10 10 10" geometry="height: 0.425; width: 1.13; depth: 0.93" material="color: #eddd12; transparent: true; ambientOcclusionMapIntensity: 0.78; opacity: 0.55" position="0.05732 10.2695 0.17961" visible=""></a-box>   
+                        <a-box id="fryOil" class="" scale="10 10 10" geometry="height: 0.425; width: 1.13; depth: 0.93" material="color: #a68f11; transparent: true; ambientOcclusionMapIntensity: 0.78; opacity: 0.55" position="0.05732 10.2695 0.17961" visible=""></a-box>   
                         <a-box id="fryOilCast" class="fryerOil" scale="10 10 10" geometry="height: 0.015; width: 1.13; depth: 0.93" material="color: #eddd12; transparent: true; ambientOcclusionMapIntensity: 0.78; opacity: 0.0001" position="0.05732 10.651 0.17961" visible=""></a-box>                           
                         <a-box id="col1" scale="0.75 0.75 0.75" geometry="height: 1.075; width: 1.5; depth: 1.11" material="color: red" position="0 5.530 0.324" static-body visible="false"></a-box>
                         <a-box id="col2" scale="0.75 0.75 0.75" geometry="height: 0.425; width: 1.5; depth: 0.3" material="color: red" position="0 11.93071 5.9304" static-body visible="false"></a-box>

@@ -55,6 +55,11 @@ AFRAME.registerComponent('vr-make-patty', {
         soundElem.setAttribute('id', 'burgerCookingSoundEntity')
         soundElem.setAttribute('sound', 'src: #burgerCookingSound; autoplay: false; loop: true');
 
+        let soundDoneElem = document.createElement('a-entity');
+        soundDoneElem.setAttribute('id', 'cookedSound')
+        soundDoneElem.setAttribute('sound', 'src: #cookedSoundFile; autoplay: false; loop: false');
+        pattyElem.appendChild(soundDoneElem);
+
 
         pattyElem.appendChild(raycastOne);
         pattyElem.appendChild(raycastTwo);

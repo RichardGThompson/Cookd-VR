@@ -45,6 +45,13 @@ AFRAME.registerComponent('vr-make-fries', {
         soundElem.setAttribute('sound', 'src: #burgerCookingSound; autoplay: false; loop: true');
         fryElem.appendChild(soundElem);
 
+        let soundDoneElem = document.createElement('a-entity');
+        soundDoneElem.setAttribute('id', 'cookedSound')
+        soundDoneElem.setAttribute('sound', 'src: #cookedSoundFile; autoplay: false; loop: false');
+        fryElem.appendChild(soundDoneElem);
+
+
+
         
         let scene = document.querySelector('a-scene');
         scene.appendChild(fryElem);

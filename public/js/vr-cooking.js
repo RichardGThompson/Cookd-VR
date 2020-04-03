@@ -45,6 +45,7 @@ AFRAME.registerComponent('vr-cooking', {
                 if(currTemp >= parentNode.components['vr-patty-info'].data.pattyCookedTemp && currTemp < parentNode.components['vr-patty-info'].data.pattyOvercookTemp){
                     parentNode.components['vr-patty-info'].data.pattyCooked = true;
                     parentNode.components['vr-patty-info'].data.pattyOvercooked = false;
+                    this.el.parentNode.querySelector('#cookedSound').components.sound.playSound();
                     parentNode.setAttribute('material','src:/assets/models/mtl/burgerMap.png');
                 }
                 else if(currTemp >= parentNode.components['vr-patty-info'].data.pattyOvercookTemp){

@@ -11,12 +11,10 @@ AFRAME.registerComponent('vr-frying', {
         this.el.addEventListener('raycaster-intersection', function(){
             Context_AF.setCookingMode(true);
             this.parentNode.querySelector('#burgerCookingSoundEntity').components.sound.playSound();
-            console.log('hit the oil bitch');
         });
         this.el.addEventListener('raycaster-intersection-cleared', function(){
             Context_AF.setCookingMode(false);
             this.parentNode.querySelector('#burgerCookingSoundEntity').components.sound.pauseSound();
-            console.log('outta that oilbitch');
         })
     },
 
@@ -36,6 +34,7 @@ AFRAME.registerComponent('vr-frying', {
                     console.log('friesCooked!');
                     parentNode.components['vr-fry-details'].fryCooked = true;
                     parentNode.components['vr-fry-details'].fryOvercooked = false;
+                    this.el.parentNode.querySelector('#cookedSound').components.sound.playSound();
                     parentNode.setAttribute('material','src:/assets/models/mtl/basketAndFriesTexture.png');
                 }
                 else if(currentTemp >= parentNode.components['vr-fry-details'].data.fryOvercookedTemp){
