@@ -23,7 +23,15 @@ AFRAME.registerComponent('dsk_networkmanager', {
             if(data = "1_2_4"){
                 foodname = "burger";
             }
-            
+            if(data = "1_2_3_4"){
+                foodname = "CheeseBurger";
+            }
+            if(data = "1_2_3_5_6_4"){
+                foodname = "LoadedCheeseBurger";
+            }
+            if(data = "8"){
+                foodname = "Fries";
+            }
         });
         
     },
