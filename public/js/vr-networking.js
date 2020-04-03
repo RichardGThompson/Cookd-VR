@@ -1,4 +1,4 @@
-const debug = false;
+const debug = true;
 let socket = io();
 AFRAME.registerComponent('vr-websocket',{
     schema: {

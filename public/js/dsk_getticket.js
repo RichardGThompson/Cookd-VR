@@ -19,6 +19,7 @@ AFRAME.registerComponent('dsk_getticket', {
                 
                 let componentname = event.detail.body.el.components['dsk_ticketgenerating'].data.nameHolder;
                 let Order = document.querySelector('#Order' + event.detail.body.el.id);
+                //console.log(componentname);
                 //let orderimage = document.querySelector('#' + componentname + event.detail.body.el.id);
                 //orderimage.setAttribute('visible', 'true');
                 ticket.setAttribute('value', ' ' + event.detail.body.el.components[componentname].data.ingredient + '');

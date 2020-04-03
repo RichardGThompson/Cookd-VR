@@ -13,8 +13,8 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
     init : function() {
         const Context_AF = this;
         
-        //rand = Math.floor(Math.random() * 4) + 1;
-        rand = 1;
+        rand = Math.floor(Math.random() * 4) + 1;
+        //rand = 1;
         if(rand == 1)
         {
             Context_AF.el.setAttribute('burger', {});
@@ -39,7 +39,7 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
     
     },
 })
-AFRAME.registerComponent('BottomBun,Patty,TopBun', {
+AFRAME.registerComponent('burger', {
     schema: {
         price: {type:'number', default:10},
         name: {type: 'string', default:'Burger'},
@@ -49,12 +49,12 @@ AFRAME.registerComponent('BottomBun,Patty,TopBun', {
     init : function() {
         const Context_AF = this;
         
-        console.log(Context_AF.data.ingredient);
+        //console.log(Context_AF.data.ingredient);
         Context_AF.el.components['dsk_ticketgenerating'].data.nameHolder = Context_AF.data.label;
         
     },
 });
-AFRAME.registerComponent('BottomBun,Patty,Cheese,TopBun', {
+AFRAME.registerComponent('CheeseBurger', {
     schema: {
         price: {type:'number', default:5},
         name: {type: 'string', default:'Cheese Burger'},
@@ -63,12 +63,12 @@ AFRAME.registerComponent('BottomBun,Patty,Cheese,TopBun', {
     },
     init : function() {
         const Context_AF = this;
-        console.log(Context_AF.data.ingredient);
+        //console.log(Context_AF.data.ingredient);
         Context_AF.el.components['dsk_ticketgenerating'].data.nameHolder = Context_AF.data.label;
     },
 });
 
-AFRAME.registerComponent('BottomBun,Patty,Cheese,Lettuce,Onion,TopBun', {
+AFRAME.registerComponent('LoadedCheeseBurger', {
     schema: {
         price: {type:'number', default:0},
         name: {type: 'string', default:'Loaded Cheese Burger'},
@@ -78,7 +78,7 @@ AFRAME.registerComponent('BottomBun,Patty,Cheese,Lettuce,Onion,TopBun', {
     init : function() {
         const Context_AF = this;
         
-        console.log(Context_AF.data.ingredient);
+        //console.log(Context_AF.data.ingredient);
         Context_AF.el.components['dsk_ticketgenerating'].data.nameHolder = Context_AF.data.label;
         
     },
@@ -93,7 +93,7 @@ AFRAME.registerComponent('Fries', {
     init : function() {
         const Context_AF = this;
         
-        console.log(Context_AF.data.ingredient);
+        //console.log(Context_AF.data.ingredient);
         Context_AF.el.components['dsk_ticketgenerating'].data.nameHolder = Context_AF.data.label;
         
     },

@@ -9,16 +9,6 @@ AFRAME.registerComponent('dsk_npcspawning', {
     },
     init : function() {
         const Context_AF = this;
-        
-        /*setTimeout(()=>{
-        Context_AF.data.counter += 1;
-         console.log(Context_AF.data.counter + " seconds has passed");
-            
-        }, 1000);
-
-        Context_AF.el.addEventListener("click", function(event){
-            Context_AF.SpawnNPC();
-        });*/
     },
     tick : function(time, deltaTime){
         let Context_AF = this;
@@ -45,11 +35,13 @@ AFRAME.registerComponent('dsk_npcspawning', {
         randposition = Math.floor(Math.random() * 8);
         let id = randposition + 1;
         let table = document.querySelector('#table' + id);
+        let tablename = table.getAttribute('id');
+        //console.log(tablename);
         let npcmat = document.querySelector('#NPCtexture');
         console.log(npcmat);
         if(Context_AF.data.tabletaken[id])
         {
-            console.log("butts")
+            //console.log("butts")
         }
         else
         {
@@ -60,7 +52,7 @@ AFRAME.registerComponent('dsk_npcspawning', {
             NPC.setAttribute('geometry', 'primitive: cylinder; height:0.1; radius:1');
             NPC.setAttribute('material', 'src: assets/girlselfie.png');
             NPC.setAttribute('rotation', {x:0.00, y:90.0, z:0.00});
-            NPC.setAttribute('id', 'npc' + id);
+            NPC.setAttribute('id', 'npc' + tablename);
             
             table.setAttribute('dsk_ticketgenerating', {});
             table.setAttribute('dynamic-body', 'shape: auto; mass: 100');
