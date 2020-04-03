@@ -13,7 +13,8 @@ AFRAME.registerComponent('dsk_ticketgenerating', {
     init : function() {
         const Context_AF = this;
         
-        rand = Math.floor(Math.random() * 4) + 1;
+        //rand = Math.floor(Math.random() * 4) + 1;
+        rand = 4;
         //rand = 1;
         if(rand == 1)
         {
